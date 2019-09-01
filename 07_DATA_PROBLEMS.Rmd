@@ -1,0 +1,25 @@
+# (PART) <lfg>DATA PROBLEMS</lfg> {-}
+
+
+# EXTREME VALUES
+
+
+# MISSING VALIES
+
+
+# UNTIPICAL DISTRIBUTIONS
+
+
+# IMBALANCED
+
+
+# CENSORED/TRUNDATED DATA
+
+
+# AGGREGATED DATA
+
+demposition of data (w modelu od PWC dane kwartalne zdekomponowano na miesieczne)
+
+# GRANULARITY
+
+

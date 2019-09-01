@@ -1,0 +1,25 @@
+# (PART) <lfg>OTHER PROBLEMS AND MODELS</lfg> {-}
+
+# SOCIAL NETWORK
+
+# CALIBRATION
+
+# BAYESIAN STATISTICS
+
+# SIX-SIGMA
+
+# SEM (Structural Equation Models)
+
+Zawiera tez analize konfirmacyjna
+
+# PROCESS ANALYSIS (analiza procesu)
+
+# SEQUENTIONAL ANALYSIS
+
+# EXPERT MODELS
+
+# Experiment design (planowanie doświaeczeń)
+
+# ASSOCIATION RULES (analiza koszykowa)
+
+# Special models

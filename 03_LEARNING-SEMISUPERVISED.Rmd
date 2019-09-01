@@ -1,0 +1,28 @@
+# (PART) <lfg>LEARNING-SEPERVISED</lfg> {-}
+
+
+# BB-NEURAL NETWORKS
+
+
+
+
+
+# GENERAL ISSUES
+
+
+## Algorithms per problems
+
+### numerical and categorical data
+
+### Images/videos
+
+### Text
+
+### Sound
+
+
+## Dignostics of models
+
+## Variables selection
+
+## IML

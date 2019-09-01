@@ -1,0 +1,104 @@
+# (PART) <lfg>BASICS</lfg> {-}
+
+# PROBABILITY
+
+
+
+# DESCRIPTIVE STATICTICS
+
+
+
+
+# STATISTICAL AND ECONOMETRICAL INFERENCE
+
+
+## Parameters estimation
+
+### general moments method (GMM)
+
+#### least squares
+
+### maximum Likehood
+
+
+## Exogenity 
+
+### Granger exogenity
+
+
+## Spurious 
+
+### trends
+
+### correlations
+
+
+## Samples size
+
+### Large
+
+### Small
+
+
+### Sourious Correlations
+
+## Sampling
+
+### Bootstrap
+
+### jacknife
+
+### Permutation
+
+### Cross validation
+
+Including for time series
+
+### Monte calrlo
+
+Markov Chain Monte Calro Sampling
+
+### Stratified sampling
+
+
+
+# MATHEMATICS
+
+## Distance
+
+## Linear algebra
+
+## Combinatorics
+
+## Graphs
+
+## Optimisation
+
+### functions min and max
+
+### linear programming
+
+### nonlinear programing
+
+### dynamic programing
+
+### swarm algorthms
+
+### zagadnienia transportowe
+
+
+## Equations solving
+
+
+## Differential equations
+
+### deterministic
+
+### stochastic
+
+
+## Useful functions
+
+### logistic
+
+### softmax

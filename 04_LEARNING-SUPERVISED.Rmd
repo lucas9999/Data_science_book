@@ -1,0 +1,162 @@
+# (PART) <lfg>LEARNING-SUPERVISED</lfg> {-}
+
+
+# ECONOMETRIC REGRESSION STATIC
+
+Econmetrics regression - models that explicitly show functional dependency between variables. 
+
+## Linear model
+
+
+## Nonlinear model
+  
+### with additive error term
+
+### GLM
+
+### GAM
+
+
+## adding bayes
+
+## mix effects
+
+## multiple equations
+
+
+# ECONOMETRIC REGRESSION DYNAMIC
+
+## simple dynamic regression
+
+## error correction model
+
+## SARIMAX
+
+## ARCH
+
+## Cintegration
+
+## ARLD Applorach
+
+## panel models
+
+## multiple equations
+
+### VARIMAX
+
+### panel
+
+
+
+
+
+# ANOVA / MANOVA /A ANCOVA
+
+
+# LDA QDA
+
+
+# BAYESIAN NET
+
+
+# CANONICAL ANALYSIS
+
+
+# LATENT VARIABLES DETECTION
+
+
+# SVM
+
+
+# TREES
+
+
+# BB-ensembled
+
+## Bagging
+
+## Boosting
+
+## Stacking
+
+## Twicing
+
+## Bandling
+
+
+
+# BB-neural networks
+
+
+
+# OTHER DYNAMIC MODELS
+
+
+## Basic trend models
+
+
+## Basic adaptative models
+
+
+## Spectral models
+
+
+### Furies
+
+### Walvets
+
+### Singular Spectrum Analysis
+
+
+## Martingales
+
+
+## Kalman Filters
+
+
+## Markov Provess
+
+
+## Winer Process
+
+
+## Survival
+
+
+
+
+
+
+
+# GENERAL ISSUES
+
+
+## Algorithms per problems
+
+### Numerical dependent
+
+### Categorical Dependent
+
+### Stochastic process
+
+### Images/Vides
+
+### Text
+
+### Sound
+
+
+### numerical and categorical data
+
+### Images/videos
+
+### Text
+
+### Sound
+
+
+## Dignostics of models
+
+## Variables selection
+
+## IML

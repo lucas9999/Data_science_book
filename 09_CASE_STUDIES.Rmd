@@ -1,0 +1,20 @@
+# (PART) <lfg>CASE STUDIES</lfg> {-}
+
+
+# Score cards
+
+# PD models
+
+# LGD models
+
+# Churn models
+
+# ICAAP
+
+# AMA
+
+# Stress tests
+
+# Master Scale
+
+# ID Cards scanning
