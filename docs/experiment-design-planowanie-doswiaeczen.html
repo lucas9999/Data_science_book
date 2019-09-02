@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 43 Experiment design (planowanie doświaeczeń) | Data Science Book</title>
+  <meta name="description" content="Chapter 43 Experiment design (planowanie doświaeczeń) | Data Science Book" />
+  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 43 Experiment design (planowanie doświaeczeń) | Data Science Book" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 43 Experiment design (planowanie doświaeczeń) | Data Science Book" />
+  
+  
+  
+
+<meta name="author" content="Łukasz Muszyński" />
+
+
+<meta name="date" content="2019-09-02" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="expert-models.html">
+<link rel="next" href="association-rules-analiza-koszykowa.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> INTRO</a></li>
+<li class="part"><span><b>I <lfg>BASICS</lfg></b></span></li>
+<li class="chapter" data-level="2" data-path="probability.html"><a href="probability.html"><i class="fa fa-check"></i><b>2</b> PROBABILITY</a></li>
+<li class="chapter" data-level="3" data-path="descriptive-statictics.html"><a href="descriptive-statictics.html"><i class="fa fa-check"></i><b>3</b> DESCRIPTIVE STATICTICS</a></li>
+<li class="chapter" data-level="4" data-path="statistical-and-econometrical-inference.html"><a href="statistical-and-econometrical-inference.html"><i class="fa fa-check"></i><b>4</b> STATISTICAL AND ECONOMETRICAL INFERENCE</a><ul>
+<li class="chapter" data-level="4.1" data-path="statistical-and-econometrical-inference.html"><a href="statistical-and-econometrical-inference.html#parameters-estimation"><i class="fa fa-check"></i><b>4.1</b> Parameters estimation</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="statistical-and-econometrical-inference.html"><a href="statistical-and-econometrical-inference.html#general-moments-method-gmm"><i class="fa fa-check"></i><b>4.1.1</b> general moments method (GMM)</a></li>
+<li class="chapter" data-level="4.1.2" data-path="statistical-and-econometrical-inference.html"><a href="statistical-and-econometrical-inference.html#maximum-likehood"><i class="fa fa-check"></i><b>4.1.2</b> maximum Likehood</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="statistical-and-econometrical-inference.html"><a href="statistical-and-econometrical-inference.html#exogenity"><i class="fa fa-check"></i><b>4.2</b> Exogenity</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="statistical-and-econometrical-inference.html"><a href="statistical-and-econometrical-inference.html#granger-exogenity"><i class="fa fa-check"></i><b>4.2.1</b> Granger exogenity</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="statistical-and-econometrical-inference.html"><a href="statistical-and-econometrical-inference.html#spurious"><i class="fa fa-check"></i><b>4.3</b> Spurious</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="statistical-and-econometrical-inference.html"><a href="statistical-and-econometrical-inference.html#trends"><i class="fa fa-check"></i><b>4.3.1</b> trends</a></li>
+<li class="chapter" data-level="4.3.2" data-path="statistical-and-econometrical-inference.html"><a href="statistical-and-econometrical-inference.html#correlations"><i class="fa fa-check"></i><b>4.3.2</b> correlations</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="statistical-and-econometrical-inference.html"><a href="statistical-and-econometrical-inference.html#samples-size"><i class="fa fa-check"></i><b>4.4</b> Samples size</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="statistical-and-econometrical-inference.html"><a href="statistical-and-econometrical-inference.html#large"><i class="fa fa-check"></i><b>4.4.1</b> Large</a></li>
+<li class="chapter" data-level="4.4.2" data-path="statistical-and-econometrical-inference.html"><a href="statistical-and-econometrical-inference.html#small"><i class="fa fa-check"></i><b>4.4.2</b> Small</a></li>
+<li class="chapter" data-level="4.4.3" data-path="statistical-and-econometrical-inference.html"><a href="statistical-and-econometrical-inference.html#sourious-correlations"><i class="fa fa-check"></i><b>4.4.3</b> Sourious Correlations</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="statistical-and-econometrical-inference.html"><a href="statistical-and-econometrical-inference.html#sampling"><i class="fa fa-check"></i><b>4.5</b> Sampling</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="statistical-and-econometrical-inference.html"><a href="statistical-and-econometrical-inference.html#bootstrap"><i class="fa fa-check"></i><b>4.5.1</b> Bootstrap</a></li>
+<li class="chapter" data-level="4.5.2" data-path="statistical-and-econometrical-inference.html"><a href="statistical-and-econometrical-inference.html#jacknife"><i class="fa fa-check"></i><b>4.5.2</b> jacknife</a></li>
+<li class="chapter" data-level="4.5.3" data-path="statistical-and-econometrical-inference.html"><a href="statistical-and-econometrical-inference.html#permutation"><i class="fa fa-check"></i><b>4.5.3</b> Permutation</a></li>
+<li class="chapter" data-level="4.5.4" data-path="statistical-and-econometrical-inference.html"><a href="statistical-and-econometrical-inference.html#cross-validation"><i class="fa fa-check"></i><b>4.5.4</b> Cross validation</a></li>
+<li class="chapter" data-level="4.5.5" data-path="statistical-and-econometrical-inference.html"><a href="statistical-and-econometrical-inference.html#monte-calrlo"><i class="fa fa-check"></i><b>4.5.5</b> Monte calrlo</a></li>
+<li class="chapter" data-level="4.5.6" data-path="statistical-and-econometrical-inference.html"><a href="statistical-and-econometrical-inference.html#stratified-sampling"><i class="fa fa-check"></i><b>4.5.6</b> Stratified sampling</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="mathematics.html"><a href="mathematics.html"><i class="fa fa-check"></i><b>5</b> MATHEMATICS</a><ul>
+<li class="chapter" data-level="5.1" data-path="mathematics.html"><a href="mathematics.html#distance"><i class="fa fa-check"></i><b>5.1</b> Distance</a></li>
+<li class="chapter" data-level="5.2" data-path="mathematics.html"><a href="mathematics.html#linear-algebra"><i class="fa fa-check"></i><b>5.2</b> Linear algebra</a></li>
+<li class="chapter" data-level="5.3" data-path="mathematics.html"><a href="mathematics.html#combinatorics"><i class="fa fa-check"></i><b>5.3</b> Combinatorics</a></li>
+<li class="chapter" data-level="5.4" data-path="mathematics.html"><a href="mathematics.html#graphs"><i class="fa fa-check"></i><b>5.4</b> Graphs</a></li>
+<li class="chapter" data-level="5.5" data-path="mathematics.html"><a href="mathematics.html#optimisation"><i class="fa fa-check"></i><b>5.5</b> Optimisation</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="mathematics.html"><a href="mathematics.html#functions-min-and-max"><i class="fa fa-check"></i><b>5.5.1</b> functions min and max</a></li>
+<li class="chapter" data-level="5.5.2" data-path="mathematics.html"><a href="mathematics.html#linear-programming"><i class="fa fa-check"></i><b>5.5.2</b> linear programming</a></li>
+<li class="chapter" data-level="5.5.3" data-path="mathematics.html"><a href="mathematics.html#nonlinear-programing"><i class="fa fa-check"></i><b>5.5.3</b> nonlinear programing</a></li>
+<li class="chapter" data-level="5.5.4" data-path="mathematics.html"><a href="mathematics.html#dynamic-programing"><i class="fa fa-check"></i><b>5.5.4</b> dynamic programing</a></li>
+<li class="chapter" data-level="5.5.5" data-path="mathematics.html"><a href="mathematics.html#swarm-algorthms"><i class="fa fa-check"></i><b>5.5.5</b> swarm algorthms</a></li>
+<li class="chapter" data-level="5.5.6" data-path="mathematics.html"><a href="mathematics.html#zagadnienia-transportowe"><i class="fa fa-check"></i><b>5.5.6</b> zagadnienia transportowe</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="mathematics.html"><a href="mathematics.html#equations-solving"><i class="fa fa-check"></i><b>5.6</b> Equations solving</a></li>
+<li class="chapter" data-level="5.7" data-path="mathematics.html"><a href="mathematics.html#differential-equations"><i class="fa fa-check"></i><b>5.7</b> Differential equations</a><ul>
+<li class="chapter" data-level="5.7.1" data-path="mathematics.html"><a href="mathematics.html#deterministic"><i class="fa fa-check"></i><b>5.7.1</b> deterministic</a></li>
+<li class="chapter" data-level="5.7.2" data-path="mathematics.html"><a href="mathematics.html#stochastic"><i class="fa fa-check"></i><b>5.7.2</b> stochastic</a></li>
+</ul></li>
+<li class="chapter" data-level="5.8" data-path="mathematics.html"><a href="mathematics.html#useful-functions"><i class="fa fa-check"></i><b>5.8</b> Useful functions</a><ul>
+<li class="chapter" data-level="5.8.1" data-path="mathematics.html"><a href="mathematics.html#logistic"><i class="fa fa-check"></i><b>5.8.1</b> logistic</a></li>
+<li class="chapter" data-level="5.8.2" data-path="mathematics.html"><a href="mathematics.html#softmax"><i class="fa fa-check"></i><b>5.8.2</b> softmax</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>II <lfg>LEARNING-UNSUPERVISED</lfg></b></span></li>
+<li class="chapter" data-level="6" data-path="models-on-distances.html"><a href="models-on-distances.html"><i class="fa fa-check"></i><b>6</b> MODELS ON DISTANCES</a></li>
+<li class="chapter" data-level="7" data-path="models-on-hidden-distributions.html"><a href="models-on-hidden-distributions.html"><i class="fa fa-check"></i><b>7</b> MODELS ON HIDDEN DISTRIBUTIONS</a></li>
+<li class="chapter" data-level="8" data-path="bb-neural-networks.html"><a href="bb-neural-networks.html"><i class="fa fa-check"></i><b>8</b> BB-NEURAL NETWORKS</a></li>
+<li class="chapter" data-level="9" data-path="general-issues.html"><a href="general-issues.html"><i class="fa fa-check"></i><b>9</b> GENERAL ISSUES</a><ul>
+<li class="chapter" data-level="9.1" data-path="general-issues.html"><a href="general-issues.html#algorithms-per-problems"><i class="fa fa-check"></i><b>9.1</b> Algorithms per problems</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="general-issues.html"><a href="general-issues.html#numerical-and-categorical"><i class="fa fa-check"></i><b>9.1.1</b> numerical and categorical</a></li>
+<li class="chapter" data-level="9.1.2" data-path="general-issues.html"><a href="general-issues.html#imagesvideos"><i class="fa fa-check"></i><b>9.1.2</b> Images/videos</a></li>
+<li class="chapter" data-level="9.1.3" data-path="general-issues.html"><a href="general-issues.html#text"><i class="fa fa-check"></i><b>9.1.3</b> Text</a></li>
+<li class="chapter" data-level="9.1.4" data-path="general-issues.html"><a href="general-issues.html#sound"><i class="fa fa-check"></i><b>9.1.4</b> Sound</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="general-issues.html"><a href="general-issues.html#dignostics-of-models"><i class="fa fa-check"></i><b>9.2</b> Dignostics of models</a></li>
+<li class="chapter" data-level="9.3" data-path="general-issues.html"><a href="general-issues.html#variables-selection"><i class="fa fa-check"></i><b>9.3</b> Variables selection</a></li>
+<li class="chapter" data-level="9.4" data-path="general-issues.html"><a href="general-issues.html#iml-for-black-box"><i class="fa fa-check"></i><b>9.4</b> IML for black box</a></li>
+</ul></li>
+<li class="part"><span><b>III <lfg>LEARNING-SEPERVISED</lfg></b></span></li>
+<li class="chapter" data-level="10" data-path="bb-neural-networks-1.html"><a href="bb-neural-networks-1.html"><i class="fa fa-check"></i><b>10</b> BB-NEURAL NETWORKS</a></li>
+<li class="chapter" data-level="11" data-path="general-issues-1.html"><a href="general-issues-1.html"><i class="fa fa-check"></i><b>11</b> GENERAL ISSUES</a><ul>
+<li class="chapter" data-level="11.1" data-path="general-issues-1.html"><a href="general-issues-1.html#algorithms-per-problems-1"><i class="fa fa-check"></i><b>11.1</b> Algorithms per problems</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="general-issues-1.html"><a href="general-issues-1.html#numerical-and-categorical-data"><i class="fa fa-check"></i><b>11.1.1</b> numerical and categorical data</a></li>
+<li class="chapter" data-level="11.1.2" data-path="general-issues-1.html"><a href="general-issues-1.html#imagesvideos-1"><i class="fa fa-check"></i><b>11.1.2</b> Images/videos</a></li>
+<li class="chapter" data-level="11.1.3" data-path="general-issues-1.html"><a href="general-issues-1.html#text-1"><i class="fa fa-check"></i><b>11.1.3</b> Text</a></li>
+<li class="chapter" data-level="11.1.4" data-path="general-issues-1.html"><a href="general-issues-1.html#sound-1"><i class="fa fa-check"></i><b>11.1.4</b> Sound</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="general-issues-1.html"><a href="general-issues-1.html#dignostics-of-models-1"><i class="fa fa-check"></i><b>11.2</b> Dignostics of models</a></li>
+<li class="chapter" data-level="11.3" data-path="general-issues-1.html"><a href="general-issues-1.html#variables-selection-1"><i class="fa fa-check"></i><b>11.3</b> Variables selection</a></li>
+<li class="chapter" data-level="11.4" data-path="general-issues-1.html"><a href="general-issues-1.html#iml"><i class="fa fa-check"></i><b>11.4</b> IML</a></li>
+</ul></li>
+<li class="part"><span><b>IV <lfg>LEARNING-SUPERVISED</lfg></b></span></li>
+<li class="chapter" data-level="12" data-path="econometric-regression-static.html"><a href="econometric-regression-static.html"><i class="fa fa-check"></i><b>12</b> ECONOMETRIC REGRESSION STATIC</a><ul>
+<li class="chapter" data-level="12.1" data-path="econometric-regression-static.html"><a href="econometric-regression-static.html#linear-model"><i class="fa fa-check"></i><b>12.1</b> Linear model</a></li>
+<li class="chapter" data-level="12.2" data-path="econometric-regression-static.html"><a href="econometric-regression-static.html#nonlinear-model"><i class="fa fa-check"></i><b>12.2</b> Nonlinear model</a><ul>
+<li class="chapter" data-level="12.2.1" data-path="econometric-regression-static.html"><a href="econometric-regression-static.html#with-additive-error-term"><i class="fa fa-check"></i><b>12.2.1</b> with additive error term</a></li>
+<li class="chapter" data-level="12.2.2" data-path="econometric-regression-static.html"><a href="econometric-regression-static.html#glm"><i class="fa fa-check"></i><b>12.2.2</b> GLM</a></li>
+<li class="chapter" data-level="12.2.3" data-path="econometric-regression-static.html"><a href="econometric-regression-static.html#gam"><i class="fa fa-check"></i><b>12.2.3</b> GAM</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="econometric-regression-static.html"><a href="econometric-regression-static.html#adding-bayes"><i class="fa fa-check"></i><b>12.3</b> adding bayes</a></li>
+<li class="chapter" data-level="12.4" data-path="econometric-regression-static.html"><a href="econometric-regression-static.html#mix-effects"><i class="fa fa-check"></i><b>12.4</b> mix effects</a></li>
+<li class="chapter" data-level="12.5" data-path="econometric-regression-static.html"><a href="econometric-regression-static.html#multiple-equations"><i class="fa fa-check"></i><b>12.5</b> multiple equations</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="econometric-regression-dynamic.html"><a href="econometric-regression-dynamic.html"><i class="fa fa-check"></i><b>13</b> ECONOMETRIC REGRESSION DYNAMIC</a><ul>
+<li class="chapter" data-level="13.1" data-path="econometric-regression-dynamic.html"><a href="econometric-regression-dynamic.html#simple-dynamic-regression"><i class="fa fa-check"></i><b>13.1</b> simple dynamic regression</a></li>
+<li class="chapter" data-level="13.2" data-path="econometric-regression-dynamic.html"><a href="econometric-regression-dynamic.html#error-correction-model"><i class="fa fa-check"></i><b>13.2</b> error correction model</a></li>
+<li class="chapter" data-level="13.3" data-path="econometric-regression-dynamic.html"><a href="econometric-regression-dynamic.html#sarimax"><i class="fa fa-check"></i><b>13.3</b> SARIMAX</a></li>
+<li class="chapter" data-level="13.4" data-path="econometric-regression-dynamic.html"><a href="econometric-regression-dynamic.html#arch"><i class="fa fa-check"></i><b>13.4</b> ARCH</a></li>
+<li class="chapter" data-level="13.5" data-path="econometric-regression-dynamic.html"><a href="econometric-regression-dynamic.html#cintegration"><i class="fa fa-check"></i><b>13.5</b> Cintegration</a></li>
+<li class="chapter" data-level="13.6" data-path="econometric-regression-dynamic.html"><a href="econometric-regression-dynamic.html#arld-applorach"><i class="fa fa-check"></i><b>13.6</b> ARLD Applorach</a></li>
+<li class="chapter" data-level="13.7" data-path="econometric-regression-dynamic.html"><a href="econometric-regression-dynamic.html#panel-models"><i class="fa fa-check"></i><b>13.7</b> panel models</a></li>
+<li class="chapter" data-level="13.8" data-path="econometric-regression-dynamic.html"><a href="econometric-regression-dynamic.html#multiple-equations-1"><i class="fa fa-check"></i><b>13.8</b> multiple equations</a><ul>
+<li class="chapter" data-level="13.8.1" data-path="econometric-regression-dynamic.html"><a href="econometric-regression-dynamic.html#varimax"><i class="fa fa-check"></i><b>13.8.1</b> VARIMAX</a></li>
+<li class="chapter" data-level="13.8.2" data-path="econometric-regression-dynamic.html"><a href="econometric-regression-dynamic.html#panel"><i class="fa fa-check"></i><b>13.8.2</b> panel</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="anova-manova-a-ancova.html"><a href="anova-manova-a-ancova.html"><i class="fa fa-check"></i><b>14</b> ANOVA / MANOVA /A ANCOVA</a></li>
+<li class="chapter" data-level="15" data-path="lda-qda.html"><a href="lda-qda.html"><i class="fa fa-check"></i><b>15</b> LDA QDA</a></li>
+<li class="chapter" data-level="16" data-path="bayesian-net.html"><a href="bayesian-net.html"><i class="fa fa-check"></i><b>16</b> BAYESIAN NET</a></li>
+<li class="chapter" data-level="17" data-path="canonical-analysis.html"><a href="canonical-analysis.html"><i class="fa fa-check"></i><b>17</b> CANONICAL ANALYSIS</a></li>
+<li class="chapter" data-level="18" data-path="latent-variables-detection.html"><a href="latent-variables-detection.html"><i class="fa fa-check"></i><b>18</b> LATENT VARIABLES DETECTION</a></li>
+<li class="chapter" data-level="19" data-path="svm.html"><a href="svm.html"><i class="fa fa-check"></i><b>19</b> SVM</a></li>
+<li class="chapter" data-level="20" data-path="trees.html"><a href="trees.html"><i class="fa fa-check"></i><b>20</b> TREES</a></li>
+<li class="chapter" data-level="21" data-path="bb-ensembled.html"><a href="bb-ensembled.html"><i class="fa fa-check"></i><b>21</b> BB-ensembled</a><ul>
+<li class="chapter" data-level="21.1" data-path="bb-ensembled.html"><a href="bb-ensembled.html#bagging"><i class="fa fa-check"></i><b>21.1</b> Bagging</a></li>
+<li class="chapter" data-level="21.2" data-path="bb-ensembled.html"><a href="bb-ensembled.html#boosting"><i class="fa fa-check"></i><b>21.2</b> Boosting</a></li>
+<li class="chapter" data-level="21.3" data-path="bb-ensembled.html"><a href="bb-ensembled.html#stacking"><i class="fa fa-check"></i><b>21.3</b> Stacking</a></li>
+<li class="chapter" data-level="21.4" data-path="bb-ensembled.html"><a href="bb-ensembled.html#twicing"><i class="fa fa-check"></i><b>21.4</b> Twicing</a></li>
+<li class="chapter" data-level="21.5" data-path="bb-ensembled.html"><a href="bb-ensembled.html#bandling"><i class="fa fa-check"></i><b>21.5</b> Bandling</a></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="bb-neural-networks-2.html"><a href="bb-neural-networks-2.html"><i class="fa fa-check"></i><b>22</b> BB-neural networks</a></li>
+<li class="chapter" data-level="23" data-path="other-dynamic-models.html"><a href="other-dynamic-models.html"><i class="fa fa-check"></i><b>23</b> OTHER DYNAMIC MODELS</a><ul>
+<li class="chapter" data-level="23.1" data-path="other-dynamic-models.html"><a href="other-dynamic-models.html#basic-trend-models"><i class="fa fa-check"></i><b>23.1</b> Basic trend models</a></li>
+<li class="chapter" data-level="23.2" data-path="other-dynamic-models.html"><a href="other-dynamic-models.html#basic-adaptative-models"><i class="fa fa-check"></i><b>23.2</b> Basic adaptative models</a></li>
+<li class="chapter" data-level="23.3" data-path="other-dynamic-models.html"><a href="other-dynamic-models.html#spectral-models"><i class="fa fa-check"></i><b>23.3</b> Spectral models</a><ul>
+<li class="chapter" data-level="23.3.1" data-path="other-dynamic-models.html"><a href="other-dynamic-models.html#furies"><i class="fa fa-check"></i><b>23.3.1</b> Furies</a></li>
+<li class="chapter" data-level="23.3.2" data-path="other-dynamic-models.html"><a href="other-dynamic-models.html#walvets"><i class="fa fa-check"></i><b>23.3.2</b> Walvets</a></li>
+<li class="chapter" data-level="23.3.3" data-path="other-dynamic-models.html"><a href="other-dynamic-models.html#singular-spectrum-analysis"><i class="fa fa-check"></i><b>23.3.3</b> Singular Spectrum Analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="23.4" data-path="other-dynamic-models.html"><a href="other-dynamic-models.html#martingales"><i class="fa fa-check"></i><b>23.4</b> Martingales</a></li>
+<li class="chapter" data-level="23.5" data-path="other-dynamic-models.html"><a href="other-dynamic-models.html#kalman-filters"><i class="fa fa-check"></i><b>23.5</b> Kalman Filters</a></li>
+<li class="chapter" data-level="23.6" data-path="other-dynamic-models.html"><a href="other-dynamic-models.html#markov-provess"><i class="fa fa-check"></i><b>23.6</b> Markov Provess</a></li>
+<li class="chapter" data-level="23.7" data-path="other-dynamic-models.html"><a href="other-dynamic-models.html#winer-process"><i class="fa fa-check"></i><b>23.7</b> Winer Process</a></li>
+<li class="chapter" data-level="23.8" data-path="other-dynamic-models.html"><a href="other-dynamic-models.html#survival"><i class="fa fa-check"></i><b>23.8</b> Survival</a></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="general-issues-2.html"><a href="general-issues-2.html"><i class="fa fa-check"></i><b>24</b> GENERAL ISSUES</a><ul>
+<li class="chapter" data-level="24.1" data-path="general-issues-2.html"><a href="general-issues-2.html#algorithms-per-problems-2"><i class="fa fa-check"></i><b>24.1</b> Algorithms per problems</a><ul>
+<li class="chapter" data-level="24.1.1" data-path="general-issues-2.html"><a href="general-issues-2.html#numerical-dependent"><i class="fa fa-check"></i><b>24.1.1</b> Numerical dependent</a></li>
+<li class="chapter" data-level="24.1.2" data-path="general-issues-2.html"><a href="general-issues-2.html#categorical-dependent"><i class="fa fa-check"></i><b>24.1.2</b> Categorical Dependent</a></li>
+<li class="chapter" data-level="24.1.3" data-path="general-issues-2.html"><a href="general-issues-2.html#stochastic-process"><i class="fa fa-check"></i><b>24.1.3</b> Stochastic process</a></li>
+<li class="chapter" data-level="24.1.4" data-path="general-issues-2.html"><a href="general-issues-2.html#imagesvides"><i class="fa fa-check"></i><b>24.1.4</b> Images/Vides</a></li>
+<li class="chapter" data-level="24.1.5" data-path="general-issues-2.html"><a href="general-issues-2.html#text-2"><i class="fa fa-check"></i><b>24.1.5</b> Text</a></li>
+<li class="chapter" data-level="24.1.6" data-path="general-issues-2.html"><a href="general-issues-2.html#sound-2"><i class="fa fa-check"></i><b>24.1.6</b> Sound</a></li>
+<li class="chapter" data-level="24.1.7" data-path="general-issues-2.html"><a href="general-issues-2.html#numerical-and-categorical-data-1"><i class="fa fa-check"></i><b>24.1.7</b> numerical and categorical data</a></li>
+<li class="chapter" data-level="24.1.8" data-path="general-issues-2.html"><a href="general-issues-2.html#imagesvideos-2"><i class="fa fa-check"></i><b>24.1.8</b> Images/videos</a></li>
+<li class="chapter" data-level="24.1.9" data-path="general-issues-2.html"><a href="general-issues-2.html#text-3"><i class="fa fa-check"></i><b>24.1.9</b> Text</a></li>
+<li class="chapter" data-level="24.1.10" data-path="general-issues-2.html"><a href="general-issues-2.html#sound-3"><i class="fa fa-check"></i><b>24.1.10</b> Sound</a></li>
+</ul></li>
+<li class="chapter" data-level="24.2" data-path="general-issues-2.html"><a href="general-issues-2.html#dignostics-of-models-2"><i class="fa fa-check"></i><b>24.2</b> Dignostics of models</a></li>
+<li class="chapter" data-level="24.3" data-path="general-issues-2.html"><a href="general-issues-2.html#variables-selection-2"><i class="fa fa-check"></i><b>24.3</b> Variables selection</a></li>
+<li class="chapter" data-level="24.4" data-path="general-issues-2.html"><a href="general-issues-2.html#iml-1"><i class="fa fa-check"></i><b>24.4</b> IML</a></li>
+</ul></li>
+<li class="part"><span><b>V <lfg>LEARNING-REINFORCEMENT</lfg></b></span></li>
+<li class="chapter" data-level="25" data-path="general-issues-3.html"><a href="general-issues-3.html"><i class="fa fa-check"></i><b>25</b> GENERAL ISSUES</a><ul>
+<li class="chapter" data-level="25.1" data-path="general-issues-3.html"><a href="general-issues-3.html#algorithms-per-problems-3"><i class="fa fa-check"></i><b>25.1</b> Algorithms per problems</a><ul>
+<li class="chapter" data-level="25.1.1" data-path="general-issues-3.html"><a href="general-issues-3.html#numerical-dependent-1"><i class="fa fa-check"></i><b>25.1.1</b> Numerical dependent</a></li>
+<li class="chapter" data-level="25.1.2" data-path="general-issues-3.html"><a href="general-issues-3.html#categorical-dependent-1"><i class="fa fa-check"></i><b>25.1.2</b> Categorical Dependent</a></li>
+<li class="chapter" data-level="25.1.3" data-path="general-issues-3.html"><a href="general-issues-3.html#stochastic-process-1"><i class="fa fa-check"></i><b>25.1.3</b> Stochastic process</a></li>
+<li class="chapter" data-level="25.1.4" data-path="general-issues-3.html"><a href="general-issues-3.html#imagesvides-1"><i class="fa fa-check"></i><b>25.1.4</b> Images/Vides</a></li>
+<li class="chapter" data-level="25.1.5" data-path="general-issues-3.html"><a href="general-issues-3.html#text-4"><i class="fa fa-check"></i><b>25.1.5</b> Text</a></li>
+<li class="chapter" data-level="25.1.6" data-path="general-issues-3.html"><a href="general-issues-3.html#sound-4"><i class="fa fa-check"></i><b>25.1.6</b> Sound</a></li>
+<li class="chapter" data-level="25.1.7" data-path="general-issues-3.html"><a href="general-issues-3.html#numerical-and-categorical-data-2"><i class="fa fa-check"></i><b>25.1.7</b> numerical and categorical data</a></li>
+<li class="chapter" data-level="25.1.8" data-path="general-issues-3.html"><a href="general-issues-3.html#imagesvideos-3"><i class="fa fa-check"></i><b>25.1.8</b> Images/videos</a></li>
+<li class="chapter" data-level="25.1.9" data-path="general-issues-3.html"><a href="general-issues-3.html#text-5"><i class="fa fa-check"></i><b>25.1.9</b> Text</a></li>
+<li class="chapter" data-level="25.1.10" data-path="general-issues-3.html"><a href="general-issues-3.html#sound-5"><i class="fa fa-check"></i><b>25.1.10</b> Sound</a></li>
+</ul></li>
+<li class="chapter" data-level="25.2" data-path="general-issues-3.html"><a href="general-issues-3.html#dignostics-of-models-3"><i class="fa fa-check"></i><b>25.2</b> Dignostics of models</a></li>
+<li class="chapter" data-level="25.3" data-path="general-issues-3.html"><a href="general-issues-3.html#variables-selection-3"><i class="fa fa-check"></i><b>25.3</b> Variables selection</a></li>
+<li class="chapter" data-level="25.4" data-path="general-issues-3.html"><a href="general-issues-3.html#iml-2"><i class="fa fa-check"></i><b>25.4</b> IML</a></li>
+</ul></li>
+<li class="part"><span><b>VI <lfg>FEATURE ENGINERRING</lfg></b></span></li>
+<li class="chapter" data-level="26" data-path="dim-reduction-and-latent-variables.html"><a href="dim-reduction-and-latent-variables.html"><i class="fa fa-check"></i><b>26</b> DIM REDUCTION AND LATENT VARIABLES</a><ul>
+<li class="chapter" data-level="26.1" data-path="dim-reduction-and-latent-variables.html"><a href="dim-reduction-and-latent-variables.html#pca"><i class="fa fa-check"></i><b>26.1</b> PCA</a></li>
+<li class="chapter" data-level="26.2" data-path="dim-reduction-and-latent-variables.html"><a href="dim-reduction-and-latent-variables.html#ica"><i class="fa fa-check"></i><b>26.2</b> ICA</a></li>
+<li class="chapter" data-level="26.3" data-path="dim-reduction-and-latent-variables.html"><a href="dim-reduction-and-latent-variables.html#partial-least-squares"><i class="fa fa-check"></i><b>26.3</b> Partial Least Squares</a></li>
+<li class="chapter" data-level="26.4" data-path="dim-reduction-and-latent-variables.html"><a href="dim-reduction-and-latent-variables.html#kohonen-networks"><i class="fa fa-check"></i><b>26.4</b> Kohonen Networks</a></li>
+<li class="chapter" data-level="26.5" data-path="dim-reduction-and-latent-variables.html"><a href="dim-reduction-and-latent-variables.html#correspondence-analysis"><i class="fa fa-check"></i><b>26.5</b> Correspondence Analysis</a></li>
+<li class="chapter" data-level="26.6" data-path="dim-reduction-and-latent-variables.html"><a href="dim-reduction-and-latent-variables.html#multidimentional-scaling"><i class="fa fa-check"></i><b>26.6</b> Multidimentional Scaling</a></li>
+<li class="chapter" data-level="26.7" data-path="dim-reduction-and-latent-variables.html"><a href="dim-reduction-and-latent-variables.html#neural-networks-other-than-kohonen"><i class="fa fa-check"></i><b>26.7</b> Neural Networks (other than Kohonen)</a></li>
+<li class="chapter" data-level="26.8" data-path="dim-reduction-and-latent-variables.html"><a href="dim-reduction-and-latent-variables.html#factor-analysis"><i class="fa fa-check"></i><b>26.8</b> Factor Analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="27" data-path="transformations.html"><a href="transformations.html"><i class="fa fa-check"></i><b>27</b> TRANSFORMATIONS</a><ul>
+<li class="chapter" data-level="27.1" data-path="transformations.html"><a href="transformations.html#discretisation"><i class="fa fa-check"></i><b>27.1</b> Discretisation</a></li>
+<li class="chapter" data-level="27.2" data-path="transformations.html"><a href="transformations.html#numerical-tranformations"><i class="fa fa-check"></i><b>27.2</b> Numerical tranformations</a></li>
+<li class="chapter" data-level="27.3" data-path="transformations.html"><a href="transformations.html#categorical-tranformations"><i class="fa fa-check"></i><b>27.3</b> Categorical tranformations</a></li>
+<li class="chapter" data-level="27.4" data-path="transformations.html"><a href="transformations.html#normalization"><i class="fa fa-check"></i><b>27.4</b> Normalization</a></li>
+</ul></li>
+<li class="part"><span><b>VII <lfg>DATA PROBLEMS</lfg></b></span></li>
+<li class="chapter" data-level="28" data-path="extreme-values.html"><a href="extreme-values.html"><i class="fa fa-check"></i><b>28</b> EXTREME VALUES</a></li>
+<li class="chapter" data-level="29" data-path="missing-valies.html"><a href="missing-valies.html"><i class="fa fa-check"></i><b>29</b> MISSING VALIES</a></li>
+<li class="chapter" data-level="30" data-path="untipical-distributions.html"><a href="untipical-distributions.html"><i class="fa fa-check"></i><b>30</b> UNTIPICAL DISTRIBUTIONS</a></li>
+<li class="chapter" data-level="31" data-path="imbalanced.html"><a href="imbalanced.html"><i class="fa fa-check"></i><b>31</b> IMBALANCED</a></li>
+<li class="chapter" data-level="32" data-path="censoredtrundated-data.html"><a href="censoredtrundated-data.html"><i class="fa fa-check"></i><b>32</b> CENSORED/TRUNDATED DATA</a></li>
+<li class="chapter" data-level="33" data-path="aggregated-data.html"><a href="aggregated-data.html"><i class="fa fa-check"></i><b>33</b> AGGREGATED DATA</a></li>
+<li class="chapter" data-level="34" data-path="granularity.html"><a href="granularity.html"><i class="fa fa-check"></i><b>34</b> GRANULARITY</a></li>
+<li class="part"><span><b>VIII <lfg>OTHER PROBLEMS AND MODELS</lfg></b></span></li>
+<li class="chapter" data-level="35" data-path="social-network.html"><a href="social-network.html"><i class="fa fa-check"></i><b>35</b> SOCIAL NETWORK</a></li>
+<li class="chapter" data-level="36" data-path="calibration.html"><a href="calibration.html"><i class="fa fa-check"></i><b>36</b> CALIBRATION</a></li>
+<li class="chapter" data-level="37" data-path="bayesian-statistics.html"><a href="bayesian-statistics.html"><i class="fa fa-check"></i><b>37</b> BAYESIAN STATISTICS</a></li>
+<li class="chapter" data-level="38" data-path="six-sigma.html"><a href="six-sigma.html"><i class="fa fa-check"></i><b>38</b> SIX-SIGMA</a></li>
+<li class="chapter" data-level="39" data-path="sem-structural-equation-models.html"><a href="sem-structural-equation-models.html"><i class="fa fa-check"></i><b>39</b> SEM (Structural Equation Models)</a></li>
+<li class="chapter" data-level="40" data-path="process-analysis-analiza-procesu.html"><a href="process-analysis-analiza-procesu.html"><i class="fa fa-check"></i><b>40</b> PROCESS ANALYSIS (analiza procesu)</a></li>
+<li class="chapter" data-level="41" data-path="sequentional-analysis.html"><a href="sequentional-analysis.html"><i class="fa fa-check"></i><b>41</b> SEQUENTIONAL ANALYSIS</a></li>
+<li class="chapter" data-level="42" data-path="expert-models.html"><a href="expert-models.html"><i class="fa fa-check"></i><b>42</b> EXPERT MODELS</a></li>
+<li class="chapter" data-level="43" data-path="experiment-design-planowanie-doswiaeczen.html"><a href="experiment-design-planowanie-doswiaeczen.html"><i class="fa fa-check"></i><b>43</b> Experiment design (planowanie doświaeczeń)</a></li>
+<li class="chapter" data-level="44" data-path="association-rules-analiza-koszykowa.html"><a href="association-rules-analiza-koszykowa.html"><i class="fa fa-check"></i><b>44</b> ASSOCIATION RULES (analiza koszykowa)</a></li>
+<li class="chapter" data-level="45" data-path="special-models.html"><a href="special-models.html"><i class="fa fa-check"></i><b>45</b> Special models</a></li>
+<li class="part"><span><b>IX <lfg>CASE STUDIES</lfg></b></span></li>
+<li class="chapter" data-level="46" data-path="score-cards.html"><a href="score-cards.html"><i class="fa fa-check"></i><b>46</b> Score cards</a></li>
+<li class="chapter" data-level="47" data-path="pd-models.html"><a href="pd-models.html"><i class="fa fa-check"></i><b>47</b> PD models</a></li>
+<li class="chapter" data-level="48" data-path="lgd-models.html"><a href="lgd-models.html"><i class="fa fa-check"></i><b>48</b> LGD models</a></li>
+<li class="chapter" data-level="49" data-path="churn-models.html"><a href="churn-models.html"><i class="fa fa-check"></i><b>49</b> Churn models</a></li>
+<li class="chapter" data-level="50" data-path="icaap.html"><a href="icaap.html"><i class="fa fa-check"></i><b>50</b> ICAAP</a></li>
+<li class="chapter" data-level="51" data-path="ama.html"><a href="ama.html"><i class="fa fa-check"></i><b>51</b> AMA</a></li>
+<li class="chapter" data-level="52" data-path="stress-tests.html"><a href="stress-tests.html"><i class="fa fa-check"></i><b>52</b> Stress tests</a></li>
+<li class="chapter" data-level="53" data-path="master-scale.html"><a href="master-scale.html"><i class="fa fa-check"></i><b>53</b> Master Scale</a></li>
+<li class="chapter" data-level="54" data-path="id-cards-scanning.html"><a href="id-cards-scanning.html"><i class="fa fa-check"></i><b>54</b> ID Cards scanning</a></li>
+<li class="part"><span><b>X <lfg>FIELSD MODELS</lfg></b></span></li>
+<li class="chapter" data-level="55" data-path="financial-models.html"><a href="financial-models.html"><i class="fa fa-check"></i><b>55</b> FINANCIAL MODELS</a><ul>
+<li class="chapter" data-level="55.1" data-path="financial-models.html"><a href="financial-models.html#actuarial-models"><i class="fa fa-check"></i><b>55.1</b> Actuarial models</a></li>
+<li class="chapter" data-level="55.2" data-path="financial-models.html"><a href="financial-models.html#distance-to-default"><i class="fa fa-check"></i><b>55.2</b> Distance to default</a></li>
+<li class="chapter" data-level="55.3" data-path="financial-models.html"><a href="financial-models.html#black-scholes"><i class="fa fa-check"></i><b>55.3</b> Black Scholes</a></li>
+<li class="chapter" data-level="55.4" data-path="financial-models.html"><a href="financial-models.html#vasicek"><i class="fa fa-check"></i><b>55.4</b> Vasicek</a></li>
+<li class="chapter" data-level="55.5" data-path="financial-models.html"><a href="financial-models.html#markovitz"><i class="fa fa-check"></i><b>55.5</b> Markovitz</a></li>
+<li class="chapter" data-level="55.6" data-path="financial-models.html"><a href="financial-models.html#kmv"><i class="fa fa-check"></i><b>55.6</b> KMV</a></li>
+<li class="chapter" data-level="55.7" data-path="financial-models.html"><a href="financial-models.html#credit-metrics"><i class="fa fa-check"></i><b>55.7</b> Credit Metrics</a></li>
+<li class="chapter" data-level="55.8" data-path="financial-models.html"><a href="financial-models.html#credit-plus"><i class="fa fa-check"></i><b>55.8</b> Credit Plus</a></li>
+<li class="chapter" data-level="55.9" data-path="financial-models.html"><a href="financial-models.html#z-scores"><i class="fa fa-check"></i><b>55.9</b> z-scores</a></li>
+<li class="chapter" data-level="55.10" data-path="financial-models.html"><a href="financial-models.html#capm"><i class="fa fa-check"></i><b>55.10</b> CAPM</a></li>
+<li class="chapter" data-level="55.11" data-path="financial-models.html"><a href="financial-models.html#var---value-at-risk"><i class="fa fa-check"></i><b>55.11</b> VaR - Value at risk</a></li>
+<li class="chapter" data-level="55.12" data-path="financial-models.html"><a href="financial-models.html#cva"><i class="fa fa-check"></i><b>55.12</b> CVA</a></li>
+</ul></li>
+<li class="chapter" data-level="56" data-path="medicine-models.html"><a href="medicine-models.html"><i class="fa fa-check"></i><b>56</b> MEDICINE MODELS</a></li>
+<li class="part"><span><b>XI <lfg>APPENDIX</lfg></b></span></li>
+<li class="chapter" data-level="57" data-path="linsk-youtube.html"><a href="linsk-youtube.html"><i class="fa fa-check"></i><b>57</b> LINSK - youtube</a><ul>
+<li class="chapter" data-level="57.1" data-path="linsk-youtube.html"><a href="linsk-youtube.html#basic"><i class="fa fa-check"></i><b>57.1</b> Basic</a></li>
+<li class="chapter" data-level="57.2" data-path="linsk-youtube.html"><a href="linsk-youtube.html#other"><i class="fa fa-check"></i><b>57.2</b> Other</a></li>
+</ul></li>
+<li class="chapter" data-level="58" data-path="links-web-pages.html"><a href="links-web-pages.html"><i class="fa fa-check"></i><b>58</b> LINKS web pages</a><ul>
+<li class="chapter" data-level="58.1" data-path="links-web-pages.html"><a href="links-web-pages.html#basic-1"><i class="fa fa-check"></i><b>58.1</b> Basic</a></li>
+<li class="chapter" data-level="58.2" data-path="links-web-pages.html"><a href="links-web-pages.html#wikipedia"><i class="fa fa-check"></i><b>58.2</b> Wikipedia</a></li>
+<li class="chapter" data-level="58.3" data-path="links-web-pages.html"><a href="links-web-pages.html#bookdown-books"><i class="fa fa-check"></i><b>58.3</b> Bookdown books:</a></li>
+<li class="chapter" data-level="58.4" data-path="links-web-pages.html"><a href="links-web-pages.html#other-1"><i class="fa fa-check"></i><b>58.4</b> Other</a></li>
+</ul></li>
+<li class="chapter" data-level="59" data-path="dictionary.html"><a href="dictionary.html"><i class="fa fa-check"></i><b>59</b> DICTIONARY</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Science Book</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="experiment-design-planowanie-doswiaeczen" class="section level1">
+<h1><span class="header-section-number">Chapter 43</span> Experiment design (planowanie doświaeczeń)</h1>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="expert-models.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="association-rules-analiza-koszykowa.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/08_OTHER_MODELS_AND_PROBLEMS.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
