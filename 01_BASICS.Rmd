@@ -3,6 +3,27 @@
 # PROBABILITY
 
 
+Basic formulas in probability:
+http://www.odelama.com/data-analysis/Commonly-Used-Math-Formulas/
+
+
+
+Is the sum of two variables independent of a third variable, if they are so on their own?:
+https://stats.stackexchange.com/questions/222242/is-the-sum-of-two-variables-independent-of-a-third-variable-if-they-are-so-on-t?noredirect=1
+
+
+
+Czy kowariancja 3 zmiennych ma sens (zastosowanie jej zamiast macierzy koviariancji 3x3):
+https://stats.stackexchange.com/questions/196621/covariance-for-three-variables
+
+
+
+Wzor na covariancje zmiennej z sumą dwoch innych zmiennych (uzywane np. bardzo czesto w podręcznikach Madddali)
+Cov(X,Y+Z)=Cov(X,Y)+Cov(X,Z)  - pobrane z ksiazki https://bookdown.org/probability/beta/
+
+
+
+
 
 # DESCRIPTIVE STATICTICS
 

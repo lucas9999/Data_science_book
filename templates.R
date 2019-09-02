@@ -1,10 +1,30 @@
+# Running
 
-# Git
+bibiolgrafia :
+shell.exec('bibliography.xlsx')
+shell.exec('book.bib')
 
+katalog:
+shell.exec('C:/Users/memy/OneDrive/Pulpit/1_Programs_and_programing/DATA_SCIENCE_algorithms/Data_Science_Book')
+
+
+
+# Bibliograpy
+bibliografia jest w pliku book.bib. Wpisy do niej sa generowane w pliku excel bibliography.xlsx. Ostatnie kolumna generuje gotowy wpis do pliku book.bib.
+Przykladowy wpis:
+[@Odelama]
+
+
+
+# Path for git
 C:/Users/memy/OneDrive/Pulpit/1_Programs_and_programing/DATA_SCIENCE_algorithms/Data_Science_Book
 
 
-# Inserting imatge with caption -----
+# Url
+[linked phrase](http://example.com)
+
+
+# Inserting image with caption -----
 
 01_BASICS/figures
 02_LEARNING-UNSUPERVISED/figures
@@ -30,7 +50,4 @@ knitr::include_graphics('01_BASICS/figures/machine-learning-cheet-sheet.png')
 
 
 
-# Bibliograpy
-bibliografia jest w pliku book.bib. Wpisy do niej sa generowane w pliku excel bibliography.xlsx. Ostatnie kolumna generuje gotowy wpis do pliku book.bib.
-Przykladowy wpis:
-[@xie2015]
+
