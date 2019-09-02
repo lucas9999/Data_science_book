@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>A Minimal Book Example</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook.">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="A Minimal Book Example" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="A Minimal Book Example" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Yihui Xie">
+
+
+<meta name="date" content="2018-10-08">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="multivariate-analysis.html">
+<link rel="next" href="appendix-it-solutions.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> INTRO</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#list-of-methods"><i class="fa fa-check"></i><b>1.1</b> list of methods</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#links"><i class="fa fa-check"></i><b>1.2</b> links</a></li>
+</ul></li>
+<li class="part"><span><b>I <lfg>BASIC STATISTICS AND PROBABILITY</lfg></b></span></li>
+<li class="chapter" data-level="2" data-path="univariate-analysis.html"><a href="univariate-analysis.html"><i class="fa fa-check"></i><b>2</b> Univariate analysis</a><ul>
+<li class="chapter" data-level="2.1" data-path="univariate-analysis.html"><a href="univariate-analysis.html#univariate-distributions"><i class="fa fa-check"></i><b>2.1</b> Univariate distributions</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="univariate-analysis.html"><a href="univariate-analysis.html#list-of-most-popular-univariate-distributions-in-r"><i class="fa fa-check"></i><b>2.1.1</b> List of most popular univariate distributions in R</a></li>
+<li class="chapter" data-level="2.1.2" data-path="univariate-analysis.html"><a href="univariate-analysis.html#fitting-univariate-distributions"><i class="fa fa-check"></i><b>2.1.2</b> Fitting univariate distributions</a></li>
+<li class="chapter" data-level="2.1.3" data-path="univariate-analysis.html"><a href="univariate-analysis.html#test-for-distributions-fitting"><i class="fa fa-check"></i><b>2.1.3</b> Test for distributions fitting</a></li>
+<li class="chapter" data-level="2.1.4" data-path="univariate-analysis.html"><a href="univariate-analysis.html#fitting-distribution-in-ggplot2"><i class="fa fa-check"></i><b>2.1.4</b> Fitting distribution in ggplot2</a></li>
+<li class="chapter" data-level="2.1.5" data-path="univariate-analysis.html"><a href="univariate-analysis.html#fitting-truncated-distributions"><i class="fa fa-check"></i><b>2.1.5</b> Fitting truncated distributions</a></li>
+<li class="chapter" data-level="2.1.6" data-path="univariate-analysis.html"><a href="univariate-analysis.html#other-useful-functions-for-distributions-analysis"><i class="fa fa-check"></i><b>2.1.6</b> Other useful functions for distributions analysis</a></li>
+<li class="chapter" data-level="2.1.7" data-path="univariate-analysis.html"><a href="univariate-analysis.html#ploting-distributions-tools"><i class="fa fa-check"></i><b>2.1.7</b> Ploting distributions tools</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="univariate-analysis.html"><a href="univariate-analysis.html#descriptive-univariate-statitics"><i class="fa fa-check"></i><b>2.2</b> Descriptive univariate statitics</a></li>
+<li class="chapter" data-level="2.3" data-path="univariate-analysis.html"><a href="univariate-analysis.html#univariate-statistical-tests"><i class="fa fa-check"></i><b>2.3</b> Univariate Statistical Tests</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html"><i class="fa fa-check"></i><b>3</b> Multivariate analysis</a><ul>
+<li class="chapter" data-level="3.1" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#multivariate-distributions"><i class="fa fa-check"></i><b>3.1</b> Multivariate distributions</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#multivariate-normal-distribution"><i class="fa fa-check"></i><b>3.1.1</b> Multivariate normal distribution</a></li>
+<li class="chapter" data-level="3.1.2" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#multivariate-t-student-distribution"><i class="fa fa-check"></i><b>3.1.2</b> Multivariate t-Student distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#fitting-multivariate-distributions"><i class="fa fa-check"></i><b>3.2</b> Fitting multivariate distributions</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#test-dla-wielowymiarowego-rozkladu-normalnego-pmvshapiro.test"><i class="fa fa-check"></i><b>3.2.1</b> Test dla wielowymiarowego rozkladu normalnego (p:mvShapiro.Test)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#multivariate-descriptive-statistics"><i class="fa fa-check"></i><b>3.3</b> Multivariate Descriptive statistics</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#correltion"><i class="fa fa-check"></i><b>3.3.1</b> Correltion</a></li>
+<li class="chapter" data-level="3.3.2" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#correlation-ratio-eta-stosunek-korelacyjny-eta"><i class="fa fa-check"></i><b>3.3.2</b> Correlation ratio eta [Stosunek korelacyjny eta]</a></li>
+<li class="chapter" data-level="3.3.3" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#partial-correlation"><i class="fa fa-check"></i><b>3.3.3</b> Partial correlation</a></li>
+<li class="chapter" data-level="3.3.4" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#semi-partial-part-correlation"><i class="fa fa-check"></i><b>3.3.4</b> semi-partial (part) correlation</a></li>
+<li class="chapter" data-level="3.3.5" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#random-forests"><i class="fa fa-check"></i><b>3.3.5</b> Random Forests</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>II <lfg>SUPERVISED LEARNING</lfg></b></span></li>
+<li class="part"><span><b>III <lfg>SUPERVISED MODELS</lfg></b></span></li>
+<li class="part"><span><b>IV <lfg>FAUTRES_ENGINEERING_AND_SELECTION</lfg></b></span></li>
+<li class="part"><span><b>V <lfg>DATA PROBLEMS</lfg></b></span></li>
+<li class="part"><span><b>VI <lfg>SAMPLING</lfg></b></span></li>
+<li class="part"><span><b>VII <lfg>MATHEMATICS</lfg></b></span></li>
+<li class="part"><span><b>VIII <lfg>OTHER ISSUES</lfg></b></span></li>
+<li class="part"><span><b>IX <lfg>FINANCIAL MODELS</lfg></b></span></li>
+<li class="part"><span><b>X <lfg>CASE_STUDIES</lfg></b></span></li>
+<li class="chapter" data-level="4" data-path="pmlr.html"><a href="pmlr.html"><i class="fa fa-check"></i><b>4</b> p:mlr</a></li>
+<li class="chapter" data-level="5" data-path="appendix-it-solutions.html"><a href="appendix-it-solutions.html"><i class="fa fa-check"></i><b>5</b> APPENDIX IT SOLUTIONS</a><ul>
+<li class="chapter" data-level="5.1" data-path="appendix-it-solutions.html"><a href="appendix-it-solutions.html#rmlr"><i class="fa fa-check"></i><b>5.1</b> R:MLR</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">A Minimal Book Example</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="pmlr" class="section level1">
+<h1><span class="header-section-number">Chapter 4</span> p:mlr</h1>
+<br><br>
+<p style="line-height:0;font-size: 9px">
+code R
+</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" data-line-number="1"><span class="co"># http://explained.ai/rf-importance/index.html  problem z importance w randomForest</span></a>
+<a class="sourceLine" id="cb67-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb67-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb67-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb67-5" data-line-number="5"><span class="co"># UWAGI WSTEPNE ---- </span></a>
+<a class="sourceLine" id="cb67-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb67-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb67-8" data-line-number="8"><span class="co"># skroty jakich uzywam dla wygody w komentarzach:</span></a>
+<a class="sourceLine" id="cb67-9" data-line-number="9"><span class="co"># p:ggplot - &quot;pakiet ggplot&quot;</span></a>
+<a class="sourceLine" id="cb67-10" data-line-number="10"><span class="co"># f:cor    - &quot;funkcja cor&quot;</span></a>
+<a class="sourceLine" id="cb67-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb67-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb67-13" data-line-number="13"><span class="co"># linki do stron do ktorych bede sie odwolywal:</span></a>
+<a class="sourceLine" id="cb67-14" data-line-number="14"><span class="co"># strona p:mlr : https://mlr-org.github.io/mlr/</span></a>
+<a class="sourceLine" id="cb67-15" data-line-number="15"><span class="co"># strona p:iml : https://cran.r-project.org/web/packages/iml/vignettes/intro.html</span></a>
+<a class="sourceLine" id="cb67-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb67-17" data-line-number="17"></a>
+<a class="sourceLine" id="cb67-18" data-line-number="18"><span class="co"># Uwaga. W dokumentacji p:mlr zmienna objasniana w modelu jest nazywana &quot;target&quot; z zmienne objasniajace &quot;features&quot;. </span></a>
+<a class="sourceLine" id="cb67-19" data-line-number="19"></a>
+<a class="sourceLine" id="cb67-20" data-line-number="20"><span class="co"># Ten dokument ma spis tresci. Zeby go wyswietlic musisz miec z miare nowe RStudio.</span></a>
+<a class="sourceLine" id="cb67-21" data-line-number="21"></a>
+<a class="sourceLine" id="cb67-22" data-line-number="22"><span class="co"># Wybacz ze chwilami manual bedzie po angielsku. To w miejscach gdzie wygodniej jest mi przekleic trafny opis ze strony internetowej albo dokumentacji.</span></a>
+<a class="sourceLine" id="cb67-23" data-line-number="23"></a>
+<a class="sourceLine" id="cb67-24" data-line-number="24"></a>
+<a class="sourceLine" id="cb67-25" data-line-number="25"></a>
+<a class="sourceLine" id="cb67-26" data-line-number="26"></a>
+<a class="sourceLine" id="cb67-27" data-line-number="27"></a>
+<a class="sourceLine" id="cb67-28" data-line-number="28"></a>
+<a class="sourceLine" id="cb67-29" data-line-number="29"></a>
+<a class="sourceLine" id="cb67-30" data-line-number="30"><span class="co"># PRZYGOTOWANIE ZBIORU I ZALADOWANIE PAKIETOW----</span></a>
+<a class="sourceLine" id="cb67-31" data-line-number="31"></a>
+<a class="sourceLine" id="cb67-32" data-line-number="32"></a>
+<a class="sourceLine" id="cb67-33" data-line-number="33"><span class="co"># pakiety</span></a>
+<a class="sourceLine" id="cb67-34" data-line-number="34"><span class="kw">require</span>(mlr)</a>
+<a class="sourceLine" id="cb67-35" data-line-number="35"><span class="kw">require</span>(iml)</a>
+<a class="sourceLine" id="cb67-36" data-line-number="36"><span class="kw">require</span>(plyr)</a>
+<a class="sourceLine" id="cb67-37" data-line-number="37"><span class="kw">require</span>(dplyr)</a>
+<a class="sourceLine" id="cb67-38" data-line-number="38"><span class="kw">require</span>(magrittr)</a>
+<a class="sourceLine" id="cb67-39" data-line-number="39">mlr<span class="op">::</span><span class="kw">configureMlr</span>() <span class="co"># ta funkcje warto uruchomic na poczatku. W przeciwym razie przy estymacji modeli moga wystapic dziwne bledy</span></a>
+<a class="sourceLine" id="cb67-40" data-line-number="40"></a>
+<a class="sourceLine" id="cb67-41" data-line-number="41"></a>
+<a class="sourceLine" id="cb67-42" data-line-number="42"></a>
+<a class="sourceLine" id="cb67-43" data-line-number="43"><span class="co"># zaladowanie danych</span></a>
+<a class="sourceLine" id="cb67-44" data-line-number="44"><span class="kw">data</span>(<span class="st">&#39;diamonds&#39;</span>, <span class="dt">package =</span> <span class="st">&#39;ggplot2&#39;</span>)</a>
+<a class="sourceLine" id="cb67-45" data-line-number="45">data &lt;-<span class="st"> </span><span class="kw">head</span>(diamonds, <span class="dv">10000</span>)</a>
+<a class="sourceLine" id="cb67-46" data-line-number="46"></a>
+<a class="sourceLine" id="cb67-47" data-line-number="47"><span class="co"># podzial zbioru na uczacy i testowy</span></a>
+<a class="sourceLine" id="cb67-48" data-line-number="48">train_index &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(data), <span class="dt">size =</span> <span class="fl">0.66</span><span class="op">*</span><span class="kw">nrow</span>(data), <span class="dt">replace =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb67-49" data-line-number="49">data_train  &lt;-<span class="st"> </span>data[test_index,] </a>
+<a class="sourceLine" id="cb67-50" data-line-number="50">data_test   &lt;-<span class="st"> </span>data[<span class="op">-</span>test_index,]</a>
+<a class="sourceLine" id="cb67-51" data-line-number="51"><span class="kw">dim</span>(data); <span class="kw">dim</span>(data_train); <span class="kw">dim</span>(data_test)</a>
+<a class="sourceLine" id="cb67-52" data-line-number="52"></a>
+<a class="sourceLine" id="cb67-53" data-line-number="53"><span class="co"># p:mlr wymaga czystych data.frames!!!</span></a>
+<a class="sourceLine" id="cb67-54" data-line-number="54">data_train <span class="op">%&lt;&gt;%</span><span class="st"> </span><span class="kw">as.data.frame</span>()  </a>
+<a class="sourceLine" id="cb67-55" data-line-number="55">data_test  <span class="op">%&lt;&gt;%</span><span class="st"> </span><span class="kw">as.data.frame</span>() </a>
+<a class="sourceLine" id="cb67-56" data-line-number="56"></a>
+<a class="sourceLine" id="cb67-57" data-line-number="57"></a>
+<a class="sourceLine" id="cb67-58" data-line-number="58"></a>
+<a class="sourceLine" id="cb67-59" data-line-number="59"></a>
+<a class="sourceLine" id="cb67-60" data-line-number="60"></a>
+<a class="sourceLine" id="cb67-61" data-line-number="61"></a>
+<a class="sourceLine" id="cb67-62" data-line-number="62"></a>
+<a class="sourceLine" id="cb67-63" data-line-number="63"></a>
+<a class="sourceLine" id="cb67-64" data-line-number="64"></a>
+<a class="sourceLine" id="cb67-65" data-line-number="65"></a>
+<a class="sourceLine" id="cb67-66" data-line-number="66"></a>
+<a class="sourceLine" id="cb67-67" data-line-number="67"><span class="co"># SZYBKI PRZYKLAD WPROWADZAJACY-----</span></a>
+<a class="sourceLine" id="cb67-68" data-line-number="68"></a>
+<a class="sourceLine" id="cb67-69" data-line-number="69"><span class="co"># Funkcje uzyte ponizej bede bardziej szczegolowo omowione w dalszej czesci manuala. Tutaj jest tylko prosty przyklad zeby moc zaczac pracowac ze wstepna obrobka danych.</span></a>
+<a class="sourceLine" id="cb67-70" data-line-number="70"></a>
+<a class="sourceLine" id="cb67-71" data-line-number="71"></a>
+<a class="sourceLine" id="cb67-72" data-line-number="72"></a>
+<a class="sourceLine" id="cb67-73" data-line-number="73"><span class="co">#(1) tworze tzn. task dla zagadnienia regresji (taski sa rozne w zaleznosci jakiego typu jest model- tutaj mamy regresje). W tasku podaje sie zbior danych i target (przypominam ze target w dokumenacji mlr to zmienna objasniana modelu).</span></a>
+<a class="sourceLine" id="cb67-74" data-line-number="74">task &lt;-<span class="st"> </span>mlr<span class="op">::</span><span class="kw">makeRegrTask</span>(  </a>
+<a class="sourceLine" id="cb67-75" data-line-number="75">                     <span class="dt">data =</span> data_test</a>
+<a class="sourceLine" id="cb67-76" data-line-number="76">                   , <span class="dt">target =</span> <span class="st">&#39;price&#39;</span> </a>
+<a class="sourceLine" id="cb67-77" data-line-number="77">                   )</a>
+<a class="sourceLine" id="cb67-78" data-line-number="78"></a>
+<a class="sourceLine" id="cb67-79" data-line-number="79"></a>
+<a class="sourceLine" id="cb67-80" data-line-number="80"><span class="co">#(2) utworzenie learnera (tutaj wybieramy metode statystyczna i ustawiamy jej parametry)</span></a>
+<a class="sourceLine" id="cb67-81" data-line-number="81">lrn &lt;-<span class="st"> </span>mlr<span class="op">::</span><span class="kw">makeLearner</span>(  <span class="dt">cl =</span> <span class="st">&#39;regr.randomForest&#39;</span> <span class="co"># wybierzemy sobie las losowy jako metode</span></a>
+<a class="sourceLine" id="cb67-82" data-line-number="82">                        , <span class="dt">par.vals =</span> <span class="kw">list</span>(<span class="dt">ntree =</span> <span class="dv">200</span>) <span class="co"># ilosc drzew jako przykladowy parametr modelu</span></a>
+<a class="sourceLine" id="cb67-83" data-line-number="83">                        ) </a>
+<a class="sourceLine" id="cb67-84" data-line-number="84"></a>
+<a class="sourceLine" id="cb67-85" data-line-number="85"></a>
+<a class="sourceLine" id="cb67-86" data-line-number="86"><span class="co">#(3) trenowawnie (estymacja) modelu</span></a>
+<a class="sourceLine" id="cb67-87" data-line-number="87">train &lt;-<span class="st"> </span>mlr<span class="op">::</span><span class="kw">train</span>(  <span class="dt">learner =</span> lrn   <span class="co"># nasz learner</span></a>
+<a class="sourceLine" id="cb67-88" data-line-number="88">                     , <span class="dt">task    =</span> task <span class="co"># nasz task</span></a>
+<a class="sourceLine" id="cb67-89" data-line-number="89">                    )</a>
+<a class="sourceLine" id="cb67-90" data-line-number="90">train<span class="op">$</span>learner.model <span class="co"># dostep do otrzymanego modelu</span></a>
+<a class="sourceLine" id="cb67-91" data-line-number="91"></a>
+<a class="sourceLine" id="cb67-92" data-line-number="92"></a>
+<a class="sourceLine" id="cb67-93" data-line-number="93"><span class="co">#(4) predykcja oparta o zbior testowy</span></a>
+<a class="sourceLine" id="cb67-94" data-line-number="94">prediction &lt;-<span class="st"> </span><span class="kw">predict</span>(   <span class="dt">obj =</span> train</a>
+<a class="sourceLine" id="cb67-95" data-line-number="95">                      ,  <span class="dt">newdata =</span> data_test <span class="op">%&gt;%</span><span class="st"> </span>na.omit</a>
+<a class="sourceLine" id="cb67-96" data-line-number="96">                      )</a>
+<a class="sourceLine" id="cb67-97" data-line-number="97">prediction<span class="op">$</span>data <span class="co"># dostep do tabeli z wartosciami predykcji</span></a>
+<a class="sourceLine" id="cb67-98" data-line-number="98"></a>
+<a class="sourceLine" id="cb67-99" data-line-number="99"></a>
+<a class="sourceLine" id="cb67-100" data-line-number="100"></a>
+<a class="sourceLine" id="cb67-101" data-line-number="101"></a>
+<a class="sourceLine" id="cb67-102" data-line-number="102"></a>
+<a class="sourceLine" id="cb67-103" data-line-number="103"></a>
+<a class="sourceLine" id="cb67-104" data-line-number="104"></a>
+<a class="sourceLine" id="cb67-105" data-line-number="105"></a>
+<a class="sourceLine" id="cb67-106" data-line-number="106"></a>
+<a class="sourceLine" id="cb67-107" data-line-number="107"></a>
+<a class="sourceLine" id="cb67-108" data-line-number="108"></a>
+<a class="sourceLine" id="cb67-109" data-line-number="109"><span class="co"># WSTEPNE PRZETWARZANIE DANYCH ----</span></a>
+<a class="sourceLine" id="cb67-110" data-line-number="110"></a>
+<a class="sourceLine" id="cb67-111" data-line-number="111"><span class="co"># Zanim zacznie sie modelowanie warto zrobic wstepna obrobke danych</span></a>
+<a class="sourceLine" id="cb67-112" data-line-number="112"></a>
+<a class="sourceLine" id="cb67-113" data-line-number="113"><span class="co">#  przyciac wartosci ekstremalne</span></a>
+<a class="sourceLine" id="cb67-114" data-line-number="114"><span class="co">#  przekodowac  zmienne kategoryczne na zestaw zmiennych binarnych (wiele pakietow nie robi tego automatycznie)</span></a>
+<a class="sourceLine" id="cb67-115" data-line-number="115"><span class="co">#  polaczyc malo liczebne poziomy zmiennych</span></a>
+<a class="sourceLine" id="cb67-116" data-line-number="116"><span class="co">#  znormalizowac dane</span></a>
+<a class="sourceLine" id="cb67-117" data-line-number="117"><span class="co">#  zaimputowac dane</span></a>
+<a class="sourceLine" id="cb67-118" data-line-number="118"><span class="co">#  wybrac zmienne do modelu</span></a>
+<a class="sourceLine" id="cb67-119" data-line-number="119"></a>
+<a class="sourceLine" id="cb67-120" data-line-number="120"></a>
+<a class="sourceLine" id="cb67-121" data-line-number="121"></a>
+<a class="sourceLine" id="cb67-122" data-line-number="122"></a>
+<a class="sourceLine" id="cb67-123" data-line-number="123"></a>
+<a class="sourceLine" id="cb67-124" data-line-number="124">##...przycinie wartosci ekstremalnych ----</a>
+<a class="sourceLine" id="cb67-125" data-line-number="125"></a>
+<a class="sourceLine" id="cb67-126" data-line-number="126"></a>
+<a class="sourceLine" id="cb67-127" data-line-number="127"><span class="co"># sprawdzam zakres wartosci zmiennych</span></a>
+<a class="sourceLine" id="cb67-128" data-line-number="128"><span class="kw">range</span>(data<span class="op">$</span>price)</a>
+<a class="sourceLine" id="cb67-129" data-line-number="129"></a>
+<a class="sourceLine" id="cb67-130" data-line-number="130"><span class="co"># Przycinam wartosci ekstremalne</span></a>
+<a class="sourceLine" id="cb67-131" data-line-number="131">data &lt;-<span class="st"> </span>mlr<span class="op">::</span><span class="kw">capLargeValues</span>(</a>
+<a class="sourceLine" id="cb67-132" data-line-number="132">                     <span class="dt">obj       =</span> data <span class="co"># task lub data.frame</span></a>
+<a class="sourceLine" id="cb67-133" data-line-number="133">                    ,<span class="dt">cols      =</span> <span class="kw">c</span>(<span class="st">&#39;price&#39;</span>) <span class="co"># lista zmiennych do przyciecia. </span></a>
+<a class="sourceLine" id="cb67-134" data-line-number="134">                    ,<span class="dt">threshold =</span> <span class="kw">c</span>(<span class="dv">4000</span>) <span class="co"># prog powyzej ktorego wartosc jest traktowana jako ekstremalna</span></a>
+<a class="sourceLine" id="cb67-135" data-line-number="135">                    ,<span class="dt">impute    =</span> <span class="dv">4000</span> <span class="co"># czym zastapic wartosci ekstremalne</span></a>
+<a class="sourceLine" id="cb67-136" data-line-number="136">                    ,<span class="dt">what      =</span> <span class="st">&#39;abs&#39;</span> <span class="co"># Poniewaz mamy tez wartosci ekstremalne ujemne jak i dodatnie mozely dokonac imputacji na kilka sposobow. &#39;abs&#39; oznacza imputacje w taki sposob  abs(x)&gt;threshold   will be imputed. Zeby zobaczy jak dzialaja inne moetody imputacji popatrz na przykad ponizej</span></a>
+<a class="sourceLine" id="cb67-137" data-line-number="137">                   )</a>
+<a class="sourceLine" id="cb67-138" data-line-number="138"></a>
+<a class="sourceLine" id="cb67-139" data-line-number="139"><span class="co"># przykalad jak zmieniajac patametr &#39;what&#39; mozna uzyskac rozne wyniki imputacji.</span></a>
+<a class="sourceLine" id="cb67-140" data-line-number="140">table_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">a=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">10</span>, <span class="dv">-5</span>, <span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">10</span>))</a>
+<a class="sourceLine" id="cb67-141" data-line-number="141"><span class="kw">capLargeValues</span>(table_<span class="dv">1</span>, <span class="dt">cols =</span> <span class="st">&#39;a&#39;</span>, <span class="dt">threshold =</span> <span class="dv">3</span>, <span class="dt">what =</span> <span class="st">&#39;abs&#39;</span>)</a>
+<a class="sourceLine" id="cb67-142" data-line-number="142"><span class="kw">capLargeValues</span>(table_<span class="dv">1</span>, <span class="dt">cols =</span> <span class="st">&#39;a&#39;</span>, <span class="dt">threshold =</span> <span class="dv">3</span>, <span class="dt">what =</span> <span class="st">&#39;pos&#39;</span>)</a>
+<a class="sourceLine" id="cb67-143" data-line-number="143"><span class="kw">capLargeValues</span>(table_<span class="dv">1</span>, <span class="dt">cols =</span> <span class="st">&#39;a&#39;</span>, <span class="dt">threshold =</span> <span class="dv">3</span>, <span class="dt">what =</span> <span class="st">&#39;neg&#39;</span>)</a>
+<a class="sourceLine" id="cb67-144" data-line-number="144"></a>
+<a class="sourceLine" id="cb67-145" data-line-number="145"></a>
+<a class="sourceLine" id="cb67-146" data-line-number="146"> </a>
+<a class="sourceLine" id="cb67-147" data-line-number="147"></a>
+<a class="sourceLine" id="cb67-148" data-line-number="148"></a>
+<a class="sourceLine" id="cb67-149" data-line-number="149"></a>
+<a class="sourceLine" id="cb67-150" data-line-number="150"></a>
+<a class="sourceLine" id="cb67-151" data-line-number="151"></a>
+<a class="sourceLine" id="cb67-152" data-line-number="152">##...dummy variables (zmienne zero-jedynkowe)----</a>
+<a class="sourceLine" id="cb67-153" data-line-number="153"></a>
+<a class="sourceLine" id="cb67-154" data-line-number="154"><span class="co"># Przekodowanie zmiennej kategorycznej na zbior zmiennych binarnych. Zmienna oryginalna jest usuwana !!!</span></a>
+<a class="sourceLine" id="cb67-155" data-line-number="155">data &lt;-<span class="st"> </span>mlr<span class="op">::</span><span class="kw">createDummyFeatures</span>( </a>
+<a class="sourceLine" id="cb67-156" data-line-number="156">                          <span class="dt">obj    =</span> data</a>
+<a class="sourceLine" id="cb67-157" data-line-number="157">                        , <span class="dt">target =</span> <span class="st">&#39;cut&#39;</span></a>
+<a class="sourceLine" id="cb67-158" data-line-number="158">                        , <span class="dt">method =</span> <span class="st">&#39;reference&#39;</span> <span class="co"># inne metody: &#39;1-of-n&#39;</span></a>
+<a class="sourceLine" id="cb67-159" data-line-number="159">                        , <span class="dt">cols   =</span> <span class="st">&#39;color&#39;</span> <span class="co"># zmienna do przekodowania</span></a>
+<a class="sourceLine" id="cb67-160" data-line-number="160">                        )</a>
+<a class="sourceLine" id="cb67-161" data-line-number="161"></a>
+<a class="sourceLine" id="cb67-162" data-line-number="162"></a>
+<a class="sourceLine" id="cb67-163" data-line-number="163"></a>
+<a class="sourceLine" id="cb67-164" data-line-number="164"></a>
+<a class="sourceLine" id="cb67-165" data-line-number="165"></a>
+<a class="sourceLine" id="cb67-166" data-line-number="166"></a>
+<a class="sourceLine" id="cb67-167" data-line-number="167">##...zlaczenie poziomow zmiennych</a>
+<a class="sourceLine" id="cb67-168" data-line-number="168"></a>
+<a class="sourceLine" id="cb67-169" data-line-number="169"></a>
+<a class="sourceLine" id="cb67-170" data-line-number="170"><span class="co"># najpier tworze task</span></a>
+<a class="sourceLine" id="cb67-171" data-line-number="171">task_class &lt;-<span class="st"> </span>mlr<span class="op">::</span><span class="kw">makeClassifTask</span>(  </a>
+<a class="sourceLine" id="cb67-172" data-line-number="172">    <span class="dt">data        =</span> data</a>
+<a class="sourceLine" id="cb67-173" data-line-number="173">  , <span class="dt">target      =</span> <span class="st">&#39;cut&#39;</span></a>
+<a class="sourceLine" id="cb67-174" data-line-number="174">  , <span class="dt">check.data  =</span> <span class="ot">TRUE</span></a>
+<a class="sourceLine" id="cb67-175" data-line-number="175">)</a>
+<a class="sourceLine" id="cb67-176" data-line-number="176"></a>
+<a class="sourceLine" id="cb67-177" data-line-number="177"><span class="co"># zlaczal poziomy dla zmiennej target</span></a>
+<a class="sourceLine" id="cb67-178" data-line-number="178">task_class &lt;-<span class="st"> </span><span class="kw">joinClassLevels</span>(  </a>
+<a class="sourceLine" id="cb67-179" data-line-number="179">                  <span class="dt">task       =</span> task_class</a>
+<a class="sourceLine" id="cb67-180" data-line-number="180">                , <span class="dt">new.levels =</span> <span class="kw">list</span>(<span class="dt">new_level =</span> <span class="kw">c</span>(<span class="st">&#39;Ideal&#39;</span>,<span class="st">&#39;Premium&#39;</span>))</a>
+<a class="sourceLine" id="cb67-181" data-line-number="181">               )</a>
+<a class="sourceLine" id="cb67-182" data-line-number="182"></a>
+<a class="sourceLine" id="cb67-183" data-line-number="183"></a>
+<a class="sourceLine" id="cb67-184" data-line-number="184"></a>
+<a class="sourceLine" id="cb67-185" data-line-number="185"><span class="co"># zlaczam malo liczne poziomy dla wybranych zmiennych</span></a>
+<a class="sourceLine" id="cb67-186" data-line-number="186">task_class &lt;-<span class="st"> </span>mlr<span class="op">::</span><span class="kw">mergeSmallFactorLevels</span>(  </a>
+<a class="sourceLine" id="cb67-187" data-line-number="187">                              <span class="dt">task      =</span> task_class</a>
+<a class="sourceLine" id="cb67-188" data-line-number="188">                            , <span class="dt">cols      =</span> <span class="st">&#39;clarity&#39;</span></a>
+<a class="sourceLine" id="cb67-189" data-line-number="189">                            , <span class="dt">min.perc  =</span> <span class="fl">0.01</span></a>
+<a class="sourceLine" id="cb67-190" data-line-number="190">                            , <span class="dt">new.level =</span> <span class="st">&#39;new_level&#39;</span>)</a>
+<a class="sourceLine" id="cb67-191" data-line-number="191"></a>
+<a class="sourceLine" id="cb67-192" data-line-number="192"></a>
+<a class="sourceLine" id="cb67-193" data-line-number="193"></a>
+<a class="sourceLine" id="cb67-194" data-line-number="194"></a>
+<a class="sourceLine" id="cb67-195" data-line-number="195">##...normalizacja zmiennych ----</a>
+<a class="sourceLine" id="cb67-196" data-line-number="196"></a>
+<a class="sourceLine" id="cb67-197" data-line-number="197">data &lt;-<span class="st"> </span>mlr<span class="op">::</span><span class="kw">normalizeFeatures</span>(</a>
+<a class="sourceLine" id="cb67-198" data-line-number="198">              , <span class="dt">method =</span> <span class="st">&#39;standardize&#39;</span> <span class="co"># inne metody: &#39;center&#39;, &#39;scale&#39;, &#39;range&#39;</span></a>
+<a class="sourceLine" id="cb67-199" data-line-number="199">              , <span class="dt">cols   =</span> <span class="st">&#39;price&#39;</span> <span class="co"># zmienne do normalizacji</span></a>
+<a class="sourceLine" id="cb67-200" data-line-number="200">            <span class="co"># , range  = # parametr dostepny jezeli wybierzemy metode &#39;range&#39;</span></a>
+<a class="sourceLine" id="cb67-201" data-line-number="201">            <span class="co"># , on.constant = # co ze zmienna stala (wszystkie wartosci takie same)</span></a>
+<a class="sourceLine" id="cb67-202" data-line-number="202">                 )</a>
+<a class="sourceLine" id="cb67-203" data-line-number="203"></a>
+<a class="sourceLine" id="cb67-204" data-line-number="204"></a>
+<a class="sourceLine" id="cb67-205" data-line-number="205"></a>
+<a class="sourceLine" id="cb67-206" data-line-number="206"></a>
+<a class="sourceLine" id="cb67-207" data-line-number="207">##...usuwanie zmienych o stalych wartosciach ----</a>
+<a class="sourceLine" id="cb67-208" data-line-number="208"><span class="co"># Zmienne o stalych wartosciach sa niebepieczne przy modelowaniu i nalezy je usuwac wczesniej</span></a>
+<a class="sourceLine" id="cb67-209" data-line-number="209"></a>
+<a class="sourceLine" id="cb67-210" data-line-number="210">data &lt;-<span class="st"> </span>mlr<span class="op">::</span><span class="kw">removeConstantFeatures</span>(  </a>
+<a class="sourceLine" id="cb67-211" data-line-number="211">                              <span class="dt">obj =</span> data</a>
+<a class="sourceLine" id="cb67-212" data-line-number="212">                            , <span class="dt">perc =</span> <span class="dv">0</span> <span class="co"># The percentage of a feature values in [0, 1) that must differ from the mode value. Default is 0</span></a>
+<a class="sourceLine" id="cb67-213" data-line-number="213">                            , <span class="dt">dont.rm =</span> <span class="co"># columns to omit from removing</span></a>
+<a class="sourceLine" id="cb67-214" data-line-number="214">                            , <span class="dt">na.ignore =</span> <span class="co"># treating NA as extra levels</span></a>
+<a class="sourceLine" id="cb67-215" data-line-number="215">                            , <span class="dt">tol =</span> <span class="co"># Numerical tolerance to treat two numbers as equal</span></a>
+<a class="sourceLine" id="cb67-216" data-line-number="216">                           )</a>
+<a class="sourceLine" id="cb67-217" data-line-number="217"></a>
+<a class="sourceLine" id="cb67-218" data-line-number="218"></a>
+<a class="sourceLine" id="cb67-219" data-line-number="219"></a>
+<a class="sourceLine" id="cb67-220" data-line-number="220"></a>
+<a class="sourceLine" id="cb67-221" data-line-number="221"></a>
+<a class="sourceLine" id="cb67-222" data-line-number="222"></a>
+<a class="sourceLine" id="cb67-223" data-line-number="223"></a>
+<a class="sourceLine" id="cb67-224" data-line-number="224"></a>
+<a class="sourceLine" id="cb67-225" data-line-number="225"></a>
+<a class="sourceLine" id="cb67-226" data-line-number="226"></a>
+<a class="sourceLine" id="cb67-227" data-line-number="227"></a>
+<a class="sourceLine" id="cb67-228" data-line-number="228"></a>
+<a class="sourceLine" id="cb67-229" data-line-number="229"></a>
+<a class="sourceLine" id="cb67-230" data-line-number="230"></a>
+<a class="sourceLine" id="cb67-231" data-line-number="231">##...features selection ----</a>
+<a class="sourceLine" id="cb67-232" data-line-number="232"></a>
+<a class="sourceLine" id="cb67-233" data-line-number="233"><span class="kw">listFilterMethods</span>()</a>
+<a class="sourceLine" id="cb67-234" data-line-number="234"></a>
+<a class="sourceLine" id="cb67-235" data-line-number="235">selection &lt;-<span class="st"> </span>mlr<span class="op">::</span><span class="kw">generateFilterValuesData</span>(</a>
+<a class="sourceLine" id="cb67-236" data-line-number="236">                    task_class</a>
+<a class="sourceLine" id="cb67-237" data-line-number="237">                  , <span class="dt">method =</span> <span class="kw">c</span>(   </a>
+<a class="sourceLine" id="cb67-238" data-line-number="238">                                  <span class="co"># &quot;information.gain&quot;</span></a>
+<a class="sourceLine" id="cb67-239" data-line-number="239">                                  <span class="co"># &quot;chi.squared&quot;</span></a>
+<a class="sourceLine" id="cb67-240" data-line-number="240">                                  <span class="st">&quot;randomForestSRC.rfsrc&quot;</span>))</a>
+<a class="sourceLine" id="cb67-241" data-line-number="241"></a>
+<a class="sourceLine" id="cb67-242" data-line-number="242"><span class="kw">plot</span>(selection)</a>
+<a class="sourceLine" id="cb67-243" data-line-number="243"></a>
+<a class="sourceLine" id="cb67-244" data-line-number="244"><span class="kw">filterFeatures</span>(  <span class="dt">task =</span> task_class</a>
+<a class="sourceLine" id="cb67-245" data-line-number="245">               , <span class="dt">method =</span> </a>
+<a class="sourceLine" id="cb67-246" data-line-number="246">               <span class="co"># , fval = selection</span></a>
+<a class="sourceLine" id="cb67-247" data-line-number="247">               , <span class="dt">perc =</span> <span class="fl">0.25</span></a>
+<a class="sourceLine" id="cb67-248" data-line-number="248">               <span class="co"># , abs = </span></a>
+<a class="sourceLine" id="cb67-249" data-line-number="249">               <span class="co"># , threshold = </span></a>
+<a class="sourceLine" id="cb67-250" data-line-number="250">               )</a>
+<a class="sourceLine" id="cb67-251" data-line-number="251"></a>
+<a class="sourceLine" id="cb67-252" data-line-number="252"></a>
+<a class="sourceLine" id="cb67-253" data-line-number="253"></a>
+<a class="sourceLine" id="cb67-254" data-line-number="254"><span class="co"># filtering with tunning</span></a>
+<a class="sourceLine" id="cb67-255" data-line-number="255"></a>
+<a class="sourceLine" id="cb67-256" data-line-number="256"></a>
+<a class="sourceLine" id="cb67-257" data-line-number="257">mlr<span class="op">::</span><span class="kw">listLearners</span>(<span class="dt">obj =</span> <span class="st">&#39;classif&#39;</span>) <span class="op">%&gt;%</span><span class="st"> </span>View</a>
+<a class="sourceLine" id="cb67-258" data-line-number="258"></a>
+<a class="sourceLine" id="cb67-259" data-line-number="259">lr &lt;-<span class="st"> </span><span class="kw">makeLearner</span>(<span class="dt">cl =</span> <span class="st">&#39;classif.randomForest&#39;</span>, <span class="dt">par.vals =</span> <span class="kw">list</span>(<span class="dt">ntree=</span><span class="dv">400</span>))</a>
+<a class="sourceLine" id="cb67-260" data-line-number="260"></a>
+<a class="sourceLine" id="cb67-261" data-line-number="261"></a>
+<a class="sourceLine" id="cb67-262" data-line-number="262"></a>
+<a class="sourceLine" id="cb67-263" data-line-number="263"></a>
+<a class="sourceLine" id="cb67-264" data-line-number="264"></a>
+<a class="sourceLine" id="cb67-265" data-line-number="265"><span class="co"># </span><span class="al">TASK</span><span class="co"> ----</span></a>
+<a class="sourceLine" id="cb67-266" data-line-number="266"></a>
+<a class="sourceLine" id="cb67-267" data-line-number="267"></a>
+<a class="sourceLine" id="cb67-268" data-line-number="268"></a>
+<a class="sourceLine" id="cb67-269" data-line-number="269">##... subsetting task</a>
+<a class="sourceLine" id="cb67-270" data-line-number="270"></a>
+<a class="sourceLine" id="cb67-271" data-line-number="271"><span class="co"># </span><span class="al">WARNING</span><span class="co">: p:mlr doesn&#39;t support formulas  like y~x1+x2 where we can specify which variables should be used in the model!!!. By defult all variables in provided data set are used. If we want to use only selected variables (or selected rows), we have to use this syntax:</span></a>
+<a class="sourceLine" id="cb67-272" data-line-number="272">task_class &lt;-<span class="st"> </span><span class="kw">subsetTask</span>(  <span class="dt">task     =</span> task <span class="co"># task defined before</span></a>
+<a class="sourceLine" id="cb67-273" data-line-number="273">                           , <span class="dt">features =</span>  <span class="kw">c</span>(<span class="st">&#39;cut&#39;</span>, <span class="st">&#39;color&#39;</span>, <span class="st">&#39;clarity&#39;</span>)<span class="co"># features to select</span></a>
+<a class="sourceLine" id="cb67-274" data-line-number="274">                           , <span class="dt">subset   =</span>  <span class="co"># we can also select subset rows prividing vector (integer or logical).</span></a>
+<a class="sourceLine" id="cb67-275" data-line-number="275">)</a>
+<a class="sourceLine" id="cb67-276" data-line-number="276"></a>
+<a class="sourceLine" id="cb67-277" data-line-number="277"></a>
+<a class="sourceLine" id="cb67-278" data-line-number="278"></a>
+<a class="sourceLine" id="cb67-279" data-line-number="279"></a>
+<a class="sourceLine" id="cb67-280" data-line-number="280"></a>
+<a class="sourceLine" id="cb67-281" data-line-number="281"><span class="co"># LEARNER ----</span></a>
+<a class="sourceLine" id="cb67-282" data-line-number="282"></a>
+<a class="sourceLine" id="cb67-283" data-line-number="283"></a>
+<a class="sourceLine" id="cb67-284" data-line-number="284"></a>
+<a class="sourceLine" id="cb67-285" data-line-number="285"></a>
+<a class="sourceLine" id="cb67-286" data-line-number="286"></a>
+<a class="sourceLine" id="cb67-287" data-line-number="287"><span class="co"># TRAIN ----</span></a>
+<a class="sourceLine" id="cb67-288" data-line-number="288"></a>
+<a class="sourceLine" id="cb67-289" data-line-number="289"></a>
+<a class="sourceLine" id="cb67-290" data-line-number="290"></a>
+<a class="sourceLine" id="cb67-291" data-line-number="291"></a>
+<a class="sourceLine" id="cb67-292" data-line-number="292"><span class="co"># PREDICTION -----</span></a></code></pre></div>
+<!-- #### smieci -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- # # dodanie brakow danych do wybranych zmiennych (dla zaprezentowania pozniej imputacji danych) -->
+<!-- # data$x   <- replace(  x = data$x -->
+<!-- #                       , list = sample(1:nrow(data) -->
+<!-- #                                       , size = round(nrow(data)*0.1) -->
+<!-- #                                       , replace = FALSE) -->
+<!-- #                       , values = NA) -->
+<!-- #  -->
+<!-- # data$cut <- replace(  x = data$cut -->
+<!-- #                       , list = sample(  1:nrow(data) -->
+<!-- #                                         , size = round(nrow(data)*0.1) -->
+<!-- #                                         , replace = FALSE) -->
+<!-- #                       , values = NA) -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- # # http://explained.ai/rf-importance/index.html  problem z importance w randomForest -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- # # INTRO NOTES --- -->
+<!-- #  -->
+<!-- #  -->
+<!-- # # shorcuts in notes: -->
+<!-- # # p:ggplot - shortcut for "package ggplot" -->
+<!-- # # f:cor    - shortcut for "function cor" -->
+<!-- #  -->
+<!-- #  -->
+<!-- # # links: -->
+<!-- # # p:mlr page: https://mlr-org.github.io/mlr/ -->
+<!-- # # p:iml page: https://cran.r-project.org/web/packages/iml/vignettes/intro.html -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- # # In mlr documentation dependent variable is called 'target'. Independet variables are called 'feature'. I will be using this names in the manual.  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- # # DATA SET PREPARING --- -->
+<!-- #  -->
+<!-- # require(mlr) -->
+<!-- # require(iml) -->
+<!-- # require(plyr) -->
+<!-- # require(dplyr) -->
+<!-- # require(magrittr) -->
+<!-- #  -->
+<!-- # mlr::configureMlr() # if you don't run this function in the beginnig some strange errors may occur when training the models -->
+<!-- #  -->
+<!-- #  -->
+<!-- # data('diamonds', package = 'ggplot2') -->
+<!-- # data <- head(diamonds, 10000) -->
+<!-- #  -->
+<!-- # # adding missing values for some variables -->
+<!-- # data$x   <- replace(  x = data$x -->
+<!-- #                       , list = sample(1:nrow(data) -->
+<!-- #                                       , size = round(nrow(data)*0.1) -->
+<!-- #                                       , replace = FALSE) -->
+<!-- #                       , values = NA) -->
+<!-- #  -->
+<!-- # data$cut <- replace(  x = data$cut -->
+<!-- #                       , list = sample(  1:nrow(data) -->
+<!-- #                                         , size = round(nrow(data)*0.1) -->
+<!-- #                                         , replace = FALSE) -->
+<!-- #                       , values = NA) -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- # # dividing data set into train set and test set -->
+<!-- # train_index <- sample(1:nrow(data), size = 0.66*nrow(data), replace = FALSE) -->
+<!-- # data_train  <- data[test_index,]  -->
+<!-- # data_test   <- data[-test_index,] -->
+<!-- # dim(data); dim(data_train); dim(data_test) -->
+<!-- #  -->
+<!-- #  -->
+<!-- # # p:mlr requires pure data.frames!!! -->
+<!-- # data_train %<>% as.data.frame()   -->
+<!-- # data_test  %<>% as.data.frame()  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- # # FAST INTRODUCTORY EXAMPLE ---- -->
+<!-- #  -->
+<!-- # # Functions used below will be more detailed described in further part of manual. Here there is only a simple example necessary to start working with data in preprocessing stage. -->
+<!-- #  -->
+<!-- #  -->
+<!-- # #(1) making regression task (other types of task are available too). Here we have to provide data set and target variables -->
+<!-- # task <- mlr::makeRegrTask(   -->
+<!-- #   data = data_test %>% na.omit # data set with removed missing values -->
+<!-- #   , target = 'price' # target variable -->
+<!-- # ) -->
+<!-- #  -->
+<!-- #  -->
+<!-- # #(2) making learner (here we have to choose statistical method and set its parameters) -->
+<!-- # lrn <- mlr::makeLearner(  cl = 'regr.randomForest' # we will use random forest regression -->
+<!-- #                           , par.vals = list(ntree = 200) # parameters -->
+<!-- # )  -->
+<!-- #  -->
+<!-- #  -->
+<!-- # #(3) model training -->
+<!-- # train <- mlr::train(  learner = lrn   # defined before learner -->
+<!-- #                       , task    = task # defined before task -->
+<!-- # ) -->
+<!-- # train$learner.model # access to the trained model -->
+<!-- #  -->
+<!-- #  -->
+<!-- # #(4) prediction based on the new data set -->
+<!-- # prediction <- predict(   obj = train -->
+<!-- #                          ,  newdata = data_test %>% na.omit -->
+<!-- # ) -->
+<!-- # prediction$data # access to table with predicted values -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- # # PREPROCESSING --- -->
+<!-- #  -->
+<!-- # # Before we start estimating models we have to prepare data: -->
+<!-- #  -->
+<!-- # #  cap extreme values -->
+<!-- # #  recode categorical variables into dummy variables -->
+<!-- # #  join levels which rarely occur -->
+<!-- # #  impute missing values -->
+<!-- # #  normaliza data -->
+<!-- # #  select features -->
+<!-- #  -->
+<!-- # # All this things is called preprocessing -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- # ##...cap extreme values --- -->
+<!-- #  -->
+<!-- #  -->
+<!-- # # checking range of variables -->
+<!-- # range(data$price) -->
+<!-- #  -->
+<!-- # # capping selected variables. Only ONE threhold and impute value can be used, even if we provide few variables to modify. -->
+<!-- # data <- mlr::capLargeValues( -->
+<!-- #   obj       = data # it can be data.frame OR task  -->
+<!-- #   ,cols      = c('price') # vector with names of variable to cap -->
+<!-- #   ,threshold = c(4000) # the level of threshold -->
+<!-- #   ,impute    = 4000 # what value impute above threshold -->
+<!-- #   ,what      = 'abs' # how to impute: 'abs'means that  abs(x)>threshold   will be imputed. Other possible values: 'pos', 'neg'. See example below -->
+<!-- # ) -->
+<!-- #  -->
+<!-- # # small example of how parameters 'what' in f:capLargeValues works: -->
+<!-- # table_1 <- data.frame(a=c(-10, -5, 0, 5, 10)) -->
+<!-- # capLargeValues(table_1, cols = 'a', threshold = 3, what = 'abs') -->
+<!-- # capLargeValues(table_1, cols = 'a', threshold = 3, what = 'pos') -->
+<!-- # capLargeValues(table_1, cols = 'a', threshold = 3, what = 'neg') -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- # ##...dummy variables--- -->
+<!-- #  -->
+<!-- # # converting categorical variable into dummy variables. Original variable will be dropped !!! -->
+<!-- # data <- mlr::createDummyFeatures(  -->
+<!-- #   obj    = data -->
+<!-- #   , target = 'cut' -->
+<!-- #   , method = 'reference' # other methods: '1-of-n' -->
+<!-- #   , cols   = 'color' -->
+<!-- # ) -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- # ##...joining levels -->
+<!-- #  -->
+<!-- #  -->
+<!-- # # making task -->
+<!-- # task_class <- mlr::makeClassifTask(   -->
+<!-- #   #   id          =  -->
+<!-- #   data        = data # should provide pure data.frame -->
+<!-- #   , target      = 'cut' -->
+<!-- #   # , weights     = NULL -->
+<!-- #   # , blocking    =  -->
+<!-- #   # , coordinates =  -->
+<!-- #   # , positive    =  -->
+<!-- #   # , fixup.data  =  -->
+<!-- #   , check.data  = TRUE -->
+<!-- # ) -->
+<!-- #  -->
+<!-- # # merging levels of TARGET variable -->
+<!-- # task_class <- joinClassLevels(   -->
+<!-- #   task       = task_class -->
+<!-- #   , new.levels = list(new_level = c('Ideal','Premium')) -->
+<!-- # ) -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- # # merging levels which occur rarely -->
+<!-- # task_class <- mlr::mergeSmallFactorLevels(   -->
+<!-- #   task      = task_class -->
+<!-- #   , cols      = 'clarity' -->
+<!-- #   , min.perc  = 0.01 -->
+<!-- #   , new.level = 'new_level') -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- # ##...normalizing features --- -->
+<!-- #  -->
+<!-- # data <- mlr::normalizeFeatures( -->
+<!-- #   obj    = data -->
+<!-- #   # , target = '' -->
+<!-- #   , method = 'standardize' # other possible: 'center', 'scale', 'range' -->
+<!-- #   , cols   = 'price' -->
+<!-- #   # , range  = # parameter only for method 'range' -->
+<!-- #   # , on.constant -->
+<!-- # ) -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- # ##...remove constant features ---- -->
+<!-- # # Constant variables are dangerous because the can make problems when training the model. -->
+<!-- #  -->
+<!-- # data <- mlr::removeConstantFeatures(   -->
+<!-- #   obj = data -->
+<!-- #   , perc = 0 # The percentage of a feature values in [0, 1) that must differ from the mode value. Default is 0 -->
+<!-- #   , dont.rm = # columns to omit from removing -->
+<!-- #     , na.ignore = # treating NA as extra levels -->
+<!-- #     , tol = # Numerical tolerance to treat two numbers as equal -->
+<!-- # ) -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- # ##... subsetting task -->
+<!-- #  -->
+<!-- # # WARNING: p:mlr doesn't support formulas  like y~x1+x2 where we can specify which variables should be used in the model!!!. By defult all variables in provided data set are used. If we want to use only selected variables (or selected rows), we have to use this syntax: -->
+<!-- # task_class <- subsetTask(  task     = task # task defined before -->
+<!-- #                            , features =  c('cut', 'color', 'clarity')# features to select -->
+<!-- #                            , subset   =  # we can also select subset rows prividing vector (integer or logical). -->
+<!-- # ) -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- # ##...features selection --- -->
+<!-- #  -->
+<!-- # listFilterMethods() -->
+<!-- #  -->
+<!-- # selection <- mlr::generateFilterValuesData( -->
+<!-- #   task_class -->
+<!-- #   , method = c(    -->
+<!-- #     # "information.gain" -->
+<!-- #     # "chi.squared" -->
+<!-- #     "randomForestSRC.rfsrc")) -->
+<!-- #  -->
+<!-- # plot(selection) -->
+<!-- #  -->
+<!-- # filterFeatures(  task = task_class -->
+<!-- #                  , method =  -->
+<!-- #                    # , fval = selection -->
+<!-- #                    , perc = 0.25 -->
+<!-- #                  # , abs =  -->
+<!-- #                  # , threshold =  -->
+<!-- # ) -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- # # filtering with tunning -->
+<!-- #  -->
+<!-- #  -->
+<!-- # mlr::listLearners(obj = 'classif') %>% View -->
+<!-- #  -->
+<!-- # lr <- makeLearner(cl = 'classif.randomForest', par.vals = list(ntree=400)) -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- # # TASK --- -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- # # LEARNER --- -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- # # TRAIN --- -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- # # PREDICTION --- -->
+<!-- #  -->
+<!-- #  -->
+
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="multivariate-analysis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="appendix-it-solutions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/11_mlr.Rmd",
+"text": "Edit"
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
