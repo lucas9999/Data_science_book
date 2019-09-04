@@ -37,9 +37,11 @@
 
 ## Bookdown books:
 
-* [Sanjiv Ranjan](https://srdas.github.io/MLBook/)  Book by Sanjiv Ranjan Das
+* [Sanjiv Ranjan](https://srdas.github.io/MLBook/) ML w R. Book by Sanjiv Ranjan Das
 * [iml book](https://christophm.github.io/interpretable-ml-book/) Book about IML
-
+* [Modelowanie w R]http://www.john-ros.com/Rcourse/lme.html
+* [ekonometria](http://www.john-ros.com/Rcourse/lme.html)ekonometria w R
+* [szeregi](https://otexts.com/fpp2/) szeregi czasowe w R
 
 ## Other
 
