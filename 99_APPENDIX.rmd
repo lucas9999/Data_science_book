@@ -48,7 +48,10 @@
 * [jurnal of machine learning](http://www.jmlr.org/)
 * [odelama](http://www.odelama.com/data-analysis/). Fajna strona z podstawowymi wzorami np. z rachunku prawdopowobieństwa: 
 
+## github
 
+* [Damian](https://github.com/s3nh)
+* [Adrian](https://github.com/xadrianzetx?tab=repositories)
 
 # DICTIONARY
 
