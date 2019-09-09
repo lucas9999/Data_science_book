@@ -1,6 +1,6 @@
 
 bookdown::serve_book(  dir        = '.'
-                     , output_dir = '_book'
+                     , output_dir = 'docs'
                      , preview    = TRUE
                      , in_session = TRUE)
 

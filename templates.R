@@ -5,7 +5,7 @@ shell.exec('bibliography.xlsx')
 shell.exec('book.bib')
 
 katalog:
-shell.exec('C:/Users/memy/OneDrive/Pulpit/1_Programs_and_programing/DATA_SCIENCE_algorithms/Data_Science_Book')
+shell.exec('C:/Users/memy/OneDrive/Pulpit/1_Programs_and_programing/DATA_SCIENgit E_algorithms/Data_Science_Book')
 
 
 
