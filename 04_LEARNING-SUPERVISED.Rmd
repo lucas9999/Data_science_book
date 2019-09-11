@@ -32,7 +32,17 @@ Econmetrics regression - models that explicitly show functional dependency betwe
 
 ## SARIMAX
 
-## ARCH
+## GARCH
+
+
+Przyklad estymacji ARIMA_GARCH w R
+[Time Series Analysis with ARIMA – ARCH/GARCH model in R](https://talksonmarkets.files.wordpress.com/2012/09/time-series-analysis-with-arima-e28093-arch013.pdf)
+
+Praktyczne zastosownie modelu ARIMA-GARCH
+[MODELING INFLATION VOLATILITY USING ARIMAX-GARCH](https://publikasiilmiah.ums.ac.id/bitstream/handle/11617/6312/b-10.pdf?sequence=3&isAllowed=y)
+
+
+
 
 ## Cintegration
 
