@@ -1,5 +1,9 @@
 # (PART) <lfg>OTHER PROBLEMS AND MODELS</lfg> {-}
 
+# Deep learning
+
+[Recursive Sketches for Modular Deep Learning](https://ai.googleblog.com/2019/09/recursive-sketches-for-modular-deep.html)
+
 # SOCIAL NETWORK
 
 # CALIBRATION

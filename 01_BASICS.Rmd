@@ -89,6 +89,8 @@ Markov Chain Monte Calro Sampling
 
 ## Linear algebra
 
+[Singular Value Decomposition in R step by step](https://rpubs.com/aaronsc32/singular-value-decomposition-r)
+
 ## Combinatorics
 
 ## Graphs

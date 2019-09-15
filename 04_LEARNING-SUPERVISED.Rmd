@@ -28,8 +28,6 @@ Econmetrics regression - models that explicitly show functional dependency betwe
 
 ## simple dynamic regression
 
-## error correction model
-
 ## SARIMAX
 
 ## GARCH
@@ -44,15 +42,19 @@ Praktyczne zastosownie modelu ARIMA-GARCH
 
 
 
-## Cintegration
+## Cointegration
 
 ## ARLD Applorach
 
 ## panel models
 
+## error correction model (ECM VECM)
+
 ## multiple equations
 
 ### VARIMAX
+
+### Structural VAR
 
 ### panel
 
@@ -60,7 +62,7 @@ Praktyczne zastosownie modelu ARIMA-GARCH
 
 
 
-# ANOVA / MANOVA /A ANCOVA
+# ANOVA / MANOVA / ANCOVA
 
 
 # LDA QDA
@@ -117,6 +119,10 @@ Praktyczne zastosownie modelu ARIMA-GARCH
 
 ### Singular Spectrum Analysis
 
+[A beginner’s guide to SSA](http://environnement.ens.fr/IMG/file/DavidPDF/SSA_beginners_guide_v9.pdf)
+
+
+
 
 ## Martingales
 
@@ -126,12 +132,14 @@ Praktyczne zastosownie modelu ARIMA-GARCH
 
 ## Markov Provess
 
+### Coninuous Time Markov Chains
+
+[Continuous-Time Markov Chains in R](https://cran.r-project.org/web/packages/simmer/vignettes/simmer-07-ctmc.html]
 
 ## Winer Process
 
 
 ## Survival
-
 
 
 
@@ -148,6 +156,30 @@ Praktyczne zastosownie modelu ARIMA-GARCH
 ### Categorical Dependent
 
 ### Stochastic process
+
+Przyklady modelowanie szeregow czasowych w excel. 
+[Real Statistics Using Excel](http://www.real-statistics.com/time-series-analysis/)
+[Są też pliki do pobrania](http://www.real-statistics.com/free-download/real-statistics-examples-workbook/)
+Zeby arkusze poprawnie dzialaly trzeba sobie doinstalować w Excelu dodatek 'real-statistics-resource-pack'.
+
+
+#### Casuation analysis
+
+##### Cross correlation
+
+##### Granger Casuation
+
+Can Granger casuality test be applied to nonstationary Series?:
+
+* [Granger causality test is applied on non stationary data or stationary data?](https://www.researchgate.net/post/Granger_causality_test_is_applied_on_non_stationary_data_or_stationary_da)ta 
+
+
+#### Algoritm slection
+
+Wymor metody analizy szeregu ze wzgledu na stacjonarnosc zmiennych:
+* [Econometric model selection on the base of data stationary](https://www.youtube.com/watch?v=DSH5yclGf8M)
+* [Tentative Time Series Model Selection Plan]https://nomanarshed.wordpress.com/2014/07/20/tentative-time-series-model-selection-plan/
+
 
 ### Images/Vides
 
@@ -166,6 +198,15 @@ Praktyczne zastosownie modelu ARIMA-GARCH
 
 
 ## Dignostics of models
+
+[The proper way to use Machine Learning metrics](https://towardsdatascience.com/the-proper-way-to-use-machine-learning-metrics-4803247a2578)
+
+### Conformal prediciton
+
+[Conformal in R ](https://github.com/isidroc/conformal)
+
+
+
 
 ## Variables selection
 
