@@ -3,6 +3,8 @@
 
 # EXTREME VALUES
 
+(Anomaly Detection with Isolation Forest & Visualization)[https://towardsdatascience.com/anomaly-detection-with-isolation-forest-visualization-23cd75c281e2]
+
 
 # MISSING VALIES
 

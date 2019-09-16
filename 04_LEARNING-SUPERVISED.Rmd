@@ -77,6 +77,8 @@ Praktyczne zastosownie modelu ARIMA-GARCH
 # LATENT VARIABLES DETECTION
 
 
+## Factor analysis
+
 # SVM
 
 
@@ -123,11 +125,17 @@ Praktyczne zastosownie modelu ARIMA-GARCH
 
 
 
-
 ## Martingales
 
+## Bayesian filters and A Bayesian Structural Time Series Model
+
+[The Two Stages of Bayes Filtering](https://www.youtube.com/watch?v=Qa8YMP9dQYo)
 
 ## Kalman Filters
+
+[Special Topics - The Kalman Filter (1 of 55) What is a Kalman Filter](https://www.youtube.com/watch?v=CaCcOwJPytQ)
+
+[Understanding Kalman Filters, Part 3: Optimal State Estimator](https://www.youtube.com/watch?v=ul3u2yLPwU0)
 
 
 ## Markov Provess
@@ -151,6 +159,8 @@ Praktyczne zastosownie modelu ARIMA-GARCH
 
 ## Algorithms per problems
 
+
+
 ### Numerical dependent
 
 ### Categorical Dependent
@@ -168,6 +178,9 @@ Zeby arkusze poprawnie dzialaly trzeba sobie doinstalować w Excelu dodatek 'rea
 ##### Cross correlation
 
 ##### Granger Casuation
+
+More about casuality in part "BASICS".
+
 
 Can Granger casuality test be applied to nonstationary Series?:
 
@@ -206,7 +219,14 @@ Wymor metody analizy szeregu ze wzgledu na stacjonarnosc zmiennych:
 [Conformal in R ](https://github.com/isidroc/conformal)
 
 
+### Bias vs Variance
 
+[Understanding the Bias-Variance Tradeoff](https://towardsdatascience.com/understanding-the-bias-variance-tradeoff-165e6942b229)
+
+
+[MSE and Bias-Variance decomposition](https://towardsdatascience.com/mse-and-bias-variance-decomposition-77449dd2ff55)
+
+[Bias-Variance Decomposition in Python](http://rasbt.github.io/mlxtend/user_guide/evaluate/bias_variance_decomp/)
 
 ## Variables selection
 
