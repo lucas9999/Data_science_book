@@ -1,0 +1,63 @@
+# AUXILIARY FIELDS
+## Introduction
+## Philosophy
+## Logic
+## Psychology
+## Linguistics
+## Cybernetics (control theory)
+## Math_1 – Probability
+### Basics
+### Univariate distributions
+### Multivariate distributions
+### Stochastic processes
+## Math_2 – Statistics
+### Descriptive statistics
+#### Univariate 
+#### Multivariate
+### Statistical and ecometrical inference
+#### Basics
+#### Pameters estimation algorithms
+##### General moments methods
+##### Maxium likehood
+##### Nonparametric techniques
+#### Sampling techniques
+##### Holdout
+##### Boostrap
+##### Jacknife
+##### Permutation
+##### Cross validation
+##### Monte Carlo
+##### Stratified sampling
+### Other issues
+#### Similarity and dissimilarity meassures for observations
+#### Similarity and dissimilarity meassures for distributions
+#### Measures of disorder/randomness
+#### Paradoxes
+## Math_3 – Game theory
+## Math_4 – Optimisation
+### Functions optimum
+### Functions optimum – constrained
+#### Lagrange Multipliers
+#### Linear programming
+#### Nonlinear programming
+#### Regularization
+### Functional optimum
+#### Dynamic programming
+#### Calculus of variations
+### Cost functions
+### Back propagation
+### Heuristic algorithms
+#### Swarm algorithm
+#### Ants algoritms
+#### Genetics algorithms
+## Math_4 – Other issues
+### Functions usefull in Data Science
+### Useful tricks
+### Linear algebra
+### Combinatorics
+### Numerical methods
+### Equations
+#### x as number
+#### X as derivative: differential and difference equations
+### Fuzzy logic
+### Graphs

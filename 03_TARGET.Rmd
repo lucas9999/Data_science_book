@@ -1,0 +1,82 @@
+# LEARNING: WITH TARGET
+## Introduction
+### Classification
+### Regression
+## Econometrical regression
+### Basic regression
+### Basic dynamic model
+### Generalisations and constrains
+### Bayesian inference
+### Multivariate models
+### Models with effects
+### Nonparametric regression
+#### Splines
+#### Isotonic
+### Other regression models
+#### Canonical analysis
+#### ANOVA MANOVA ANCOVA
+## LDA & QDA
+## Bayesian models
+## Trees
+### Classification 
+### Regression
+## SVM
+### Classification 
+### Regression
+## K-NN
+### Classification 
+### Regression
+## Log-linear model
+## Similarity learning
+## Survival models
+## Ensembled models
+### Bagging (for example Random Forests)
+### Boosting (for example Gradient and Ada Boosing)
+### Stacking
+### Twicing
+### Bandling
+## Neural Networks
+### Introduction
+### Basics
+### Reccurent
+#### Simple reccurent
+#### Bidirectorial
+#### LSTM
+#### GRU
+#### Attention
+### CNN
+### Resnet
+## Stochastic processes
+### Basic trend models
+### Basic adaptative models
+### Econometric time series models
+#### dynamic (for example error correction models)
+#### SARIMAX
+#### VARIMAX
+#### ARCH class models
+#### Cointegration (including ARLD approach)
+### Time series decomposition decomposition
+### Kalman filters
+### Neural Networks
+#### Long short term memory
+#### CNN
+### Panel Regression
+### Gaussian Mixtures
+### Ensembled models
+### Martingales
+### Markov Process
+### Winer Process
+## Results diagnostics
+### Classification 
+#### Scores callibration
+### Regression
+## Elements selection
+### Variables exogenity
+#### Granger Exogenity
+## IML
+## By problems
+### Numerical
+### Categorical
+### Text
+### Sound
+### Vision

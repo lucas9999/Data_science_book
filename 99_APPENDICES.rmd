@@ -1,0 +1,12 @@
+# APPENDICIES
+## Appendix A INDEX OF STATISTICAL TEST
+## Appendix B Most important theorems in Statistics and probability calculus
+### Central Limit
+### Fisher-Tippett-Gnedenko
+## Appendix C Different entries
+### out-of-bag error
+### hyperparameters
+### information leakage
+### apriori vs aposteriori
+### colaborative filtering
+## Appendix D DICTIONARY POLISH - ENGLISH

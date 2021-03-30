@@ -1,0 +1,11 @@
+# INTRODUCTION
+## TO DO
+## Introduction
+## AI problems and algorithms classification
+## Meta issues
+### Knowledge representation
+### Model complexity
+### Overfittng / underfitting
+### Bias / Variance trade off
+### Curse of dimentionality
+### Sparious phenomenon

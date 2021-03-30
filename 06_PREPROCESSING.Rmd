@@ -1,0 +1,20 @@
+# DATA PREPROCESSING
+## Introduction
+## Variables tranformations
+### discretization
+### numeric variable continuous tranformations
+### nominal variables tranformations
+## Data Problems
+### Numeric and categorical
+#### Extreme values
+#### Missing values
+#### Untipical distributions (for example copula models, kernel estimators, logaritmic transofmations ect., mixed distributions)
+#### Censored/truncated data
+#### Aggregated date (decomposition)
+#### Meassurement error (for example Kalman filter model)
+#### Granularity of data
+#### Imbalanced categories
+#### Small samples problem
+### Text
+### Visual
+### Sound

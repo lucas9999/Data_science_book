@@ -1,0 +1,113 @@
+# LEARNING: PATTERNS DISCOVERING
+## Introduction
+## Clustering
+### Introduction
+### Hierarchical
+#### Agglomerative/Divisive
+#### CHAMELEON
+#### BIRCH
+#### HDBSCAN
+#### ROCK
+#### Echidna
+#### Diana
+#### Agnes
+### Partititonal
+#### k-methods
+##### k-means
+##### k-centroids
+##### k-modes
+##### k-mini-batches
+#### PAM
+#### CLARANAS
+#### CLARA
+#### FCM
+#### FCMdC
+#### Fanny
+### Density /Latent distibutions
+#### DBSCAN
+#### OPTICS
+#### PreDeCon
+#### SUBCLU
+#### DENCLUE
+#### DBCLASD
+#### Graph based clustering
+##### Spectral clustering
+#### Mean Shift
+#### Substractive Methods
+### Grids
+#### STING
+#### CLIQUE
+#### WaveCluster
+#### OptiGrid
+### Model Based
+#### EM
+#### CLASSIT
+#### SOMs
+#### COBWEB
+#### Neural Networks
+### Other
+#### Affinity propagation
+#### Fuzzy c-means
+### By problems
+#### Numerical and categorical
+#### Text data
+#### Sound
+#### Vision
+### Results diagnostics
+### Elements selection
+### IML
+### By problems
+## Association
+### Apriori
+### Euclat
+### FP-growth
+### ASSOC
+### OPUS
+### Neural Networks
+### Results diagnostics
+### Elements selection
+### IML
+### By problems
+## Dimentionality reduction
+### Unsupervised
+#### PCA
+##### Basic PCA
+##### Incremental PCA
+##### kernel PCA
+#### ICA
+#### t-SNE
+#### Local Linear Embedding
+#### Isomap
+#### LDA as dimentional reduction
+#### Partial Least Squares
+#### Multidimentional Scaling
+#### Correspondence Analysis
+#### Kohonen Networks
+#### Neural Networks (other than Kohonen)
+#### Factor Analysis
+#### Latent semantic analysis
+#### Autoencoders
+### Supervised
+#### LDA
+#### Partial Least Squares
+### Results diagnostics
+### Elements selection
+### IML
+### By problems
+## Casuality analysis
+### SEM
+#### Confirmatory factor analysis
+#### Confirmatory composite analysis
+#### Path analysis
+#### Partial least squares path modeling
+#### Latent growth modeling
+## Dimentions decomoposition
+### Results diagnostics
+### Elements selection
+### IML
+### By problems
+## Generative models
+### Results diagnostics
+### Elements selection
+### IML
+### By problems
