@@ -163,6 +163,6 @@ function_parameters <- function(title = "", begin_text, parameters, sources = ""
 
 # INTRO
 
-W tej książce będę znajdowały się głównie informacje o samych modelach a nie o ich implementacjach w językach programowania. 
+This is notebok about AI algorithms. 
 
 
