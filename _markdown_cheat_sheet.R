@@ -9,7 +9,7 @@
 
 
 
-# (PART) SKLADNIA [SYNTAX] {-} 
+# (PART) SKLADNIA [SYNTAX] {-}
 
 # div----
 
@@ -27,10 +27,10 @@ lfsb
 
 <br><lfg>Useful</lfg>
 <div class="btn-success"> ... </div><br>
-  
 
-    
-  
+
+
+
 div:
 <div class="btn-primary"> dasfa </div>  bialy
 <div class="btn-success"> dasfa </div>  zielony
@@ -39,19 +39,19 @@ div:
 <div class="btn-warning"> dasfa </div>  zolty
 
 <div class="dwa"> dasfa dasf dasf  </div>
-  
+
 <div class="trzy"> dasfa dasf dasf  </div>
-  
-  
-  
+
+
+
   #tekst ----
 
 <span style="color:blue"> blebletg </span>
-  
+
   *pochylone*
-  
+
   **bold**
-  
+
   ***   linia oddzielajaca
 
 `verbatim`
@@ -70,15 +70,15 @@ div:
 
 Jumto to [header](#anchor)
   {#anchor}
-    
+
     [^1]:footnoten
-    
+
     [link](http://adv-r.had.co.nz/)
-    
-    
-    
+
+
+
 # listy----
-    1. 
+    1.
     2.
     i)
 A.
@@ -90,13 +90,14 @@ A.
   |--:|:--|--|
   |1|2|3|
   |4|5|6|
-  
-  
-  
+
+
+
 # zdjecia----
 ![Opis bez numeracji](figures/snippety.png){ width=60% }
 
 <img src="figures/RODBC_1.jpg" alt="RODBC_1">
+
 
 ```{r, eval=TRUE, echo=FALSE, fig.cap='opis z numeracja', out.width='500px'}
 knitr::include_graphics('figures/snippety.png')
@@ -105,36 +106,36 @@ knitr::include_graphics('figures/snippety.png')
 
 
 # bibiliography ---
-
+[@tytul]
 
 
 # inne ----
 
 <--! komentarz -->
-  
-  
-  
-  
+
+
+
+
 
 # Modifying files names ---------------------------------------------------
 
 
 # l.s::l.s.packages_basic()
-# 
+#
 # files_names <- list.files(getwd()) %>% as_tibble()
 # names(files_names)[1] <- 'file_name'
-# 
+#
 # files_paths <- list.files(path = getwd(), full.names = TRUE) %>% as_tibble()
 # names(files_paths)[1] <- 'file_path'
-# 
+#
 # files <- bind_cols(files_names, files_paths)
-# 
+#
 # files %<>% dplyr::filter(stringr::str_detect(file_name, 'Rmd$' )) %>% mutate(new_name = file_name)
-# 
+#
 # files <- edit(files)
-# 
+#
 # files %>% View
-# 
+#
 # for(i in 1:nrow(files)){
 #   if(files[i,] %>% pull(file_name) != files[i,] %>% pull(new_name) & str_detect(files[i,'new_name'], 'Rmd$') ){
 #     file.rename(from = files[i,'file_name'], to = files[i,'new_name'] )
@@ -144,8 +145,8 @@ knitr::include_graphics('figures/snippety.png')
 
 # latex math----
 
-Inline math is marked off witha pair of dollar
-$\pi^2  
+Inline math is marked off with pair of dollar
+$\pi^2
 $\e^{2+1}
 $pi_i
 $pi_{ij}
@@ -167,6 +168,7 @@ resizing braces using \left \right
   \end{eqnarray}
   \]
 
+https://oeis.org/wiki/List_of_LaTeX_mathematical_symbols
 
 \times for ×
 \cdot for ⋅
@@ -179,5 +181,4 @@ resizing braces using \left \right
 \gamma
 \alpha
 \beta
-  
-  
+

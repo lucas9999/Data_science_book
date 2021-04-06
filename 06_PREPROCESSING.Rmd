@@ -4,6 +4,16 @@
 ### discretization
 ### numeric variable continuous tranformations
 ### nominal variables tranformations
+#### encoding
+##### one-hot
+##### embedding
+
+In the context of machine learning, an embedding is a low-dimensional, learned continuous vector representation of discrete variables into which you can translate high-dimensional vectors. Generally, embeddings make ML models more efficient and easier to work with, and can be used with other models as well.
+Embedding is type of categorical variables encoding. It can be also treated as a way for dimentionality reduction.  
+
+
+
+#### other
 ## Data Problems
 ### Numeric and categorical
 #### Extreme values

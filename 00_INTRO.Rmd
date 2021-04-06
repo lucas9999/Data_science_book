@@ -1,11 +1,98 @@
 # INTRODUCTION
+
 ## TO DO
+
+-   Feature encoding
+-   iml
+-   ensembled models
+-   conformal prediction
+-   calibration of probability
+-   isitonic regression
+-   possion model
+-   correlation between imbalanced variables
+-   survuval analysis
+-   miary do modeli klasyfikacyjnych
+-   feature importance
+-   isolated forest
+-   GLM - gdzie sa reszty?
+-   blad w implementacji xg boosta w sklearn - w kolejnych krokach obserwacje się z prob nakladaja. notat.
+-   ARIMA
+-   skalowanie platta : svm i score w kalibracji prawdopodobienstwa.
+-   optymalizacja byesowska w grid searchu
+-   mutual information , entrophy, cross entrophy,
+-   od Darii - katy do szukania outliers
+-   wezly czyli metoda MARS
+-   calibracja w ryzyku kredytowym - dodawanie zewnetrznych informacji git
+-   random forest w szeregach czasowych - nie lapie trendow.
+-   Uniform Manifold Approximation and Projection (UMAP)
+-   autokorelacja i autokorelacja czastkowa
+-   colaborative filtering
+
+## draft
+
 ## Introduction
+
 ## AI problems and algorithms classification
+
 ## Meta issues
+
 ### Knowledge representation
+
+### Types of learning
+
+#### Ensemble (zespołowe)
+
+Dowód skuteczności podejścia wielomodelowego: [@Gatnar2008] s 84
+
+*Ensemlbe* jest traktowany jako metoda dedykowana pod uczenie nadzorowane. Dla klastrowania istnieje odpowiednik nazywany "Consensus clustering".
+
+Zakładamy że:
+
+-   Mamy że w danych mamy dosyć skomplikowane zależności przy których nie poradzimy sobie z użyciem prostego modelu
+-   Zakładamy że możemy zbudować n prostych modeli (weak learners) z których każdy będzie miał znacząco różniącą się wiedzę od pozostałych modeli. Ale każdy model jest jednak na tyle dobry, że nie jest modelem dającym czysto losowe rezultaty.
+
+Wtedy może być sensowne uczenie metodą \**ensemble*\*. Nie jesteśmy w stanie zbudować jednego bardzo skomplikowanego i dużego modelu (np. groźba overfittingu jeżeli dany bardzo głębokie drzewa itp). Ważne jednak jest aby modele były różne pod kątem wiedzy. Uzyskujemy to poprzez:
+
+-   budowanie każdego modelu innym algorytmem
+
+-   stosowanie algorytmów które mają dużą wariancję (niewielka zmiana w danych może istotnie wpłynąć na predykcje). Dlatego najpopularniejszym algorytmem jest drzewo.
+
+-   budowanie modeli na innych podpróbkach
+
+-   budowanie modeli na innym zestawie zmiennych objaśniających
+
+Intuicyjne wyjaśnienie w [@Geron2018]
+
+##### Bagging and Pasting
+
+W bagging tworzymy kolejne podpróbki poprzez losowanie boostrapowe. W pasting tworzymy kolejne próbki poprzez losowanie ze zwracaniem.
+
+Advantages:
+
+-   Many weak learners aggregated typically outperform a single learner over the entire set, and has less overfit
+
+-   Removes variance in high-variance [low-bias](https://www.wikiwand.com/en/Bias_(statistics) "Bias (statistics)") data sets^[[7]](https://www.wikiwand.com/en/Bootstrap_aggregating#citenote37)^
+
+-   Can be performed in [parallel](https://www.wikiwand.com/en/Parallel_Computing), as each separate bootstrap can be processed on its own before combination^[[8]](https://www.wikiwand.com/en/Bootstrap_aggregating#citenote8)^
+
+Disadvantages:
+
+-   In a data set with high bias, bagging will also carry high bias into its aggregate^[[7]](https://www.wikiwand.com/en/Bootstrap_aggregating#citenote37)^
+
+-   Loss of interpretability of a model.
+
+-   Can be computationally expensive depending on the data set
+
+##### Boosting
+
+##### Stacking
+
 ### Model complexity
+
 ### Overfittng / underfitting
+
 ### Bias / Variance trade off
+
 ### Curse of dimentionality
+
 ### Sparious phenomenon

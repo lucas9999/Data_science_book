@@ -1,113 +1,267 @@
 # LEARNING: PATTERNS DISCOVERING
+
 ## Introduction
+
 ## Clustering
+
 ### Introduction
+
 ### Hierarchical
+
 #### Agglomerative/Divisive
+
 #### CHAMELEON
+
 #### BIRCH
+
 #### HDBSCAN
+
 #### ROCK
+
 #### Echidna
+
 #### Diana
+
 #### Agnes
+
 ### Partititonal
+
 #### k-methods
+
 ##### k-means
+
 ##### k-centroids
+
 ##### k-modes
+
 ##### k-mini-batches
+
 #### PAM
+
 #### CLARANAS
+
 #### CLARA
+
 #### FCM
+
 #### FCMdC
+
 #### Fanny
+
 ### Density /Latent distibutions
+
 #### DBSCAN
+
 #### OPTICS
+
 #### PreDeCon
+
 #### SUBCLU
+
 #### DENCLUE
+
 #### DBCLASD
+
 #### Graph based clustering
+
 ##### Spectral clustering
+
 #### Mean Shift
+
 #### Substractive Methods
+
 ### Grids
+
 #### STING
+
 #### CLIQUE
+
 #### WaveCluster
+
 #### OptiGrid
+
 ### Model Based
+
 #### EM
+
 #### CLASSIT
+
 #### SOMs
+
 #### COBWEB
+
 #### Neural Networks
+
 ### Other
+
 #### Affinity propagation
+
 #### Fuzzy c-means
+
 ### By problems
+
 #### Numerical and categorical
+
 #### Text data
+
 #### Sound
+
 #### Vision
+
 ### Results diagnostics
+
 ### Elements selection
+
 ### IML
+
 ### By problems
+
 ## Association
+
 ### Apriori
+
 ### Euclat
+
 ### FP-growth
+
 ### ASSOC
+
 ### OPUS
+
 ### Neural Networks
+
 ### Results diagnostics
+
 ### Elements selection
+
 ### IML
+
 ### By problems
+
 ## Dimentionality reduction
+
 ### Unsupervised
+
 #### PCA
+
 ##### Basic PCA
+
 ##### Incremental PCA
+
 ##### kernel PCA
-#### ICA
+
 #### t-SNE
+
 #### Local Linear Embedding
+
 #### Isomap
+
 #### LDA as dimentional reduction
+
 #### Partial Least Squares
+
 #### Multidimentional Scaling
+
 #### Correspondence Analysis
+
 #### Kohonen Networks
+
 #### Neural Networks (other than Kohonen)
+
 #### Factor Analysis
+
 #### Latent semantic analysis
+
 #### Autoencoders
+
+#### Analiza glownych skladowych (PCA) [Principal Component Analysis]
+
+#### Analiza glownych wspolrzednych (PCoA) [Principal Coordinates Analysis]
+
+#### Analiza korespondencji (CA) [Correspondenca Analysis]
+
+#### Asymetryczna analiza korespondencji (ACA) [Non-symmetric correspondence analysis]
+
+#### Kanoniczna analiza korespondencji (CCA) [Canonical correspondence analysis]
+
+#### Laczna analiza korespondencji (JCA) [Joint Correspondence Analysis] 
+
+#### Odwrocona analiza korespondencji (InvCA) [Inverse correspondence analysis]
+
+#### Taksowkowa analiza korespondencji (TCA) [Taxicab Correspondence Analysis]
+
+#### Rozmyta  analiza korespondencji (FCA) [Fuzzy correspondence analysis] 
+
+#### Wieloraka analiza korespondencji (MCA) [Multiple correspondence analysis]
+
+#### Regularyzowana wieloraka analiza korespondencji (RMCA) [Regularized Multiple Correspondence Analysis]
+
+#### Analiza czynnikowa (FA) [Factor analysis]
+
+#### Wieloraka analiza czynnikowa (MFA) [Multiple Factor Analysis]
+
+#### Analiza skladowych niezaleznych (ICA) [Independent component analysis ]
+
+#### (DCA) [Detreded Correspondence Analysis]
+
+#### Nieliniowa Analiza Korespondencji (NPCA) [Nonlinear Principal Components Analysis]
+
+#### (MDS) [Non-Metric Multidimensional Scaling]
+
 ### Supervised
+
 #### LDA
+
 #### Partial Least Squares
+
 ### Results diagnostics
+
 ### Elements selection
+
 ### IML
+
 ### By problems
+
 ## Casuality analysis
+
 ### SEM
+
+Modele SEM służą do analizowanie przyczynowości/korelacji miedzy zmiennymi. Badać tworzy określone założenia co do struktury przyczynowości/korelacji między zmiennymi i potem to weryfikuje. W podejściu takim możemy również stawiać hipotezy na temat zmiennych ukrytych *latent variables*.
+
+Filmik gdzie mam pokazane co jest estymowane w podejściu ze zmiennymi ukrytymi: (link)[<https://www.youtube.com/watch?v=nR94_juMpX0>]
+
+[typy analiz SEM](<https://www.theanalysisfactor.com/four-types-sem/>)
+
+[typy path analysis i inne rzeczy o SEM](https://basicmedicalkey.com/path-analysis-and-structural-equation-modeling/)
+
 #### Confirmatory factor analysis
+
 #### Confirmatory composite analysis
+
 #### Path analysis
+
+W tym podejściu zakładamy że wszystkie zmiennej są jawna (nie ma zmiennych ukrytych).
+
 #### Partial least squares path modeling
+
 #### Latent growth modeling
+
 ## Dimentions decomoposition
+
 ### Results diagnostics
+
 ### Elements selection
+
 ### IML
+
 ### By problems
+
 ## Generative models
+
 ### Results diagnostics
+
 ### Elements selection
+
 ### IML
+
 ### By problems

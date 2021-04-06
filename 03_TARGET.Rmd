@@ -1,82 +1,573 @@
+---
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
 # LEARNING: WITH TARGET
+
 ## Introduction
+
 ### Classification
+
 ### Regression
+
 ## Econometrical regression
+
 ### Basic regression
+
 ### Basic dynamic model
+
 ### Generalisations and constrains
+
 ### Bayesian inference
+
 ### Multivariate models
+
 ### Models with effects
+
 ### Nonparametric regression
+
 #### Splines
+
 #### Isotonic
+
 ### Other regression models
+
 #### Canonical analysis
+
 #### ANOVA MANOVA ANCOVA
+
 ## LDA & QDA
+
 ## Bayesian models
+
 ## Trees
-### Classification 
+
+Drzewo jest przykładem algorytmu zachłannego (greedy)
+
+**Dlaczego w praktyce używa się tylko drzew binarnych:**
+
+[(link:
+stack_change)](https://stats.stackexchange.com/questions/12187/are-decision-trees-almost-always-binary-trees)
+
+The number of possible splits goes up exponentially. If you are
+splitting on a continuous variable that has 1000 distinct values, there
+are 999 binary splits, but 999\*998 trinary splits. There are
+
+$\binom{1000-1}{3-1} = 999*998/2$
+
+splits, actually.
+
+### pros  
+
+-   Nie trzeba preprocesować danych. Nie trzeba normalizować zmiennych
+    ciągłych. Zmiennych jakościowych nie trzeba rekodować.
+
+-   możliwość pracy z danymi jakościowymi i ilościowymi
+
+-   są nieparametryczne. Nie mają założeń o rozkładach
+
+-   nie ma problemu z brakami danych. Przy analizie zmiennej na splicie
+    braki są prostu pomijane.
+
+-   łatwa interpretacja
+
+-   szybkie wyliczenie predykcji przez niską złożoność obliczeniową
+    O(log(m)).
+
+-   Tak naprawdę same przeprowadzają selekcje cech (feature selection).
+
+### cons
+
+-   Łatwo model przetrenować. Są niestabilne. Małe zmiany w danych
+    generują mocno różniące się drzewa. Przez te problemy występuje duża
+    wariancja modelu i słabe uogólnianie.
+
+-   są algorytmem zachłannym więc nie dają gwarancji znalezienia optimum
+    globalnego.
+
+-   dosyć długo czas estymacji modelu
+
+-   wrażliwość na rotacje danych [@Geron2018] s. 184.
+
+[dhirajkumarblog.medium](https://dhirajkumarblog.medium.com/top-5-advantages-and-disadvantages-of-decision-tree-algorithm-428ebd199d9a)
+
+### Classification
+
 ### Regression
+
 ## SVM
-### Classification 
+
+### Classification
+
 ### Regression
+
 ## K-NN
-### Classification 
+
+### Classification
+
+**Jak wyliczane jest prawdopodobieństwo w *sklearn*** :
+
+[link](https://datascience.stackexchange.com/questions/27444/how-does-sklearn-kneighborsclassifier-compute-class-probabilites)
+
+The class probabilities are the normalized weighted average of
+indicators for the k-nearest classes, weighted by the inverse distance.
+
+For example: Say we have 6 classes, and the 5 nearest examples to our
+test input have class labels 'F', 'B', 'D', 'A', and 'B', with distances
+2, 3, 4, 5, and 6, respectively.
+
+Then the unnormalized class probabilities can by computed by:
+
+    (1/2) * [0, 0, 0, 0, 0, 1] + (1/3) * [0, 1, 0, 0, 0, 0] + 
+    (1/4) * [0, 0, 0, 1, 0, 0] + (1/5) * [1, 0, 0, 0, 0, 0] + 
+    (1/6) * [0, 1, 0, 0, 0, 0] =
+
+    [1/5 ,1/2, 0, 1/4, 0, 1/2]
+
 ### Regression
+
 ## Log-linear model
+
 ## Similarity learning
+
 ## Survival models
+
+[modele typi
+survival](https://www.theanalysisfactor.com/the-six-types-of-survival-analysis-and-challenges-in-learning-them/)
+
++--------------------------------------------------------------------+
+|                                                                    |
++====================================================================+
++--------------------------------------------------------------------+
+
 ## Ensembled models
-### Bagging (for example Random Forests)
-### Boosting (for example Gradient and Ada Boosing)
+
+### Bagging and Pasting
+
+#### Random Forest
+
+##### Out of Bag Error
+
+### Boosting
+
+#### Ada Boost
+
+Adaptive boosting (adaptacyjne wzmacnianie).
+
+Mam tutaj 2 rodzaje wag:
+
+1.  Wagi modeli. Im lepszy model tym będzie miał w finalnej klasyfikacji
+    większą wagę.
+    $\alpha_t = \frac{1}{2}\ln(\frac{1-total.error}{totl.error})$ .
+    Ponieważ funkcja nie ma wartości dla total_error równe 0 i 1
+    zazwyczaj dodaje się tutaj jakąś korektę dla zabezpieczenia. Total
+    error to suma błędów ważonych wagami obserwacji.
+
+2.  Wagi obserwacji. Obserwacje źle zaklasyfikowane przez i-ty model
+    mają większą wagę przy następnym modelu. Wagi mogę być używane do
+    losowania ważonego dla następnego modelu, albo do ważonego Ginii
+    index używanego do obliczania "impurity". Wagi dla obserwacji źle
+    zaklasyfikowanych liczy się ze wzoru :
+    $nowa.waga = stara.waga \cdot e^{waga.poprzedniego.modelu}$. Wagi
+    dla klasyfikacji dobrze zaklasyfikowanych liczy się ze wzoru:
+    $nowa.waga = stara.waga \cdot e^{- waga.poprzedniego.modelu}$ .
+
+    W tym wzorach można dodać współczynnik uczenia w wykładniku
+    liczby e. Patrz: [@Bonaccorso2019] s 263.
+
+Ada boost:
+
+-   Zazwyczaj bazuje na drzewach. Jeżeli są to drzewa, to najczęściej
+    używa się *stumps* czyli drzew binarnych z tylko jednym podziałem.
+
+-   występuje w m.in następujących wersjach:
+
+    -   Bazowy AdaBoost do zagadnień binarnych.
+
+    -   M1 - podstawowy algorytm dla zagadnienia klasyfikacyjnego.
+        [@Raschka2019] s 234.
+
+    -   M2 - (porównanie z M1
+        [link](<https://www.programmersought.com/article/89144744462/>))
+
+    -   SUMME - jest uogólnieniem na zagadnienie wieloklasowego bez
+        używania podejścia jeden-przeciwko-wszystkim (One-vs-Rest).
+        Jeżeli robimy model binarny to podeście to redukuje się do
+        standardowego AdaBoost M1.
+
+    -   SUMME.R - (litera R od *real* - AdaBoost rzeczywisty)
+        rozwinięcie, gdzie wagi są liczone w oparciu o
+        prawdopodobieństwa. Pełny algorytm w [@Bonaccarso2019] s 268.
+
+    -   R2 - AdaBoost dla zagadnienia regresyjnego. Pełny algorytm w
+        [@Bonaccarso2019] s 271.
+
+**SUMME**
+
+W AdaBoost M1 dla przypadku binarnego, waga modelu w t-ej iteracji
+zdefiniowana jako
+$\alpha_t = \frac{1}{2}\ln(\frac{1-total.error}{totl.error})$ przyjmuje
+wartość 0 jeżeli model jest losowy, czyli dostajemy 50% źle
+zaklasyfikowanych elementów (jeżeli model zaklasyfikował poprawnie mniej
+niż 50% to po prostu odwracamy jego predykcje i dostajemy model lepszy
+od losowego). Jeżeli jednak mamy więcej klas to próg losowości musi być
+inaczej zrobiony i zależny od ilości klas. Model gdzie jest 10
+równolicznych klas i dobrze sklasyfikował 50% obserwacji jest dużo
+lepszy od modelu losowego. Dlatego wzór na wagę modelu musi zostać
+skorygowany.
+
+**SUMMER.R**
+
+Tutaj wagi modeli dla każdej iteracji są liczone w oparciu o
+prawdopodobieństwa przynależności do klas. Każdy model ma inna wagą dla
+każdej z klas. Nie jest tak jak w standardowym AdaBoost że jest jedna
+waga dla modelu.
+
+Wagi obserwacji też są liczone w oparciu o te prawdopodobieństwa. Przy
+tych wagach uwzględniamy też faktyczne wartości empiryczne targetu.
+
+Żeby policzyć wagę t-ego modelu dla k-tej klasy najpierw bierzemy
+obserwacje w tej klasy (przynależność do klasy wynika z danych
+empirycznych, a nie jest estymowana z modelu). Dla tych obserwacji
+liczymy ŚREDNIE wyestymowane z modelu prawdopodobieństwo przynależenia
+obserwacji do tej klasy. Przy uśrednianiu prawdopodobieństwa powinny
+chyba powinny być używane wagi obserwacji.
+
+Dla danej klasy jest tym większa waga modelu in wyższe jest
+prawdopodobieństwo przynależenia tej klasy według modelu.
+
+W modelu decyzja o klasyfikacji i-tej obserwacji jest podejmowana na
+podstawie wyboru klasy dla której suma wago modelu po wszystkich
+iteracjach jest największa (pamiętajmy że wagi modeli są per klasa).
+
+Algorytm SUMME.R daje wyniki zbieżne do addytywnej regresji
+logistycznej. Jest uważany za bardziej efektywny niż klasyczne wersja
+AdaBoosta NIE oparta na prawdopodobieństwach.
+
+AdaBoost w R od scratch-a:
+[link:rpubs](<https://rpubs.com/miguelpatricio/adaboost>)
+
+**Assumptions**
+
+-   **Quality Data**: Because the ensemble method continues to attempt
+    to correct misclassifications in the training data, you need to be
+    careful that the training data is of a high-quality.
+
+-   **Outliers**: Outliers will force the ensemble down the rabbit hole
+    of working hard to correct for cases that are unrealistic. These
+    could be removed from the training dataset.
+
+-   **Noisy Data**: Noisy data, specifically noise in the output
+    variable can be problematic. If possible, attempt to isolate and
+    clean these from your training dataset.
+
+**Pros**
+
+**Cons**
+
+-   Boosting technique learns progressively, it is important to ensure
+    that you have quality data. AdaBoost is also extremely sensitive to
+    Noisy data and outliers so if you do plan to use AdaBoost then it is
+    highly recommended to eliminate them.
+
+```{=html}
+<!-- -->
+```
+-   AdaBoost has also been proven to be slower than XGBoost.
+
+#### LightGBM
+
+[link:tword_data_sience](https://towardsdatascience.com/what-makes-lightgbm-lightning-fast-a27cf0d9785e)
+
 ### Stacking
+
 ### Twicing
+
 ### Bandling
+
 ## Neural Networks
+
 ### Introduction
+
 ### Basics
+
 ### Reccurent
+
 #### Simple reccurent
+
 #### Bidirectorial
+
 #### LSTM
+
 #### GRU
+
 #### Attention
+
 ### CNN
+
 ### Resnet
+
 ## Stochastic processes
+
 ### Basic trend models
+
 ### Basic adaptative models
+
 ### Econometric time series models
+
 #### dynamic (for example error correction models)
+
 #### SARIMAX
+
 #### VARIMAX
+
 #### ARCH class models
+
 #### Cointegration (including ARLD approach)
+
 ### Time series decomposition decomposition
+
 ### Kalman filters
+
 ### Neural Networks
+
 #### Long short term memory
+
 #### CNN
+
 ### Panel Regression
+
 ### Gaussian Mixtures
+
 ### Ensembled models
+
 ### Martingales
+
 ### Markov Process
+
 ### Winer Process
+
 ## Results diagnostics
-### Classification 
-#### Scores callibration
+
+### Classification
+
+#### Scores calibration
+
+##### Problem
+
+Kalibracja dotyczy
+
+-   prawdopodobieństwa które nie odpowiadaj poziomom ufnosci
+-   miara (scores) z modeli które nia sa prawdopodobieństwami (SVM
+    zwraca score jako odleglosc obserwacji o hiperplaszczyzny
+    separujacej, a w K-NN mozemy budowac miary oparte o odleglosci
+    miedzy obserwacjami - wiecej w k-NN dla klasyfikacji) ale chcemy,
+    aby te scory byly przerobione na prawdopodobienstwa
+-   nie wiem co z przypadkiem kiedy mamy same 'labels' z modelu i czy
+    można je przeksztaca na prawdopodobieństwo. Jednak takie modele sa
+    rzadkoscia: Nearly every classifier - ogistic regression, a neural
+    net, a decision tree, a k-NN classifier, a support vector machine,
+    etc. --- can produce a score instead of (or in addition to) a class
+    label.1
+
+##### Kalibracja a problemy konkretnych modeli
+
+**Random Forest**: RandomForestClassifier shows the opposite behavior:
+the histograms **show peaks at approximately 0.2 and 0.9 probability,
+while probabilities close to 0 or 1 are very rare**. An explanation for
+this is given by Niculescu-Mizil and Caruana 1: "Methods such as bagging
+and random forests that average predictions from a base set of models
+can have difficulty making predictions near 0 and 1 because variance in
+the underlying base models will bias predictions that should be near
+zero or one away from these values. Because predictions are restricted
+to the interval [0,1], errors caused by variance tend to be one-sided
+near zero and one. For example, if a model should predict p = 0 for a
+case, the only way bagging can achieve this is if all bagged trees
+predict zero. If we add noise to the trees that bagging is averaging
+over, this noise will cause some trees to predict values larger than 0
+for this case, thus moving the average prediction of the bagged ensemble
+away from 0. We observe this effect most strongly with random forests
+because the base-level trees trained with random forests have relatively
+high variance due to feature subsetting." As a result, the calibration
+curve also referred to as the reliability diagram (Wilks 1995 2) shows a
+characteristic sigmoid shape, indicating that the classifier could trust
+its "intuition" more and return probabilities closer to 0 or 1
+typically.
+
+**LogisticRegression**: Returns well calibrated predictions by default
+as it directly optimizes Log loss. In contrast, the other methods return
+biased probabilities; with different biases per method:
+
+**GaussianNB**: Tends to push probabilities to 0 or 1 (note the counts
+in the histograms). This is mainly because it makes the assumption that
+features are conditionally independent given the class, which is not the
+case in this dataset which contains 2 redundant features.
+
+**Linear Support Vector Classification (LinearSVC)**: shows an even more
+sigmoid curve than RandomForestClassifier, which is typical for
+maximum-margin methods (compare Niculescu-Mizil and Caruana 1), which
+focus on difficult to classify samples that are close to the decision
+boundary (the support vectors).
+
+##### Calibration curve (reliability diagram)
+
+[how to make
+it](https://journals.ametsoc.org/view/journals/wefo/22/3/waf993_1.xml)
+
+First, the forecast values are partitioned into bins Bk, k = 1, . . . ,
+K (which form a partition of the unit interval into nonoverlapping
+exhaustive subintervals). The Bk are often taken to be of equal width,
+but if the distribution of the forecast values is nonuniform, then
+choosing the bins so that they are equally populated is an attractive
+alternative.
+
+Next, for each i, it is established which of the K bins the forecast
+value Xi falls into. For each bin Bk, let Ik be the collection of all
+indices i for which Xi falls into bin Bk; that is,
+
+$I_k:=\{i;X_i \in B_k\}$
+
+The corresponding observed relative frequency fk is the number of times
+the event happens, given that Xi ∈ Bk, divided by the total number of
+forecast values Xi ∈ Bk. This can be expressed as:
+
+$f_k=\frac{\sum_{i \in I_k}^{}{Y_i}}{\#I_k}$
+
+where \#Ik denotes the number of elements in Ik. Each bin Bk is
+represented by a single "typical" forecast probability rk. Although the
+arithmetic center of the bin is often used to represent the forecast
+values in that bin, this method has a clear disadvantage: If the
+forecast is reliable, the observed relative frequency for a given bin Bk
+is expected to coincide with the average of the forecast values over
+that bin Bk, rather than with the arithmetic center of the bin. Plotting
+the observed relative frequency over the arithmetic center can cause
+even a perfect reliability diagram to be off the diagonal by up to half
+the width of a bin. In this paper, observed relative frequencies for a
+bin Bk are plotted versus the average of the forecast values over bin
+Bk. This average, denoted by rk, is:
+
+$r_k:=\frac{\sum_{i \in I_k}{X_i}}{\#I_k}$
+
+The reliability diagram comprises a plot of $f_k$ versus rk for all bins
+$B_k$.
+
+##### Skalowanie Platta
+
+[link](https://medium.com/@nupur94/calibration-of-models-45721a221da6)
+
+**Steps** for applying Platt scaling
+
+1.  Split the data set into train and test data set.
+2.  Train the model on the training data set.
+3.  Apply SGD (stochstic gradient descent) Classifier to minimize hinge
+    loss.
+4.  Apply Calibrated Classifier from sklearn and take SGD classifier as
+    a base estimator.
+5.  Sort the predicted probability scores in ascending order.
+6.  Divide the sorted probability and actual y into multiple bins. Here,
+    we are taking bin size as 50.
+7.  Take the average of actual 'y' and predicted probabilities for each
+    bins.
+8.  Plot average of actual y on y-axis and average of predicted
+    probability on x-axis.
+
+Pros: Works well with a small dataset
+
+Cons: Could produce worse probabilities calibration wise if the
+assumptions do not hold
+
+**Skalowanie dla zagadnienia multiklasowego**
+
+[platts-scaling-for-multi-label-classification](https://datascience.stackexchange.com/questions/45924/platts-scaling-for-multi-label-classification)
+
+There are a few multiclass variants of Platt scaling. The easiest
+approach is as you have described; simply perform one Platt scaling on
+each class.
+
+However, there are more sophisticated options--a very simple one to
+implement is training a standard logistic regression on the logits (the
+values before the softmax activation is applied). This has called matrix
+scaling and can overfit pretty easily, so only use this if you have a
+large calibration set. Alternatively, a fewer-parameter version called
+vector scaling is relatively simple to implement, where the weights
+matrix inside the logistic regression is restricted to be a diagonal
+matrix. Finally, a very simple option that has been shown to work well
+for neural networks is temperature scaling, where all logits are simply
+scaled by a single scalar parameter.
+
+You can read more about these and their application to neural networks
+in Section 4.2 of "On Calibration of Modern Neural Networks" (2017) -
+available [here](https://arxiv.org/pdf/1706.04599.pdf)
+
+##### Regresja izotoniczna
+
+[link](https://medium.com/@nupur94/calibration-of-models-45721a221da6)
+
+Pros:
+
+Makes no assumption about the input probabilities. A benefit of isotonic
+regression is that it is not constrained by any functional form, such as
+the linearity imposed by linear regression, as long as the function is
+monotonic increasing.
+
+Cons: Requires more data points to work well
+
+##### Calibration in *sklearn*
+
+There are 2 ways of using the sklearn `CalibratedClassifierCV` class :
+
+-   Pass a fitted model and thereby setting cv to prefit. It is
+    important to note that the data used in fitting the base estimator
+    and the calibrator is disjoint.
+
+-   Fit a base estimator using k-fold cross-validation and the
+    probabilities for each of the folds are then averaged for
+    prediction.
+
 ### Regression
+
 ## Elements selection
+
+### Feature selection
+
+##### Feature Importance
+
+**MDI**
+
+**MDA**
+
+Mean Decrease Accuracy, MDA, also known as permutation importance.
+
+The approach can be described in the following steps:
+
+1\. Train the baseline model and record the score (accuracy/R²/any
+metric of importance) by passing the validation set (or OOB set in case
+of Random Forest). This can also be done on the training set, at the
+cost of sacrificing information about generalization.
+
+2\. Re-shuffle values from one feature in the selected dataset, pass the
+dataset to the model again to obtain predictions and calculate the
+metric for this modified dataset. The feature importance is the
+difference between the benchmark score and the one from the modified
+(permuted) dataset.
+
 ### Variables exogenity
+
 #### Granger Exogenity
+
 ## IML
+
 ## By problems
+
 ### Numerical
+
 ### Categorical
+
 ### Text
+
 ### Sound
+
 ### Vision
+
