@@ -21,6 +21,6 @@ new_names <- readxl::read_xlsx(path = paste0(global_path, '/files_list.xlsx'), s
 new_names %<>% dplyr::filter(new_name != '' & !is.na(new_name))
 
 for(i in 1:nrow(new_names)){
-  file.rename(from = paste0(new_names$name, '.Rmd'), to = paste0(new_names$new_name, '.Rmd'))  
+  file.rename(from = paste0(new_names$name, '.Rmd'), to = paste0(new_names$new_name, '.Rmd'))
 }
 

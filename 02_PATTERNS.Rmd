@@ -184,13 +184,13 @@
 
 #### Kanoniczna analiza korespondencji (CCA) [Canonical correspondence analysis]
 
-#### Laczna analiza korespondencji (JCA) [Joint Correspondence Analysis] 
+#### Laczna analiza korespondencji (JCA) [Joint Correspondence Analysis]
 
 #### Odwrocona analiza korespondencji (InvCA) [Inverse correspondence analysis]
 
 #### Taksowkowa analiza korespondencji (TCA) [Taxicab Correspondence Analysis]
 
-#### Rozmyta  analiza korespondencji (FCA) [Fuzzy correspondence analysis] 
+#### Rozmyta analiza korespondencji (FCA) [Fuzzy correspondence analysis]
 
 #### Wieloraka analiza korespondencji (MCA) [Multiple correspondence analysis]
 
@@ -230,7 +230,7 @@ Modele SEM służą do analizowanie przyczynowości/korelacji miedzy zmiennymi. 
 
 Filmik gdzie mam pokazane co jest estymowane w podejściu ze zmiennymi ukrytymi: (link)[<https://www.youtube.com/watch?v=nR94_juMpX0>]
 
-[typy analiz SEM](<https://www.theanalysisfactor.com/four-types-sem/>)
+[typy analiz SEM](https://www.theanalysisfactor.com/four-types-sem/)
 
 [typy path analysis i inne rzeczy o SEM](https://basicmedicalkey.com/path-analysis-and-structural-equation-modeling/)
 
