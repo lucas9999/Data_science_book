@@ -20,6 +20,7 @@ Przykladowy wpis:
 F:/1_Programs_and_programing/DS_algorithms/Data_Science_Book
 
 
+
 # Url
 [linked phrase](http://example.com)
 
