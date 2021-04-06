@@ -1,10 +1,19 @@
 # LEARNING: REINFORCEMENT
+
 ## Introduction
+
 ## TD
+
 ## SARSA
+
 ## Q-learning
+
 ## By problems
+
 ### Numerical and categorical
+
 ### Text data
+
 ### Sound
+
 ### Vision

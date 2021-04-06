@@ -1,15 +1,29 @@
 # LEARNING: HYBRID
+
 ## Introduction
+
 ## Semi-supervised learning
+
 ### EM
+
 ### CPLE
+
 ### SVM and TSVM
+
 ### Graphs
+
 ### Neural Networks
+
 ### By problems
+
 #### Numerical and categorical
+
 #### Text data
+
 #### Sound
+
 #### Vision
+
 ## Self-supervised learning
+
 ## Mult-instance learning

@@ -1,34 +1,67 @@
 # OTHER MODELS AND PROBLEMS
+
 ## Social Network
+
 ## Queuing (kolejki)
+
 ## Spacial model (modele przestrzenne)
+
 ## SIX-Sigma (process quality control, quality control charts)
+
 ## Process Analysis (Analiza procesu)
+
 ## Reliability and Item Analysis (Analiza rzetelności)
+
 ## Experimentla design (Planowanie doświadczeń)
+
 ## Sequential analysis
+
 ## Logic programming (programowanie logiczne)
+
 ## Financial models
+
 ### Distance to default
+
 ### Copula methods (kopuły)
+
 ### Black Scholes
+
 ### Vasicek
+
 ### Markovitz
+
 ### KMV
+
 ### Credit Metrics
+
 ### Credit Plus
+
 ### z-scores
+
 ### CAPM
+
 ### VaR - Value at risk
+
 ### CVA
+
 ### Acturial models
+
 ## Biological/Medical Models
+
 ## Case Studies
+
 ### Score cards
+
 ### PD models
+
 ### LGD models
+
 ### Churn models
+
 ### ICAAP
+
 ### AMA
+
 ### Stress tests
+
 ### Master Scale
