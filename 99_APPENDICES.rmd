@@ -1,0 +1,81 @@
+# APPENDICIES
+
+## Appendix A INDEX OF STATISTICAL TEST
+
+## Appendix B Most important theorems in Statistics and probability calculus
+
+### Central Limit
+
+### Fisher-Tippett-Gnedenko
+
+## Appendix C Different entries
+
+### out-of-bag error
+
+### hyperparameters
+
+### information leakage
+
+### apriori vs aposteriori
+
+### colaborative filtering
+
+### embedding
+
+## Appendix D DICTIONARY POLISH - ENGLISH
+
+## Links - important
+
+### books
+
+[ksiazka do IML](https://christophm.github.io/interpretable-ml-book/)
+
+[ksiazki w bookdownie](https://bookdown.org/)
+
+[statystyka z R-em](https://benwhalley.github.io/just-enough-r/index.html)
+
+[kasiazka Hastie](https://web.stanford.edu/~hastie/ElemStatLearn/)
+
+[rozne ksiazki w PDF](https://1lib.eu/s/opencv)
+
+[ekonometria w R](http://www.john-ros.com/Rcourse/)
+
+### strony
+
+[internetowy podręcznik StatSoft](https://www.statsoft.pl/textbook/stathome.html)
+
+[lista rozkładów prawdopodobieństwa](https://www.wikiwand.com/en/List_of_probability_distributions)
+
+[lista haseł statystycznych na wikipedii](https://www.wikiwand.com/en/List_of_statistics_articles)
+
+[101 modeli w R](https://www.r-bloggers.com/2019/07/101-machine-learning-algorithms-for-data-science-with-cheat-sheets/)
+
+[papers with code](https://paperswithcode.com/methods/)
+
+[idre](https://stats.idre.ucla.edu/other/dae/)
+
+[open AI blog](https://openai.com/blog/)
+
+[machine leargnin mastery](https://machinelearningmastery.com/)
+
+[kaggle](https://www.kaggle.com/)
+
+[pyimage search](https://www.pyimagesearch.com/)
+
+[AI news](https://allainews.com/)
+
+[sci-hub](https://sci-hub.se/)
+
+[towardsdatascience](https://towardsdatascience.com/)
+
+### youtube
+
+[StatQuest](https://www.youtube.com/user/joshstarmer)
+
+[Kilcher - analizy artykulow](https://www.youtube.com/c/YannicKilcher/featured)
+
+[deep learning ai](https://www.youtube.com/c/Deeplearningai/playlists) są tutaj wykłady Ng Andrew
+
+[krishnaik](https://www.youtube.com/user/krishnaik06/videos)
+
+[stanford machine learning](https://www.youtube.com/results?search_query=Stanford+CS229)

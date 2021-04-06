@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 UNIVARIATE ANALYSIS | A Minimal Book Example</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 UNIVARIATE ANALYSIS | A Minimal Book Example" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 UNIVARIATE ANALYSIS | A Minimal Book Example" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Yihui Xie" />
+
+
+<meta name="date" content="2019-09-01" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html">
+<link rel="next" href="multivariate-analysis.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> INTRO</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#list-of-methods"><i class="fa fa-check"></i><b>1.1</b> list of methods</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#links"><i class="fa fa-check"></i><b>1.2</b> links</a></li>
+</ul></li>
+<li class="part"><span><b>I <lfg>A BASIC STATISTICS AND PROBABILITY</lfg></b></span></li>
+<li class="chapter" data-level="2" data-path="univariate-analysis.html"><a href="univariate-analysis.html"><i class="fa fa-check"></i><b>2</b> UNIVARIATE ANALYSIS</a><ul>
+<li class="chapter" data-level="2.1" data-path="univariate-analysis.html"><a href="univariate-analysis.html#distributions"><i class="fa fa-check"></i><b>2.1</b> Distributions</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="univariate-analysis.html"><a href="univariate-analysis.html#list-of-most-popular-distributions-in-r"><i class="fa fa-check"></i><b>2.1.1</b> list of most popular distributions in R</a></li>
+<li class="chapter" data-level="2.1.2" data-path="univariate-analysis.html"><a href="univariate-analysis.html#distributions-in-details"><i class="fa fa-check"></i><b>2.1.2</b> distributions in details</a></li>
+<li class="chapter" data-level="2.1.3" data-path="univariate-analysis.html"><a href="univariate-analysis.html#fitting-distributions"><i class="fa fa-check"></i><b>2.1.3</b> fitting distributions</a></li>
+<li class="chapter" data-level="2.1.4" data-path="univariate-analysis.html"><a href="univariate-analysis.html#test-for-goodness-of-fit"><i class="fa fa-check"></i><b>2.1.4</b> test for goodness of fit</a></li>
+<li class="chapter" data-level="2.1.5" data-path="univariate-analysis.html"><a href="univariate-analysis.html#fitting-distribution-in-ggplot2"><i class="fa fa-check"></i><b>2.1.5</b> fitting distribution in ggplot2</a></li>
+<li class="chapter" data-level="2.1.6" data-path="univariate-analysis.html"><a href="univariate-analysis.html#fitting-truncated-distributions"><i class="fa fa-check"></i><b>2.1.6</b> fitting truncated distributions</a></li>
+<li class="chapter" data-level="2.1.7" data-path="univariate-analysis.html"><a href="univariate-analysis.html#other-useful-functions-for-distributions-analysis"><i class="fa fa-check"></i><b>2.1.7</b> other useful functions for distributions analysis</a></li>
+<li class="chapter" data-level="2.1.8" data-path="univariate-analysis.html"><a href="univariate-analysis.html#ploting-distributions-tools"><i class="fa fa-check"></i><b>2.1.8</b> ploting distributions tools</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="univariate-analysis.html"><a href="univariate-analysis.html#descriptive-statitics"><i class="fa fa-check"></i><b>2.2</b> Descriptive statitics</a></li>
+<li class="chapter" data-level="2.3" data-path="univariate-analysis.html"><a href="univariate-analysis.html#statistical-tests"><i class="fa fa-check"></i><b>2.3</b> Statistical Tests</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html"><i class="fa fa-check"></i><b>3</b> MULTIVARIATE ANALYSIS</a><ul>
+<li class="chapter" data-level="3.1" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#basics-of-probability"><i class="fa fa-check"></i><b>3.1</b> Basics of probability :</a></li>
+<li class="chapter" data-level="3.2" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#distributions-1"><i class="fa fa-check"></i><b>3.2</b> Distributions</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#distributions-examples"><i class="fa fa-check"></i><b>3.2.1</b> distributions examples</a></li>
+<li class="chapter" data-level="3.2.2" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#fitting"><i class="fa fa-check"></i><b>3.2.2</b> fitting</a></li>
+<li class="chapter" data-level="3.2.3" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#goodness-of-fit"><i class="fa fa-check"></i><b>3.2.3</b> goodness of fit</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#descriptive-statistics"><i class="fa fa-check"></i><b>3.3</b> Descriptive statistics</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#correltion"><i class="fa fa-check"></i><b>3.3.1</b> correltion</a></li>
+<li class="chapter" data-level="3.3.2" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#correlation-ratio-eta-stosunek-korelacyjny-eta"><i class="fa fa-check"></i><b>3.3.2</b> correlation ratio eta [Stosunek korelacyjny eta]</a></li>
+<li class="chapter" data-level="3.3.3" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#partial-correlation"><i class="fa fa-check"></i><b>3.3.3</b> partial correlation</a></li>
+<li class="chapter" data-level="3.3.4" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#semi-partial-part-correlation"><i class="fa fa-check"></i><b>3.3.4</b> semi-partial (part) correlation</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#tests"><i class="fa fa-check"></i><b>3.4</b> Tests</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#correlation"><i class="fa fa-check"></i><b>3.4.1</b> correlation</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>II <lfg>B BASIC STATISTICS AND PROBABILITY</lfg></b></span></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">A Minimal Book Example</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="univariate-analysis" class="section level1">
+<h1><span class="header-section-number">Chapter 2</span> UNIVARIATE ANALYSIS</h1>
+<div id="distributions" class="section level2">
+<h2><span class="header-section-number">2.1</span> Distributions</h2>
+<div id="list-of-most-popular-distributions-in-r" class="section level3">
+<h3><span class="header-section-number">2.1.1</span> list of most popular distributions in R</h3>
+<p>Additional info: see <span class="citation">(Biecek <a href="#ref-Biecek2008" role="doc-biblioref">2008</a>)</span> p.144</p>
+<table>
+<thead>
+<tr class="header">
+<th>lp</th>
+<th>distribution</th>
+<th>package</th>
+<th>function</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Normal [normalny]</td>
+<td>stats</td>
+<td>rnorm(n, mean=0, sd=1)</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Wykladniczy</td>
+<td>stats</td>
+<td>rexp(n, rate=1)</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Gamma</td>
+<td>stats</td>
+<td>rgamma(n, shape, scale=1)</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>Poisson</td>
+<td>stats</td>
+<td>rpois(n, lambda)</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>Weibulla</td>
+<td>stats</td>
+<td>rweibull(n, shape, scale=1)</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>Cauchiego</td>
+<td>stats</td>
+<td>rcauchy(n, location=0, scale=1)</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>Beta</td>
+<td>stats</td>
+<td>rbeta(n, shape1, shape2)</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>t-Studenta</td>
+<td>stats</td>
+<td>rt(n, df)</td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td>Fishera-Snecedora</td>
+<td>stats</td>
+<td>rf(n, df1, df2)</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td>Pearsona</td>
+<td>stats</td>
+<td>rchisq(n, df)</td>
+</tr>
+<tr class="odd">
+<td>11</td>
+<td>Dwumianowy [binominal]</td>
+<td>stats</td>
+<td>rbinom(n, size, prob)</td>
+</tr>
+<tr class="even">
+<td>12</td>
+<td>Negative binomial</td>
+<td>stats</td>
+<td>rnbinom(n, size, prob)</td>
+</tr>
+<tr class="odd">
+<td>13</td>
+<td>Geometryczny</td>
+<td>stats</td>
+<td>rgeom(n, prob)</td>
+</tr>
+<tr class="even">
+<td>14</td>
+<td>Hipergeometryczny [hypergeometric]</td>
+<td>stats</td>
+<td>rhyper(nn, m, n, k)</td>
+</tr>
+<tr class="odd">
+<td>15</td>
+<td>Logistyczny [logistic]stats</td>
+<td>stats</td>
+<td>rlogis(n, location=0, scale=1)</td>
+</tr>
+<tr class="even">
+<td>16</td>
+<td>Logarytmiczno-normalny [lognormal]</td>
+<td>stats</td>
+<td>rlnorm(n, meanlog=0, sdlog=1)</td>
+</tr>
+<tr class="odd">
+<td>17</td>
+<td>Jednostajny [uniform]</td>
+<td>stats</td>
+<td>runif(n, min=0, max=1)</td>
+</tr>
+<tr class="even">
+<td>18</td>
+<td>Wilxona-Coxa</td>
+<td>stats</td>
+<td>rwilcox(nn, m, n)</td>
+</tr>
+<tr class="odd">
+<td>19</td>
+<td>Znakow</td>
+<td>stats</td>
+<td>rsignrank(nn, n)</td>
+</tr>
+</tbody>
+</table>
+<p>Probability functions (example for normal distribution):</p>
+<ol style="list-style-type: decimal">
+<li><strong>dnorm</strong> - probability value for given x</li>
+<li><strong>pnorm</strong> - cummulative probability value for given x value</li>
+<li><strong>qnorm</strong> - x value for given quantile</li>
+<li><strong>rnorm</strong> - generation of x values from given distribution</li>
+</ol>
+</div>
+<div id="distributions-in-details" class="section level3">
+<h3><span class="header-section-number">2.1.2</span> distributions in details</h3>
+</div>
+<div id="fitting-distributions" class="section level3">
+<h3><span class="header-section-number">2.1.3</span> fitting distributions</h3>
+<p>See <span class="citation">(Biecek <a href="#ref-Biecek2008" role="doc-biblioref">2008</a>)</span> p. 126</p>
+Fitting normal distribution with <em>maximum likelihood estimation</em>
+<br><br>
+<p style="line-height:0;font-size: 9px">
+code R
+</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(fitdistrplus)
+
+<span class="co"># generating values from normal distribution</span>
+x1 &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">100</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>) 
+
+<span class="co">#dopasowanie rozkładu normalnego </span>
+max_likehood &lt;-<span class="st"> </span>fitdistrplus<span class="op">::</span><span class="kw">fitdist</span>(  x1
+              , <span class="dt">distr =</span> <span class="st">&quot;norm&quot;</span>
+              , <span class="dt">method =</span> <span class="st">&quot;mle&quot;</span>)  <span class="co"># Metoda &#39;mme&#39; jest dla ograniczonej liczby rozkladow. Metoda &quot;mle&quot; (maximum likehood), mozna dopasowac kazdy rozklad.</span>
+
+<span class="kw">summary</span>(max_likehood)</code></pre>
+<br><br>
+<p style="line-height:0;font-size: 9px">
+output R
+</p>
+<pre class="sourceCode r"><code class="sourceCode r">Fitting of the distribution norm by maximum likelihood
+Parameters <span class="op">:</span>
+<span class="st">        </span>estimate Std. Error  <span class="co"># estimated values of distribution parameters</span>
+mean <span class="fl">-0.03694228</span> <span class="fl">0.10864084</span>
+sd    <span class="fl">1.08640842</span> <span class="fl">0.07682038</span>
+Loglikelihood<span class="op">:</span><span class="st">  </span><span class="fl">-150.1816</span>   AIC<span class="op">:</span><span class="st">  </span><span class="fl">304.3632</span>   BIC<span class="op">:</span><span class="st">  </span><span class="fl">309.5735</span>
+Correlation matrix<span class="op">:</span><span class="st">  </span><span class="co"># correlation matrix between estimated parameters</span>
+<span class="st">            </span>mean          sd
+mean <span class="fl">1.0000000000000000</span> <span class="fl">0.0000000000593007</span>
+sd   <span class="fl">0.0000000000593007</span> <span class="fl">1.0000000000000000</span></code></pre>
+Fitting normal distribution with <em>moment matching estimation</em>
+<br><br>
+<p style="line-height:0;font-size: 9px">
+code R
+</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#dopasowanie rozkładu normalnego </span>
+max_likehood &lt;-<span class="st"> </span>fitdistrplus<span class="op">::</span><span class="kw">fitdist</span>(  x1
+              , <span class="dt">distr =</span> <span class="st">&quot;norm&quot;</span>
+              , <span class="dt">method =</span> <span class="st">&quot;mme&quot;</span>)  <span class="co"># works only for selected distribution </span>
+
+<span class="kw">summary</span>(max_likehood)</code></pre>
+<br><br>
+<p style="line-height:0;font-size: 9px">
+output R
+</p>
+<pre class="sourceCode r"><code class="sourceCode r">Fitting of the distribution norm by matching moments
+Parameters <span class="op">:</span>
+<span class="st">        </span>estimate
+mean <span class="fl">-0.03694228</span>
+sd    <span class="fl">1.08640842</span>
+Loglikelihood<span class="op">:</span><span class="st">  </span><span class="fl">-150.1816</span>   AIC<span class="op">:</span><span class="st">  </span><span class="fl">304.3632</span>   BIC<span class="op">:</span><span class="st">  </span><span class="fl">309.5735</span></code></pre>
+Using bootstrap
+<br><br>
+<p style="line-height:0;font-size: 9px">
+code R
+</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(fitdistrplus)
+
+<span class="co"># generating values from normal distribution</span>
+x1 &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">100</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>) 
+
+<span class="co">#dopasowanie rozkładu normalnego </span>
+max_likehood &lt;-<span class="st"> </span>fitdistrplus<span class="op">::</span><span class="kw">fitdist</span>(  x1
+              , <span class="dt">distr =</span> <span class="st">&quot;norm&quot;</span>
+              , <span class="dt">method =</span> <span class="st">&quot;mle&quot;</span>)  <span class="co"># Metoda &#39;mme&#39; jest dla ograniczonej liczby rozkladow. Metoda &quot;mle&quot; (maximum likehood), mozna dopasowac kazdy rozklad.</span>
+
+b1 &lt;-<span class="st"> </span><span class="kw">bootdist</span>(max_likehood, <span class="dt">bootmethod=</span><span class="st">&quot;nonparam&quot;</span>)
+<span class="kw">summary</span>(b1)</code></pre>
+<br><br>
+<p style="line-height:0;font-size: 9px">
+output R
+</p>
+<pre class="sourceCode r"><code class="sourceCode r">Nonparametric bootstrap medians and <span class="dv">95</span>% percentile CI 
+         Median        <span class="fl">2.5</span><span class="op">%     97.5%</span>
+mean <span class="fl">0.09033195</span> <span class="fl">-0.07894069</span> <span class="fl">0.2536168</span>
+sd   <span class="fl">0.89200736</span>  <span class="fl">0.77864431</span> <span class="fl">1.0033668</span></code></pre>
+<br><br>
+<p style="line-height:0;font-size: 9px">
+code R
+</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(b1)</code></pre>
+<br><br>
+<p style="line-height:0;font-size: 9px">
+code R
+</p>
+<div class="figure"><span id="fig:unnamed-chunk-10"></span>
+<img src="figures/01_distr_fitting_boostrap.png" alt="opis z numeracja" width="500px" />
+<p class="caption">
+Figure 2.1: opis z numeracja
+</p>
+</div>
+</div>
+<div id="test-for-goodness-of-fit" class="section level3">
+<h3><span class="header-section-number">2.1.4</span> test for goodness of fit</h3>
+<div id="kolgomorow-smirnow" class="section level4">
+<h4><span class="header-section-number">2.1.4.1</span> kolgomorow-smirnow</h4>
+Porownananie rozkladu z proby z zadanym typem rozkladu
+<br><br>
+<p style="line-height:0;font-size: 9px">
+code R
+</p>
+<pre class="sourceCode r"><code class="sourceCode r">x1 &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">0</span>, <span class="dv">1</span>)
+<span class="kw">ks.test</span>(x1, <span class="st">&quot;pnorm&quot;</span>) <span class="co"># potrzebna litera p przed nazwa rozkladu</span></code></pre>
+Porownananie rozkladu z proby z zadanym typem rozkladu o OKRESLONYCH PARAMETRACH
+<br><br>
+<p style="line-height:0;font-size: 9px">
+code R
+</p>
+<pre class="sourceCode r"><code class="sourceCode r">x1 &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">0</span>, <span class="dv">1</span>)
+<span class="kw">ks.test</span>(x1, <span class="st">&quot;pnorm&quot;</span>, <span class="dt">mean=</span><span class="dv">1</span>, <span class="dt">sd=</span><span class="dv">2</span>) <span class="co"># potrzebna litera p przed nazwa rozkladu</span></code></pre>
+Comparison of two distributions from samples
+<br><br>
+<p style="line-height:0;font-size: 9px">
+code R
+</p>
+<pre class="sourceCode r"><code class="sourceCode r">x1 &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">0</span>, <span class="dv">1</span>)
+x2 &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">2</span>, <span class="dv">2</span>)
+<span class="kw">ks.test</span>(x1, x2)</code></pre>
+<br><br>
+<p style="line-height:0;font-size: 9px">
+output R
+</p>
+<pre class="sourceCode r"><code class="sourceCode r">Two<span class="op">-</span>sample Kolmogorov<span class="op">-</span>Smirnov test
+
+data<span class="op">:</span><span class="st">  </span>x1 and x2
+D =<span class="st"> </span><span class="fl">0.59</span>, p<span class="op">-</span>value =<span class="st"> </span><span class="fl">0.000000000000001554</span>
+alternative hypothesis<span class="op">:</span><span class="st"> </span>two<span class="op">-</span>sided</code></pre>
+<p>Because of low p-value we have to reject null hypothesis (distributions are not the same).</p>
+</div>
+<div id="test-shapiro.wilka-na-normalnosc-rozkladu" class="section level4">
+<h4><span class="header-section-number">2.1.4.2</span> test shapiro.wilka na normalnosc rozkladu</h4>
+<br><br>
+<p style="line-height:0;font-size: 9px">
+code R
+</p>
+<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">0</span>, <span class="dv">1</span>)
+<span class="kw">shapiro.test</span>(x)</code></pre>
+<br><br>
+<p style="line-height:0;font-size: 9px">
+output R
+</p>
+<pre class="sourceCode r"><code class="sourceCode r">Shapiro<span class="op">-</span>Wilk normality test
+
+data<span class="op">:</span><span class="st">  </span>x
+W =<span class="st"> </span><span class="fl">0.98612</span>, p<span class="op">-</span>value =<span class="st"> </span><span class="fl">0.3815</span></code></pre>
+</div>
+<div id="test-jarque-bera-na-normalnosc-rozkladu" class="section level4">
+<h4><span class="header-section-number">2.1.4.3</span> test jarque-bera na normalnosc rozkladu</h4>
+The <b>null hypothesis</b> is a joint hypothesis of the skewness being zero and the excess kurtosis being zero.
+<br><br>
+<p style="line-height:0;font-size: 9px">
+code R
+</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(tseries)
+x &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">0</span>, <span class="dv">1</span>)
+<span class="kw">jarque.bera.test</span>(x)</code></pre>
+<br><br>
+<p style="line-height:0;font-size: 9px">
+output R
+</p>
+<pre class="sourceCode r"><code class="sourceCode r">Jarque Bera Test
+
+data<span class="op">:</span><span class="st">  </span>x
+X<span class="op">-</span>squared =<span class="st"> </span><span class="fl">0.043953</span>, df =<span class="st"> </span><span class="dv">2</span>, p<span class="op">-</span>value =<span class="st"> </span><span class="fl">0.9783</span></code></pre>
+<p>Because of high p-value we don’t reject null hypothesis (distribution is probably normal).</p>
+</div>
+<div id="test-chi-kwadrat-pearsona-na-normalnosc" class="section level4">
+<h4><span class="header-section-number">2.1.4.4</span> test chi-kwadrat pearsona na normalnosc</h4>
+<br><br>
+<p style="line-height:0;font-size: 9px">
+code R
+</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(nortest)
+x &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">0</span>, <span class="dv">1</span>)
+<span class="kw">pearson.test</span>(x)</code></pre>
+<br><br>
+<p style="line-height:0;font-size: 9px">
+output R
+</p>
+<pre class="sourceCode r"><code class="sourceCode r">Pearson chi<span class="op">-</span>square normality test
+
+data<span class="op">:</span><span class="st">  </span>x
+P =<span class="st"> </span><span class="fl">14.92</span>, p<span class="op">-</span>value =<span class="st"> </span><span class="fl">0.135</span></code></pre>
+</div>
+</div>
+<div id="fitting-distribution-in-ggplot2" class="section level3">
+<h3><span class="header-section-number">2.1.5</span> fitting distribution in ggplot2</h3>
+<br><br>
+<p style="line-height:0;font-size: 9px">
+code R
+</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(fitdistrplus)
+<span class="kw">require</span>(ggplot2)
+<span class="kw">data</span>(diamonds)
+dane2 &lt;-<span class="st"> </span>diamonds
+a1 &lt;-<span class="st"> </span><span class="kw">as.list</span>(fitdistrplus<span class="op">::</span><span class="kw">fitdist</span>(<span class="dt">data=</span>dane2<span class="op">$</span>price, <span class="dt">distr=</span><span class="st">&#39;norm&#39;</span>)<span class="op">$</span>estimate)
+<span class="co">#a2&lt;-as.list(fitdist(data=dane2[,w], distr=&#39;lnorm&#39;)$estimate)</span>
+<span class="co">#a3&lt;-as.list(fitdist(data=dane2[,w], distr=&#39;gamma&#39;)$estimate)</span>
+<span class="co">#a4&lt;-as.list(fitdist(data=dane2[,w], distr=&#39;beta&#39;)$estimate)</span>
+a5 &lt;-<span class="st"> </span><span class="kw">as.list</span>(fitdistrplus<span class="op">::</span><span class="kw">fitdist</span>(<span class="dt">data=</span>dane2<span class="op">$</span>price, <span class="dt">distr=</span><span class="st">&#39;cauchy&#39;</span>)<span class="op">$</span>estimate)
+<span class="co">#a6&lt;-as.list(fitdist(data=dane2[,w], distr=&#39;weibull&#39;)$estimate)</span>
+<span class="co">#a7&lt;-as.list(fitdist(data=dane2[,w], distr=&#39;pois&#39;)$estimate)</span>
+<span class="kw">ggplot</span>(<span class="dt">data=</span>dane2) <span class="op">+</span><span class="st"> </span><span class="kw">geom_histogram</span>(<span class="kw">aes</span>(<span class="dt">x=</span>price, <span class="dt">y=</span>..density..))  <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun=</span>dnorm , <span class="dt">args=</span>a1, <span class="dt">colour=</span><span class="st">&#39;red&#39;</span>   , <span class="dt">geom=</span><span class="st">&#39;line&#39;</span> ) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="co">#stat_function(fun=dlnorm, arg=a2, colour=&#39;green&#39; , geom=&#39;line&#39; ) + </span>
+<span class="st">  </span><span class="co">#stat_function(fun=dgamma, arg=a3, colour=&#39;yellow&#39;, geom=&#39;line&#39; ) +</span>
+<span class="st">  </span><span class="co">#stat_function(fun=dbeta , arg=a4, colour=&#39;blue&#39;   , geom=&#39;line&#39; ) + </span>
+<span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun=</span>dcauchy, <span class="dt">args=</span>a5, <span class="dt">colour=</span><span class="st">&#39;black&#39;</span> , <span class="dt">geom=</span><span class="st">&#39;line&#39;</span> ) <span class="co">#+</span>
+  <span class="co">#stat_function(fun=dweibull, arg=a6, colour=&#39;white&#39;, geom=&#39;line&#39; ) +</span>
+  <span class="co">#stat_function(fun=dpois , arg=a7, colour=&#39;grey&#39;   , geom=&#39;line&#39; ) +</span>
+  <span class="co"># xlim(0,8)</span></code></pre>
+<br><br>
+<p style="line-height:0;font-size: 9px">
+code R
+</p>
+<div class="figure"><span id="fig:unnamed-chunk-22"></span>
+<img src="figures/01_fitting_distr_ggplot2.png" alt="Visulising distribution fitting with ggplot2" width="500px" />
+<p class="caption">
+Figure 2.2: Visulising distribution fitting with ggplot2
+</p>
+</div>
+</div>
+<div id="fitting-truncated-distributions" class="section level3">
+<h3><span class="header-section-number">2.1.6</span> fitting truncated distributions</h3>
+<p>Estymacja rozkladu ucientego</p>
+<p>W przykladzie obetniemy rozklad normalny na 3 sposoby:</p>
+<ol style="list-style-type: decimal">
+<li>lewostronnie, ponizej 0</li>
+<li>prawostronnie, powyzej 0</li>
+<li>obustronnie, wycienty przedzial [-1,1]</li>
+</ol>
+<br><br>
+<p style="line-height:0;font-size: 9px">
+code R
+</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Generowanie pelnego rozklady wzorcowego </span>
+p &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10000</span>, <span class="dt">mean=</span><span class="dv">0</span>, <span class="dt">sd=</span><span class="dv">3</span>)
+<span class="kw">mean</span>(p)
+<span class="kw">sd</span>(p)
+
+
+<span class="co">#uciencie lewostronne</span>
+p_ul    &lt;-<span class="st"> </span><span class="kw">ifelse</span>(p<span class="op">&lt;</span><span class="dv">0</span>,<span class="dv">0</span>,p)
+dane_ul &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">left=</span><span class="kw">ifelse</span>(p_ul<span class="op">==</span><span class="dv">0</span>,<span class="ot">NA</span>,p_ul ) ,<span class="dt">right=</span>p_ul )
+w_ul    &lt;-<span class="st"> </span>fitdistrplus<span class="op">::</span><span class="kw">fitdistcens</span>(dane_ul, <span class="st">&#39;norm&#39;</span>)
+
+<span class="co">#uciencie prawodstonne</span>
+p_up    &lt;-<span class="st"> </span><span class="kw">ifelse</span>(p<span class="op">&gt;</span><span class="dv">0</span>,<span class="dv">0</span>,p)
+dane_up &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">left=</span>p_up ,<span class="dt">right=</span><span class="kw">ifelse</span>(p_up<span class="op">==</span><span class="dv">0</span>,<span class="ot">NA</span>,p_up ))
+w_up    &lt;-<span class="st"> </span>fitdistrplus<span class="op">::</span><span class="kw">fitdistcens</span>(dane_up, <span class="st">&#39;norm&#39;</span>)
+
+<span class="co">#wyciencie przedziali</span>
+p_ob    &lt;-<span class="st"> </span><span class="kw">ifelse</span>(p<span class="op">&gt;</span>(<span class="op">-</span><span class="dv">1</span>) <span class="op">&amp;</span><span class="st"> </span>p<span class="op">&lt;</span><span class="dv">1</span>,<span class="dv">0</span>,p)
+dane_ob &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">left =</span> <span class="kw">ifelse</span>(p_ob<span class="op">==</span>(<span class="op">-</span><span class="fl">0.8</span>),<span class="op">-</span>.<span class="dv">8</span>,p_ob) ,<span class="dt">right=</span><span class="kw">ifelse</span>(p_ob<span class="op">==</span><span class="fl">0.8</span>,.<span class="dv">8</span>,p_ob) )
+w_ob    &lt;-<span class="st"> </span>fitdistrplus<span class="op">::</span><span class="kw">fitdistcens</span>(dane_ob, <span class="st">&#39;norm&#39;</span>)[<span class="dv">2</span>]</code></pre>
+Wizualiacja zgodnosci wyestymowanego rozkladu na uciencia lewostronnego.
+W kolorze czerwonym rozklad WYESTYMOWANY pokrywa sie z czarnym PEŁNYM ktory byl wyjsciowy. Rozklad o duzej wysotkosci to rozklad UCIENTY w oparciu o ktory dokonano estymacji.
+<br><br>
+<p style="line-height:0;font-size: 9px">
+code R
+</p>
+<pre class="sourceCode r"><code class="sourceCode r">dane &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">p =</span> p)
+<span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">data=</span>dane, <span class="kw">aes</span>(<span class="dt">x=</span>p)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">data=</span><span class="kw">data.frame</span>(<span class="dt">p=</span>dane[dane[,<span class="dv">1</span>]<span class="op">&gt;</span><span class="dv">0</span>,]), <span class="kw">aes</span>(<span class="dt">x=</span>p), <span class="dt">alpha=</span>.<span class="dv">01</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">stat_function</span>(<span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">6</span>, <span class="dv">6</span>)), <span class="dt">fun=</span>dnorm, <span class="dt">args=</span><span class="kw">list</span>(<span class="dt">mean=</span>w_ul[[<span class="dv">1</span>]][<span class="dv">1</span>], <span class="dt">sd=</span>w_ul[[<span class="dv">1</span>]][<span class="dv">2</span>]), <span class="dt">colour=</span><span class="st">&#39;red&#39;</span>)</code></pre>
+<br><br>
+<p style="line-height:0;font-size: 9px">
+code R
+</p>
+<div class="figure"><span id="fig:unnamed-chunk-25"></span>
+<img src="figures/01_fitting_truncated_distribution.png" alt="dopasowanie rozkladu ucientego" width="500px" />
+<p class="caption">
+Figure 2.3: dopasowanie rozkladu ucientego
+</p>
+</div>
+</div>
+<div id="other-useful-functions-for-distributions-analysis" class="section level3">
+<h3><span class="header-section-number">2.1.7</span> other useful functions for distributions analysis</h3>
+<br><br>
+<p style="line-height:0;font-size: 9px">
+code R
+</p>
+<pre class="sourceCode r"><code class="sourceCode r">x1 &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">0</span>, <span class="dv">1</span>)
+<span class="kw">descdist</span>(x1) <span class="co"># rozklad kurtoza-skosnosc</span></code></pre>
+<br><br>
+<p style="line-height:0;font-size: 9px">
+output R
+</p>
+<pre class="sourceCode r"><code class="sourceCode r">summary statistics
+<span class="op">------</span>
+min<span class="op">:</span><span class="st">  </span><span class="fl">-1.537175</span>   max<span class="op">:</span><span class="st">  </span><span class="fl">2.579525</span> 
+median<span class="op">:</span><span class="st">  </span><span class="fl">-0.08195474</span> 
+mean<span class="op">:</span><span class="st">  </span><span class="fl">0.08883605</span> 
+estimated sd<span class="op">:</span><span class="st">  </span><span class="fl">0.902569</span> 
+estimated skewness<span class="op">:</span><span class="st">  </span><span class="fl">0.3870977</span> 
+estimated kurtosis<span class="op">:</span><span class="st">  </span><span class="fl">2.699841</span> </code></pre>
+</div>
+<div id="ploting-distributions-tools" class="section level3">
+<h3><span class="header-section-number">2.1.8</span> ploting distributions tools</h3>
+<br><br>
+<p style="line-height:0;font-size: 9px">
+code R
+</p>
+<pre class="sourceCode r"><code class="sourceCode r">xn &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n=</span><span class="dv">100</span>,<span class="dt">mean=</span><span class="dv">10</span>,<span class="dt">sd=</span><span class="dv">5</span>)
+<span class="kw">plotdist</span>(xn, <span class="st">&quot;norm&quot;</span>, <span class="dt">para=</span><span class="kw">list</span>(<span class="dt">mean=</span><span class="kw">mean</span>(xn),<span class="dt">sd=</span><span class="kw">sd</span>(xn)))</code></pre>
+<br><br>
+<p style="line-height:0;font-size: 9px">
+code R
+</p>
+<div class="figure"><span id="fig:unnamed-chunk-29"></span>
+<img src="figures/0_1_function_plotdist_1.png" alt="result of f:plotdist" width="500px" />
+<p class="caption">
+Figure 2.4: result of f:plotdist
+</p>
+</div>
+</div>
+</div>
+<div id="descriptive-statitics" class="section level2">
+<h2><span class="header-section-number">2.2</span> Descriptive statitics</h2>
+<b>Weighted mean</b>: <br>
+<br><br>
+<p style="line-height:0;font-size: 9px">
+code R
+</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">weighted.mean</span>(x,y) <span class="co"># in y there are weights</span></code></pre>
+<b>Trimmed mean</b>: <br>
+It involves the calculation of the mean after <b>discarding</b> given parts of a probability distribution or sample at the high and low end, and typically discarding an equal amount of both.
+<br><br>
+<p style="line-height:0;font-size: 9px">
+code R
+</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(x, <span class="dt">trim=</span><span class="fl">0.3</span>)</code></pre>
+<p><b>Winsored mean</b>:<br></p>
+<p>Consider the data set consisting of:<br></p>
+<p>{92, 19, 101, 58, 1053, 91, 26, 78, 10, 13, −40, 101, 86, 85, 15, 89, 89, 28, −5, 41} (N = 20, mean = 101.5)<br>
+The data below the 5th percentile lies between −40 and −5, while the data above the 95th percentile lies between 101 and 1053. (Values shown in bold.) Then a 90% winsorization would result in the following:<br></p>
+<p>{92, 19, 101, 58, 101, 91, 26, 78, 10, 13, −5, 101, 86, 85, 15, 89, 89, 28, −5, 41} (N = 20, mean = 55.65)</p>
+<br><br>
+<p style="line-height:0;font-size: 9px">
+code R
+</p>
+<pre class="sourceCode r"><code class="sourceCode r">psych<span class="op">::</span><span class="kw">winsor.mean</span>()</code></pre>
+<b>Standard deviation</b>
+<br><br>
+<p style="line-height:0;font-size: 9px">
+code R
+</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sd</span>()
+
+<span class="co"># winsorezed version:</span>
+psych<span class="op">::</span><span class="kw">winsor.sd</span>()</code></pre>
+?? Krysicki str. 202
+<b>Geometric standard deviation</b>
+<br><br>
+<p style="line-height:0;font-size: 9px">
+code R
+</p>
+<b>Variance</b>
+<br><br>
+<p style="line-height:0;font-size: 9px">
+code R
+</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">var</span>()
+
+<span class="co"># winsorized version:</span>
+psych<span class="op">::</span><span class="kw">winsor.var</span>()</code></pre>
+<b>Harmonic mean</b><br>
+Typically, it is appropriate for situations when the average of rates is desired. The harmonic mean can be expressed as the reciprocal of the arithmetic mean of the reciprocals of the given set of observations.
+<br><br>
+<p style="line-height:0;font-size: 9px">
+code R
+</p>
+<pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">2</span>, <span class="dv">19</span>, <span class="dv">24</span>, <span class="dv">6</span>, <span class="dv">23</span>, <span class="dv">47</span>, <span class="dv">24</span>, <span class="dv">54</span>, <span class="dv">77</span>)
+<span class="dv">1</span><span class="op">/</span><span class="kw">mean</span>(<span class="dv">1</span><span class="op">/</span>a) 
+
+
+<span class="co">#Or</span>
+psych<span class="op">::</span><span class="kw">harmonic.mean</span>(a)</code></pre>
+<b>Geometric mean</b><br>
+<br><br>
+<p style="line-height:0;font-size: 9px">
+code R
+</p>
+<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)
+n &lt;-<span class="st"> </span><span class="kw">length</span>(x)
+<span class="kw">prod</span>(x)<span class="op">^</span>(<span class="dv">1</span><span class="op">/</span>n) 
+
+<span class="co">#Or</span>
+psych<span class="op">::</span><span class="kw">geometric.mean</span>(x)</code></pre>
+<b>Commonest or mode</b> [dominanta]
+<br><br>
+<p style="line-height:0;font-size: 9px">
+code R
+</p>
+<b>Mediana</b>
+<br><br>
+<p style="line-height:0;font-size: 9px">
+code R
+</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">median</span>(x)</code></pre>
+<b>Geometric median</b>
+<br><br>
+<p style="line-height:0;font-size: 9px">
+code R
+</p>
+<b>Kwantyl dowolnego rzedu</b>
+<br><br>
+<p style="line-height:0;font-size: 9px">
+code R
+</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">quantile</span>(x, <span class="dt">probs =</span> <span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.25</span>), <span class="dt">na.rm =</span> <span class="ot">FALSE</span>, <span class="dt">names =</span> <span class="ot">TRUE</span>, <span class="dt">type =</span> <span class="dv">7</span>, ...)</code></pre>
+<b>Range</b> [Rozstep]
+<br><br>
+<p style="line-height:0;font-size: 9px">
+code R
+</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">range</span>(x, <span class="dt">na.rm=</span><span class="ot">FALSE</span>)</code></pre>
+<b>Coefficient of dispersion</b>
+<br><br>
+<p style="line-height:0;font-size: 9px">
+code R
+</p>
+Interquartile Range (IRQ) [Rozstep miedzykwartylowy]
+<br><br>
+<p style="line-height:0;font-size: 9px">
+code R
+</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">IRQ</span>(x)</code></pre>
+<b>Kurtosis</b> [Kurtoza]
+<br><br>
+<p style="line-height:0;font-size: 9px">
+code R
+</p>
+<pre class="sourceCode r"><code class="sourceCode r">moments<span class="op">::</span><span class="kw">kurtosis</span>(x)</code></pre>
+<b>Skewness</b> [Skosnosc]
+<br><br>
+<p style="line-height:0;font-size: 9px">
+code R
+</p>
+<pre class="sourceCode r"><code class="sourceCode r">moments<span class="op">::</span><span class="kw">skewness</span>(x)</code></pre>
+<b>quartile skewness coefficient</b>
+<br><br>
+<p style="line-height:0;font-size: 9px">
+code R
+</p>
+<b>Gini coefficient</b>
+<br><br>
+<p style="line-height:0;font-size: 9px">
+code R
+</p>
+<b>Herfindahl–Hirschman Index</b> (HHI)
+<br><br>
+<p style="line-height:0;font-size: 9px">
+code R
+</p>
+<b>Entropia</b>
+<br><br>
+<p style="line-height:0;font-size: 9px">
+code R
+</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">entropy</span>(y, <span class="dt">method=</span><span class="kw">c</span>(<span class="st">&quot;ML&quot;</span>, <span class="st">&quot;MM&quot;</span>, <span class="st">&quot;Jeffreys&quot;</span>, <span class="st">&quot;Laplace&quot;</span>, <span class="st">&quot;SG&quot;</span>, <span class="st">&quot;minimax&quot;</span>, <span class="st">&quot;CS&quot;</span>, <span class="st">&quot;NSB&quot;</span>, <span class="st">&quot;shrink&quot;</span>),<span class="dt">unit=</span><span class="kw">c</span>(<span class="st">&quot;log&quot;</span>, <span class="st">&quot;log2&quot;</span>, <span class="st">&quot;log10&quot;</span>), <span class="dt">target=</span><span class="dv">1</span><span class="op">/</span><span class="kw">length</span>(y), <span class="dt">verbose=</span><span class="ot">TRUE</span>) 
+<span class="kw">freqs</span>(y, <span class="dt">method=</span><span class="kw">c</span>(<span class="st">&quot;ML&quot;</span>, <span class="st">&quot;MM&quot;</span>, <span class="st">&quot;Jeffreys&quot;</span>, <span class="st">&quot;Laplace&quot;</span>, <span class="st">&quot;SG&quot;</span>, <span class="st">&quot;minimax&quot;</span>, <span class="st">&quot;CS&quot;</span>, <span class="st">&quot;NSB&quot;</span>, <span class="st">&quot;shrink&quot;</span>), <span class="dt">target=</span><span class="dv">1</span><span class="op">/</span><span class="kw">length</span>(y), <span class="dt">verbose=</span><span class="ot">TRUE</span>)</code></pre>
+</div>
+<div id="statistical-tests" class="section level2">
+<h2><span class="header-section-number">2.3</span> Statistical Tests</h2>
+<h2>
+Podstawowe testy-skale slabe
+</h2>
+<h3>
+Test chi-kwadrat niezaleznosci
+</h3>
+<div class="div2">
+<p><strong>Zastosowanie</strong>:<br>
+<strong>Zalozenia</strong>:<br>
+<strong>Hipoteza 0</strong>:<br>
+<strong>Literatura</strong>: Biecek str. 216<br></p>
+</div>
+<p><br></p>
+<br><br>
+<p style="line-height:0;font-size: 9px">
+code R
+</p>
+<pre class="sourceCode r"><code class="sourceCode r">        <span class="co">#SKLADNIA </span>
+        prop.test
+        
+        <span class="co">#PRZYKLAD</span></code></pre>
+<h3>
+Test symetrii McNemary
+</h3>
+<div class="div2">
+<p><strong>Zastosowanie</strong>:<br>
+<strong>Zalozenia</strong>:<br>
+<strong>Hipoteza 0</strong>:<br>
+<strong>Literatura</strong>: Biecek str. 217<br></p>
+</div>
+<p><br></p>
+<br><br>
+<p style="line-height:0;font-size: 9px">
+code R
+</p>
+<pre class="sourceCode r"><code class="sourceCode r">        <span class="co">#SKLADNIA </span>
+        prop.test
+        
+        <span class="co">#PRZYKLAD</span></code></pre>
+<h3>
+Test Cochrana-Mantela-Haenszela
+</h3>
+
+<div class="div2">
+<p><strong>Zastosowanie</strong>:<br>
+<strong>Zalozenia</strong>:<br>
+<strong>Hipoteza 0</strong>:<br>
+<strong>Literatura</strong>:Biecek str. 217<br></p>
+</div>
+<p><br></p>
+<br><br>
+<p style="line-height:0;font-size: 9px">
+code R
+</p>
+<pre class="sourceCode r"><code class="sourceCode r">        <span class="co">#Cochran-Mantel-Haenszel Chi-Squared Test for Count Data</span>
+        <span class="kw">requore</span>(stats)
+        Rabbits &lt;-
+<span class="st">          </span><span class="kw">array</span>(<span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">6</span>, <span class="dv">5</span>,
+                  <span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">6</span>,
+                  <span class="dv">6</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">4</span>,
+                  <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">1</span>, <span class="dv">0</span>,
+                  <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">0</span>),
+                <span class="dt">dim =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">5</span>),
+                <span class="dt">dimnames =</span> <span class="kw">list</span>(
+                  <span class="dt">Delay =</span> <span class="kw">c</span>(<span class="st">&quot;None&quot;</span>, <span class="st">&quot;1.5h&quot;</span>),
+                  <span class="dt">Response =</span> <span class="kw">c</span>(<span class="st">&quot;Cured&quot;</span>, <span class="st">&quot;Died&quot;</span>),
+                  <span class="dt">Penicillin.Level =</span> <span class="kw">c</span>(<span class="st">&quot;1/8&quot;</span>, <span class="st">&quot;1/4&quot;</span>, <span class="st">&quot;1/2&quot;</span>, <span class="st">&quot;1&quot;</span>, <span class="st">&quot;4&quot;</span>)))
+        Rabbits
+        <span class="co">## Classical Mantel-Haenszel test</span>
+        <span class="kw">mantelhaen.test</span>(Rabbits)</code></pre>
+<h3>
+Wsp??czynnik zgodno?ci Cohena k
+</h3>
+<div class="div2">
+<p><strong>Zastosowanie</strong>:
+<strong>Zalozenia</strong>: Testy s? nieparametryczny, ale maj? za?o?enia (patrz. Aczel str. 717 i 728). Patrz tez Biecek1 str. 206
+<strong>Hipoteza 0</strong>:
+<strong>Literatura</strong>: Biecek str. 217</p>
+</div>
+<p><br></p>
+<br><br>
+<p style="line-height:0;font-size: 9px">
+code R
+</p>
+<pre class="sourceCode r"><code class="sourceCode r">        <span class="co">#SKLADNIA </span>
+        prop.test
+        
+        <span class="co">#PRZYKLAD</span></code></pre>
+<h3>
+Test proporcji??sprawdzic nazwe
+</h3>
+<br><br>
+<p style="line-height:0;font-size: 9px">
+code R
+</p>
+<pre class="sourceCode r"><code class="sourceCode r">        <span class="co">#SKLADNIA </span>
+        prop.test
+        
+        <span class="co">#PRZYKLAD</span></code></pre>
+<h2>
+Podstawowe testy-skale silne
+</h2>
+<p>Biecek1 od str. 202</p>
+<h3>
+t.test
+</h3>
+t.test (?rednie w dw?ch populacjach niepowi?zanych)
+<div class="div2">
+<p><strong>Zastosowanie</strong>:Obie populacje maj? rozk?ad normalny. Mog? mie? r??ne wariancje.
+<strong>Zalozenia</strong>:
+<strong>Hipoteza 0</strong>:Czy srednie w dw?ch populacja s? r?wne (S? wersje testu dla element?w zestawione w pary jak i nie)
+<strong>Literatura</strong>:Krysicki str. 93, STATISTICA T1 str. 223</p>
+</div>
+<p><br></p>
+<br><br>
+<p style="line-height:0;font-size: 9px">
+code R
+</p>
+<pre class="sourceCode r"><code class="sourceCode r">        <span class="co">#SKLADNIA </span>
+        <span class="kw">t.test</span>(x,  <span class="dt">y  =</span>  <span class="ot">NULL</span>,
+        <span class="dt">alternative  =</span>  <span class="kw">c</span>(<span class="st">&quot;two.sided&quot;</span>,  <span class="st">&quot;less&quot;</span>,  <span class="st">&quot;greater&quot;</span>),
+        <span class="dt">mu  =</span>  <span class="dv">0</span>,  
+        <span class="dt">paired  =</span>  <span class="ot">FALSE</span>,  <span class="co">#okresla czy test dla zmiennych powiazanych</span>
+        <span class="dt">var.equal  =</span>  <span class="ot">FALSE</span>,
+        <span class="dt">conf.level  =</span>  <span class="fl">0.95</span>,  ...)
+        
+        x&lt;-<span class="kw">rnorm</span>(<span class="dv">10</span>,<span class="dv">1</span>,<span class="dv">1</span>)
+        y&lt;-<span class="kw">rnorm</span>(<span class="dv">15</span>,<span class="dv">2</span>,<span class="dv">1</span>)
+        <span class="kw">t.test</span>(x,y)</code></pre>
+<h3>
+testy Wilxcoon-a
+</h3>
+<div class="div2">
+<p><strong>Zastosowanie</strong>:<br>
+<strong>Zalozenia</strong>: Testy s? nieparametryczny, ale maj? za?o?enia (patrz. Aczel str. 717 i 728). Patrz tez Biecek1 str. 206 <br>
+<strong>Hipoteza 0</strong>: <br>
+<strong>Literatura</strong>: Aczel str. 716 i 723, Biecek1 str. 206 <br></p>
+</div>
+<p><br></p>
+<br><br>
+<p style="line-height:0;font-size: 9px">
+code R
+</p>
+<pre class="sourceCode r"><code class="sourceCode r">        <span class="co">#SKLADNIA </span>
+        <span class="kw">wilcox.test</span>(x, <span class="dt">y =</span> <span class="ot">NULL</span>,
+           <span class="dt">alternative =</span> <span class="kw">c</span>(<span class="st">&quot;two.sided&quot;</span>, <span class="st">&quot;less&quot;</span>, <span class="st">&quot;greater&quot;</span>),
+           <span class="dt">mu =</span> <span class="dv">0</span>, <span class="dt">paired =</span> <span class="ot">FALSE</span>, <span class="co">#jezeli FALSE i dwie zmienne mamy sume rang. Jezeli TRUE i dwie zmienne mamy rangowanie znakow </span>
+           <span class="dt">exact =</span> <span class="ot">NULL</span>, 
+           <span class="dt">correct =</span> <span class="ot">TRUE</span>,
+           <span class="dt">conf.int =</span> <span class="ot">FALSE</span>, 
+           <span class="dt">conf.level =</span> <span class="fl">0.95</span>, ...)
+           
+        <span class="co">#PRZYKLAD</span>
+        x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">1.83</span>,  <span class="fl">0.50</span>,  <span class="fl">1.62</span>,  <span class="fl">2.48</span>, <span class="fl">1.68</span>, <span class="fl">1.88</span>, <span class="fl">1.55</span>, <span class="fl">3.06</span>, <span class="fl">1.30</span>)
+        y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.878</span>, <span class="fl">0.647</span>, <span class="fl">0.598</span>, <span class="fl">2.05</span>, <span class="fl">1.06</span>, <span class="fl">1.29</span>, <span class="fl">1.06</span>, <span class="fl">3.14</span>, <span class="fl">1.29</span>)
+        <span class="kw">wilcox.test</span>(x, y, <span class="dt">paired =</span> <span class="ot">TRUE</span>, <span class="dt">alternative =</span> <span class="st">&quot;greater&quot;</span>)</code></pre>
+<h3>
+test Kruskala-Wallisa
+</h3>
+<div class="div2">
+<p><strong>Zastosowanie</strong>: Jest to uog?lnienie testu sumy rang Wilxona (zwanego te? testem Manna-Whitneya) na wi?cej ni? 2 zmienne. Jest to te? nieparametryczna alternatywa dla analizy ANOVA. <br>
+<strong>Zalozenia</strong>: <br>
+<strong>Hipoteza 0</strong>: <br>
+<strong>Literatura</strong>: Aczel str. 731. <br></p>
+</div>
+<p><br></p>
+<br><br>
+<p style="line-height:0;font-size: 9px">
+code R
+</p>
+<pre class="sourceCode r"><code class="sourceCode r">        <span class="co">#SKLADNIA </span>
+        <span class="kw">kruskal.test</span>(x, ...) <span class="co">#lista zmiennych</span>
+           
+        <span class="co">#PRZYKLAD</span>
+        x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">2.9</span>, <span class="fl">3.0</span>, <span class="fl">2.5</span>, <span class="fl">2.6</span>, <span class="fl">3.2</span>) <span class="co"># normal subjects</span>
+        y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">3.8</span>, <span class="fl">2.7</span>, <span class="fl">4.0</span>, <span class="fl">2.4</span>)      <span class="co"># with obstructive airway disease</span>
+        z &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">2.8</span>, <span class="fl">3.4</span>, <span class="fl">3.7</span>, <span class="fl">2.2</span>, <span class="fl">2.0</span>) <span class="co"># with asbestosis</span>
+        <span class="kw">kruskal.test</span>(<span class="kw">list</span>(x, y, z))</code></pre>
+<p>Powy?ej wysoka wartos? p-value oznacza ?e nie odrzucamy hipotezy zerowej stanowi?cej ?e:
+wszystkie populacje maj? te same rozk?ady.
+Je?eli test poka?e ?e populacje r??ni? si? od siebie, to aby zidentyfikowa? dok?adnie o kt?re chodzi trzeba podobnie jak w analizie ANOVA wykona? test Tukeya (Aczel str. 734).</p>
+<h2>
+Inne testy
+</h2>
+<h2>
+Testy statystyczne jednorodno?ci wariancji
+</h2>
+<p>Becek1 str. 209</p>
+<h3>
+var.test
+</h3>
+<div class="div2">
+<p><strong>Zastosowanie</strong>: <br>
+<strong>Zalozenia</strong>: <br>
+<strong>Hipoteza 0</strong>: <br>
+<strong>Literatura</strong>: <br></p>
+</div>
+<p><br></p>
+<br><br>
+<p style="line-height:0;font-size: 9px">
+code R
+</p>
+<pre class="sourceCode r"><code class="sourceCode r">        <span class="co">#PRZYKLAD</span></code></pre>
+<h3>
+ansari.test
+</h3>
+<div class="div2">
+<p><strong>Zastosowanie</strong>: <br>
+<strong>Zalozenia</strong>: <br>
+<strong>Hipoteza 0</strong>: <br>
+<strong>Literatura</strong>: <br></p>
+</div>
+<p><br></p>
+<br><br>
+<p style="line-height:0;font-size: 9px">
+code R
+</p>
+<pre class="sourceCode r"><code class="sourceCode r">        <span class="co">#SKLADNIA </span>
+        
+        
+        <span class="co">#PRZYKLAD</span></code></pre>
+</h3>
+barlett.test
+</h3>
+<div class="div2">
+<p><strong>Zastosowanie</strong>: <br>
+<strong>Zalozenia</strong>: <br>
+<strong>Hipoteza 0</strong>: <br>
+<strong>Literatura</strong>: <br></p>
+</div>
+<p><br></p>
+<br><br>
+<p style="line-height:0;font-size: 9px">
+code R
+</p>
+<pre class="sourceCode r"><code class="sourceCode r">        <span class="co">#SKLADNIA </span>
+        
+        
+        <span class="co">#PRZYKLAD</span></code></pre>
+<h3>
+flinger.test
+</h3>
+<div class="div2">
+<p><strong>Zastosowanie</strong>: <br>
+<strong>Zalozenia</strong>: <br>
+<strong>Hipoteza 0</strong>: <br>
+<strong>Literatura</strong>: <br></p>
+</div>
+<p><br></p>
+<br><br>
+<p style="line-height:0;font-size: 9px">
+code R
+</p>
+<pre class="sourceCode r"><code class="sourceCode r">        <span class="co">#SKLADNIA </span>
+        
+        
+        <span class="co">#PRZYKLAD</span></code></pre>
+<h3>
+mood.test
+</h3>
+<div class="div2">
+<p><strong>Zastosowanie</strong>:<br>
+<strong>Zalozenia</strong>:<br>
+<strong>Hipoteza 0</strong>:<br>
+<strong>Literatura</strong>: <br></p>
+</div>
+<p><br></p>
+<br><br>
+<p style="line-height:0;font-size: 9px">
+code R
+</p>
+<pre class="sourceCode r"><code class="sourceCode r">        <span class="co">#SKLADNIA </span>
+        
+        
+        <span class="co">#PRZYKLAD</span></code></pre>
+<h3>
+levene.test
+</h3>
+<div class="div2">
+<p><strong>Zastosowanie</strong>:<br>
+<strong>Zalozenia</strong>:<br>
+<strong>Hipoteza 0</strong>:<br>
+<strong>Literatura</strong>: <br></p>
+</div>
+<p><br></p>
+<br><br>
+<p style="line-height:0;font-size: 9px">
+code R
+</p>
+<pre class="sourceCode r"><code class="sourceCode r">        <span class="co">#SKLADNIA </span>
+        
+        
+        <span class="co">#PRZYKLAD</span></code></pre>
+<h3>
+Inne podstawowe testy statystyczne
+</h3>
+
+<div class="div2">
+<p><strong>Zastosowanie</strong>:<br>
+<strong>Zalozenia</strong>:<br>
+<strong>Hipoteza 0</strong>:<br>
+<strong>Literatura</strong>: Biecek str. 211<br></p>
+</div>
+<p><br></p>
+<br><br>
+<p style="line-height:0;font-size: 9px">
+code R
+</p>
+<pre class="sourceCode r"><code class="sourceCode r">        <span class="co">#SKLADNIA </span>
+        prop.test
+        
+        <span class="co">#PRZYKLAD</span></code></pre>
+<h3>
+Istotnosc wspolczynnika korelacji Pearsona
+</h3>
+<div class="div2">
+<p><strong>Zastosowanie</strong>: Biecek str. 213, 214<br>
+<strong>Zalozenia</strong>: Zmienne musz? mie? ??cznie rozk?ad normalny.<br>
+<strong>Hipoteza 0</strong>: Korelacja wynosi 0. Hipoteza alternatywna mo?e by? dwustronna, lewostronna i prawostonna. <br>
+<strong>Literatura</strong>:</p>
+</div>
+<p><br></p>
+<br><br>
+<p style="line-height:0;font-size: 9px">
+code R
+</p>
+<pre class="sourceCode r"><code class="sourceCode r">        <span class="co">#SKLADNIA </span>
+        <span class="kw">cor.test</span>()
+        
+        <span class="co">#PRZYKLAD</span></code></pre>
+<h2>
+Testowanie rozkladow
+</h2>
+<h3>
+Shapiro-Wilk
+</h3>
+<div class="div2">
+<p><strong>Zastosowanie</strong>:<br>
+<strong>Zalozenia</strong>:<br>
+<strong>Hipoteza 0</strong>:<br>
+<strong>Literatura</strong>:<br></p>
+</div>
+<p><br></p>
+<br><br>
+<p style="line-height:0;font-size: 9px">
+code R
+</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(stats)
+<span class="co">#Shapiro-Wilk Normality Test</span>
+<span class="kw">shapiro.test</span>(<span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dt">mean =</span> <span class="dv">5</span>, <span class="dt">sd =</span> <span class="dv">3</span>))</code></pre>
+<h3>
+Shapiro-Wilk wielowymiarowy
+</h3>
+<div class="div2">
+<p><strong>Zastosowanie</strong>:<br>
+<strong>Zalozenia</strong>:<br>
+<strong>Hipoteza 0</strong>:<br>
+<strong>Literatura</strong>:<br></p>
+</div>
+<p><br></p>
+<br><br>
+<p style="line-height:0;font-size: 9px">
+code R
+</p>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-Biecek2008">
+<p>Biecek, Przemysław. 2008. <em>Przewodnik Po Pakiecie R</em>. 1st ed. GiS.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="multivariate-analysis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/01_A_BASIC_STATS_PROB.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

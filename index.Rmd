@@ -1,0 +1,168 @@
+--- 
+title: "Data Science Book"
+author: "Łukasz Muszyński"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+github-repo: rstudio/bookdown-demo
+description: ""
+---
+
+
+```{r, include=FALSE, eval=TRUE}
+
+# Definicje funkcji wyswietlajacych elementy przed i po chunkach
+
+require(knitr)
+knit_hooks$set(code_r = function(before, options, envir) {
+    if(before) '<br><br><p style="line-height:0;font-size: 9px">code R</p>'
+})
+
+knit_hooks$set(output_r = function(before, options, envir) {
+    if(before) '<br><br><p style="line-height:0;font-size: 9px">output R</p>'
+})
+
+knit_hooks$set(code_python = function(before, options, envir) {
+    if(before) '<br><br>code_Python'
+})
+
+knit_hooks$set(output_python = function(before, options, envir) {
+    if(before) '<br><br>output_Python'
+})
+
+
+knit_hooks$set(play = function(before, options, envir) {
+    if(before) '.>>>>'
+})
+
+knit_hooks$set(begin = function(before, options, envir) {
+    if(before) 'BEGIN'
+})
+
+knit_hooks$set(end = function(before, options, envir) {
+    if(!before) 'END'
+})
+
+knit_hooks$set(lang = function(before, options, envir) {
+    if(before) options$engine
+})
+
+opts_template$set(
+ rc  = list(eval = FALSE, echo = TRUE, code_r = TRUE)
+,ro  = list(eval = FALSE, echo = TRUE, code_r = NULL, output_r    = TRUE)
+,pc  = list(eval = FALSE, echo = TRUE, code_r = NULL, code_python = TRUE)
+,po  = list(eval = FALSE, echo = TRUE, code_r = NULL, output_python = TRUE)
+,html = list(eval = TRUE, echo = FALSE, results    = 'asis') #, code_r=FALSE, output_r = FALSE, code_python = FALSE, output_python = FALSE)
+)
+
+
+#default chunsks settings
+knitr::opts_chunk$set(eval = FALSE, echo = TRUE, code_r = TRUE)
+                      # , code_r = FALSE, output_r = FALSE, code_python = FALSE, output_python = FALSE )
+
+
+set_alias(ol='opts.label')
+
+
+
+
+
+glimpse_method <- function(TITLE = 'Glimpse at method'
+                           ,ENGLISH_NAMES = ''
+                           ,POLISH_NAMES = ''
+                           ,CREATORS = 'Unknown'
+                           ,TASKS = ''
+                           ,VARIABLES_TYPES = ''
+                           ,ASSUMPTIONS = ''
+                           ,PROS = ''
+                           ,CONS = ''
+                           ,SIMILAR_METHODS = ''
+                           ,R_PACKAGES = ''
+                           ,Python_PACKAGES = ''){
+  
+html <- paste0(
+"
+<br><lfbrw>",TITLE,"</lfbrw>
+<div class='btn-brown'> 
+<b>ENGLISH NAMES</b>:<br>
+",ENGLISH_NAMES,"
+
+<b>POLISH NAMES</b>: <br>
+",POLISH_NAMES,"
+
+<b>CREATORS</b>:<br>
+",CREATORS,"
+
+<b>TASKS</b>:<br>
+",TASKS,"
+
+<b>ASSUMPTION</b>:<br>
+",ASSUMPTIONS,"
+
+<b><font color = 'green'>+ PROS </font></b>:<br>
+",PROS,"
+
+<b><font color='red'>- CONS </font></b>:<br>
+",CONS,"
+
+<b>SIMILAR METHODS</b>:<br>
+",SIMILAR_METHODS,"
+
+<b>R PACKAGES</b>:<br>
+",R_PACKAGES,"
+
+<b>Python PACKAGES</b>:<br>
+",Python_PACKAGES,"
+
+</div>"
+)
+  
+cat(html)
+
+}
+
+
+
+
+function_parameters <- function(title = "", begin_text, parameters, sources = "", 
+  see_also = "", end_text) 
+{
+  if (missing(parameters)) {
+    html_parameters <- ""
+  }
+  else {
+    if (is.null(names(parameters)) | !is.character(parameters)) 
+      stop("notions element havo no names, or notion is not an character vector")
+    names <- names(parameters)
+    html_parameters <- do.call("paste0", lapply(1:length(parameters), 
+      function(i, y, z) {
+        paste0("<dt>", z[i], "</dt><dd>", y[i], "</dd>")
+      }, parameters, names))
+  }
+  cat("<div style=\"width:auto !important; border-left: 6px solid rgb(34,177,76); padding:5px 5px 5px 20px; color: rgb(34,177,76); font-size:18px; font-weight:bold;\">Test: ", 
+    title, "</div>\n<div style=\"width:auto !important; border-left: 6px solid rgb(34,177,76); padding:5px 5px 5px 20px;\">\n<dl>\n", 
+    if (missing(begin_text)) 
+      ""
+    else paste(begin_text, "<br>"), "\n\n<dt>Parameters</dt>\n<dd> <dl class=\"dl-horizontal\">", 
+    html_parameters, "</dl> </dd>\n\n<dt>Sources</dt>\n<dd>", 
+    sources, "</dd>\n\n<dt>See also</dt>\n<dd>", see_also, 
+    "</dd>\n\n", if (missing(end_text)) 
+      ""
+    else paste(end_text, "<br>"), "\n\n</dl>\n</div>\n</div>")
+}
+
+
+
+
+
+```
+
+# INTRO
+
+This is notebok about AI algorithms. 
+
+

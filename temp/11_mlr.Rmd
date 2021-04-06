@@ -1,0 +1,637 @@
+# p:mlr
+
+```{r}
+# http://explained.ai/rf-importance/index.html  problem z importance w randomForest
+
+
+
+# UWAGI WSTEPNE ---- 
+
+
+# skroty jakich uzywam dla wygody w komentarzach:
+# p:ggplot - "pakiet ggplot"
+# f:cor    - "funkcja cor"
+
+
+# linki do stron do ktorych bede sie odwolywal:
+# strona p:mlr : https://mlr-org.github.io/mlr/
+# strona p:iml : https://cran.r-project.org/web/packages/iml/vignettes/intro.html
+
+
+# Uwaga. W dokumentacji p:mlr zmienna objasniana w modelu jest nazywana "target" z zmienne objasniajace "features". 
+
+# Ten dokument ma spis tresci. Zeby go wyswietlic musisz miec z miare nowe RStudio.
+
+# Wybacz ze chwilami manual bedzie po angielsku. To w miejscach gdzie wygodniej jest mi przekleic trafny opis ze strony internetowej albo dokumentacji.
+
+
+
+
+
+
+
+# PRZYGOTOWANIE ZBIORU I ZALADOWANIE PAKIETOW----
+
+
+# pakiety
+require(mlr)
+require(iml)
+require(plyr)
+require(dplyr)
+require(magrittr)
+mlr::configureMlr() # ta funkcje warto uruchomic na poczatku. W przeciwym razie przy estymacji modeli moga wystapic dziwne bledy
+
+
+
+# zaladowanie danych
+data('diamonds', package = 'ggplot2')
+data <- head(diamonds, 10000)
+
+# podzial zbioru na uczacy i testowy
+train_index <- sample(1:nrow(data), size = 0.66*nrow(data), replace = FALSE)
+data_train  <- data[test_index,] 
+data_test   <- data[-test_index,]
+dim(data); dim(data_train); dim(data_test)
+
+# p:mlr wymaga czystych data.frames!!!
+data_train %<>% as.data.frame()  
+data_test  %<>% as.data.frame() 
+
+
+
+
+
+
+
+
+
+
+
+# SZYBKI PRZYKLAD WPROWADZAJACY-----
+
+# Funkcje uzyte ponizej bede bardziej szczegolowo omowione w dalszej czesci manuala. Tutaj jest tylko prosty przyklad zeby moc zaczac pracowac ze wstepna obrobka danych.
+
+
+
+#(1) tworze tzn. task dla zagadnienia regresji (taski sa rozne w zaleznosci jakiego typu jest model- tutaj mamy regresje). W tasku podaje sie zbior danych i target (przypominam ze target w dokumenacji mlr to zmienna objasniana modelu).
+task <- mlr::makeRegrTask(  
+                     data = data_test
+                   , target = 'price' 
+                   )
+
+
+#(2) utworzenie learnera (tutaj wybieramy metode statystyczna i ustawiamy jej parametry)
+lrn <- mlr::makeLearner(  cl = 'regr.randomForest' # wybierzemy sobie las losowy jako metode
+                        , par.vals = list(ntree = 200) # ilosc drzew jako przykladowy parametr modelu
+                        ) 
+
+
+#(3) trenowawnie (estymacja) modelu
+train <- mlr::train(  learner = lrn   # nasz learner
+                     , task    = task # nasz task
+                    )
+train$learner.model # dostep do otrzymanego modelu
+
+
+#(4) predykcja oparta o zbior testowy
+prediction <- predict(   obj = train
+                      ,  newdata = data_test %>% na.omit
+                      )
+prediction$data # dostep do tabeli z wartosciami predykcji
+
+
+
+
+
+
+
+
+
+
+
+# WSTEPNE PRZETWARZANIE DANYCH ----
+
+# Zanim zacznie sie modelowanie warto zrobic wstepna obrobke danych
+
+#  przyciac wartosci ekstremalne
+#  przekodowac  zmienne kategoryczne na zestaw zmiennych binarnych (wiele pakietow nie robi tego automatycznie)
+#  polaczyc malo liczebne poziomy zmiennych
+#  znormalizowac dane
+#  zaimputowac dane
+#  wybrac zmienne do modelu
+
+
+
+
+
+##...przycinie wartosci ekstremalnych ----
+
+
+# sprawdzam zakres wartosci zmiennych
+range(data$price)
+
+# Przycinam wartosci ekstremalne
+data <- mlr::capLargeValues(
+                     obj       = data # task lub data.frame
+                    ,cols      = c('price') # lista zmiennych do przyciecia. 
+                    ,threshold = c(4000) # prog powyzej ktorego wartosc jest traktowana jako ekstremalna
+                    ,impute    = 4000 # czym zastapic wartosci ekstremalne
+                    ,what      = 'abs' # Poniewaz mamy tez wartosci ekstremalne ujemne jak i dodatnie mozely dokonac imputacji na kilka sposobow. 'abs' oznacza imputacje w taki sposob  abs(x)>threshold   will be imputed. Zeby zobaczy jak dzialaja inne moetody imputacji popatrz na przykad ponizej
+                   )
+
+# przykalad jak zmieniajac patametr 'what' mozna uzyskac rozne wyniki imputacji.
+table_1 <- data.frame(a=c(-10, -5, 0, 5, 10))
+capLargeValues(table_1, cols = 'a', threshold = 3, what = 'abs')
+capLargeValues(table_1, cols = 'a', threshold = 3, what = 'pos')
+capLargeValues(table_1, cols = 'a', threshold = 3, what = 'neg')
+
+
+ 
+
+
+
+
+
+##...dummy variables (zmienne zero-jedynkowe)----
+
+# Przekodowanie zmiennej kategorycznej na zbior zmiennych binarnych. Zmienna oryginalna jest usuwana !!!
+data <- mlr::createDummyFeatures( 
+                          obj    = data
+                        , target = 'cut'
+                        , method = 'reference' # inne metody: '1-of-n'
+                        , cols   = 'color' # zmienna do przekodowania
+                        )
+
+
+
+
+
+
+##...zlaczenie poziomow zmiennych
+
+
+# najpier tworze task
+task_class <- mlr::makeClassifTask(  
+    data        = data
+  , target      = 'cut'
+  , check.data  = TRUE
+)
+
+# zlaczal poziomy dla zmiennej target
+task_class <- joinClassLevels(  
+                  task       = task_class
+                , new.levels = list(new_level = c('Ideal','Premium'))
+               )
+
+
+
+# zlaczam malo liczne poziomy dla wybranych zmiennych
+task_class <- mlr::mergeSmallFactorLevels(  
+                              task      = task_class
+                            , cols      = 'clarity'
+                            , min.perc  = 0.01
+                            , new.level = 'new_level')
+
+
+
+
+##...normalizacja zmiennych ----
+
+data <- mlr::normalizeFeatures(
+              , method = 'standardize' # inne metody: 'center', 'scale', 'range'
+              , cols   = 'price' # zmienne do normalizacji
+            # , range  = # parametr dostepny jezeli wybierzemy metode 'range'
+            # , on.constant = # co ze zmienna stala (wszystkie wartosci takie same)
+                 )
+
+
+
+
+##...usuwanie zmienych o stalych wartosciach ----
+# Zmienne o stalych wartosciach sa niebepieczne przy modelowaniu i nalezy je usuwac wczesniej
+
+data <- mlr::removeConstantFeatures(  
+                              obj = data
+                            , perc = 0 # The percentage of a feature values in [0, 1) that must differ from the mode value. Default is 0
+                            , dont.rm = # columns to omit from removing
+                            , na.ignore = # treating NA as extra levels
+                            , tol = # Numerical tolerance to treat two numbers as equal
+                           )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##...features selection ----
+
+listFilterMethods()
+
+selection <- mlr::generateFilterValuesData(
+                    task_class
+                  , method = c(   
+                                  # "information.gain"
+                                  # "chi.squared"
+                                  "randomForestSRC.rfsrc"))
+
+plot(selection)
+
+filterFeatures(  task = task_class
+               , method = 
+               # , fval = selection
+               , perc = 0.25
+               # , abs = 
+               # , threshold = 
+               )
+
+
+
+# filtering with tunning
+
+
+mlr::listLearners(obj = 'classif') %>% View
+
+lr <- makeLearner(cl = 'classif.randomForest', par.vals = list(ntree=400))
+
+
+
+
+
+# TASK ----
+
+
+
+##... subsetting task
+
+# WARNING: p:mlr doesn't support formulas  like y~x1+x2 where we can specify which variables should be used in the model!!!. By defult all variables in provided data set are used. If we want to use only selected variables (or selected rows), we have to use this syntax:
+task_class <- subsetTask(  task     = task # task defined before
+                           , features =  c('cut', 'color', 'clarity')# features to select
+                           , subset   =  # we can also select subset rows prividing vector (integer or logical).
+)
+
+
+
+
+
+# LEARNER ----
+
+
+
+
+
+# TRAIN ----
+
+
+
+
+# PREDICTION -----
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+<!-- #### smieci -->
+
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- # # dodanie brakow danych do wybranych zmiennych (dla zaprezentowania pozniej imputacji danych) -->
+<!-- # data$x   <- replace(  x = data$x -->
+<!-- #                       , list = sample(1:nrow(data) -->
+<!-- #                                       , size = round(nrow(data)*0.1) -->
+<!-- #                                       , replace = FALSE) -->
+<!-- #                       , values = NA) -->
+<!-- #  -->
+<!-- # data$cut <- replace(  x = data$cut -->
+<!-- #                       , list = sample(  1:nrow(data) -->
+<!-- #                                         , size = round(nrow(data)*0.1) -->
+<!-- #                                         , replace = FALSE) -->
+<!-- #                       , values = NA) -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- # # http://explained.ai/rf-importance/index.html  problem z importance w randomForest -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- # # INTRO NOTES --- -->
+<!-- #  -->
+<!-- #  -->
+<!-- # # shorcuts in notes: -->
+<!-- # # p:ggplot - shortcut for "package ggplot" -->
+<!-- # # f:cor    - shortcut for "function cor" -->
+<!-- #  -->
+<!-- #  -->
+<!-- # # links: -->
+<!-- # # p:mlr page: https://mlr-org.github.io/mlr/ -->
+<!-- # # p:iml page: https://cran.r-project.org/web/packages/iml/vignettes/intro.html -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- # # In mlr documentation dependent variable is called 'target'. Independet variables are called 'feature'. I will be using this names in the manual.  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- # # DATA SET PREPARING --- -->
+<!-- #  -->
+<!-- # require(mlr) -->
+<!-- # require(iml) -->
+<!-- # require(plyr) -->
+<!-- # require(dplyr) -->
+<!-- # require(magrittr) -->
+<!-- #  -->
+<!-- # mlr::configureMlr() # if you don't run this function in the beginnig some strange errors may occur when training the models -->
+<!-- #  -->
+<!-- #  -->
+<!-- # data('diamonds', package = 'ggplot2') -->
+<!-- # data <- head(diamonds, 10000) -->
+<!-- #  -->
+<!-- # # adding missing values for some variables -->
+<!-- # data$x   <- replace(  x = data$x -->
+<!-- #                       , list = sample(1:nrow(data) -->
+<!-- #                                       , size = round(nrow(data)*0.1) -->
+<!-- #                                       , replace = FALSE) -->
+<!-- #                       , values = NA) -->
+<!-- #  -->
+<!-- # data$cut <- replace(  x = data$cut -->
+<!-- #                       , list = sample(  1:nrow(data) -->
+<!-- #                                         , size = round(nrow(data)*0.1) -->
+<!-- #                                         , replace = FALSE) -->
+<!-- #                       , values = NA) -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- # # dividing data set into train set and test set -->
+<!-- # train_index <- sample(1:nrow(data), size = 0.66*nrow(data), replace = FALSE) -->
+<!-- # data_train  <- data[test_index,]  -->
+<!-- # data_test   <- data[-test_index,] -->
+<!-- # dim(data); dim(data_train); dim(data_test) -->
+<!-- #  -->
+<!-- #  -->
+<!-- # # p:mlr requires pure data.frames!!! -->
+<!-- # data_train %<>% as.data.frame()   -->
+<!-- # data_test  %<>% as.data.frame()  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- # # FAST INTRODUCTORY EXAMPLE ---- -->
+<!-- #  -->
+<!-- # # Functions used below will be more detailed described in further part of manual. Here there is only a simple example necessary to start working with data in preprocessing stage. -->
+<!-- #  -->
+<!-- #  -->
+<!-- # #(1) making regression task (other types of task are available too). Here we have to provide data set and target variables -->
+<!-- # task <- mlr::makeRegrTask(   -->
+<!-- #   data = data_test %>% na.omit # data set with removed missing values -->
+<!-- #   , target = 'price' # target variable -->
+<!-- # ) -->
+<!-- #  -->
+<!-- #  -->
+<!-- # #(2) making learner (here we have to choose statistical method and set its parameters) -->
+<!-- # lrn <- mlr::makeLearner(  cl = 'regr.randomForest' # we will use random forest regression -->
+<!-- #                           , par.vals = list(ntree = 200) # parameters -->
+<!-- # )  -->
+<!-- #  -->
+<!-- #  -->
+<!-- # #(3) model training -->
+<!-- # train <- mlr::train(  learner = lrn   # defined before learner -->
+<!-- #                       , task    = task # defined before task -->
+<!-- # ) -->
+<!-- # train$learner.model # access to the trained model -->
+<!-- #  -->
+<!-- #  -->
+<!-- # #(4) prediction based on the new data set -->
+<!-- # prediction <- predict(   obj = train -->
+<!-- #                          ,  newdata = data_test %>% na.omit -->
+<!-- # ) -->
+<!-- # prediction$data # access to table with predicted values -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- # # PREPROCESSING --- -->
+<!-- #  -->
+<!-- # # Before we start estimating models we have to prepare data: -->
+<!-- #  -->
+<!-- # #  cap extreme values -->
+<!-- # #  recode categorical variables into dummy variables -->
+<!-- # #  join levels which rarely occur -->
+<!-- # #  impute missing values -->
+<!-- # #  normaliza data -->
+<!-- # #  select features -->
+<!-- #  -->
+<!-- # # All this things is called preprocessing -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- # ##...cap extreme values --- -->
+<!-- #  -->
+<!-- #  -->
+<!-- # # checking range of variables -->
+<!-- # range(data$price) -->
+<!-- #  -->
+<!-- # # capping selected variables. Only ONE threhold and impute value can be used, even if we provide few variables to modify. -->
+<!-- # data <- mlr::capLargeValues( -->
+<!-- #   obj       = data # it can be data.frame OR task  -->
+<!-- #   ,cols      = c('price') # vector with names of variable to cap -->
+<!-- #   ,threshold = c(4000) # the level of threshold -->
+<!-- #   ,impute    = 4000 # what value impute above threshold -->
+<!-- #   ,what      = 'abs' # how to impute: 'abs'means that  abs(x)>threshold   will be imputed. Other possible values: 'pos', 'neg'. See example below -->
+<!-- # ) -->
+<!-- #  -->
+<!-- # # small example of how parameters 'what' in f:capLargeValues works: -->
+<!-- # table_1 <- data.frame(a=c(-10, -5, 0, 5, 10)) -->
+<!-- # capLargeValues(table_1, cols = 'a', threshold = 3, what = 'abs') -->
+<!-- # capLargeValues(table_1, cols = 'a', threshold = 3, what = 'pos') -->
+<!-- # capLargeValues(table_1, cols = 'a', threshold = 3, what = 'neg') -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- # ##...dummy variables--- -->
+<!-- #  -->
+<!-- # # converting categorical variable into dummy variables. Original variable will be dropped !!! -->
+<!-- # data <- mlr::createDummyFeatures(  -->
+<!-- #   obj    = data -->
+<!-- #   , target = 'cut' -->
+<!-- #   , method = 'reference' # other methods: '1-of-n' -->
+<!-- #   , cols   = 'color' -->
+<!-- # ) -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- # ##...joining levels -->
+<!-- #  -->
+<!-- #  -->
+<!-- # # making task -->
+<!-- # task_class <- mlr::makeClassifTask(   -->
+<!-- #   #   id          =  -->
+<!-- #   data        = data # should provide pure data.frame -->
+<!-- #   , target      = 'cut' -->
+<!-- #   # , weights     = NULL -->
+<!-- #   # , blocking    =  -->
+<!-- #   # , coordinates =  -->
+<!-- #   # , positive    =  -->
+<!-- #   # , fixup.data  =  -->
+<!-- #   , check.data  = TRUE -->
+<!-- # ) -->
+<!-- #  -->
+<!-- # # merging levels of TARGET variable -->
+<!-- # task_class <- joinClassLevels(   -->
+<!-- #   task       = task_class -->
+<!-- #   , new.levels = list(new_level = c('Ideal','Premium')) -->
+<!-- # ) -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- # # merging levels which occur rarely -->
+<!-- # task_class <- mlr::mergeSmallFactorLevels(   -->
+<!-- #   task      = task_class -->
+<!-- #   , cols      = 'clarity' -->
+<!-- #   , min.perc  = 0.01 -->
+<!-- #   , new.level = 'new_level') -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- # ##...normalizing features --- -->
+<!-- #  -->
+<!-- # data <- mlr::normalizeFeatures( -->
+<!-- #   obj    = data -->
+<!-- #   # , target = '' -->
+<!-- #   , method = 'standardize' # other possible: 'center', 'scale', 'range' -->
+<!-- #   , cols   = 'price' -->
+<!-- #   # , range  = # parameter only for method 'range' -->
+<!-- #   # , on.constant -->
+<!-- # ) -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- # ##...remove constant features ---- -->
+<!-- # # Constant variables are dangerous because the can make problems when training the model. -->
+<!-- #  -->
+<!-- # data <- mlr::removeConstantFeatures(   -->
+<!-- #   obj = data -->
+<!-- #   , perc = 0 # The percentage of a feature values in [0, 1) that must differ from the mode value. Default is 0 -->
+<!-- #   , dont.rm = # columns to omit from removing -->
+<!-- #     , na.ignore = # treating NA as extra levels -->
+<!-- #     , tol = # Numerical tolerance to treat two numbers as equal -->
+<!-- # ) -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- # ##... subsetting task -->
+<!-- #  -->
+<!-- # # WARNING: p:mlr doesn't support formulas  like y~x1+x2 where we can specify which variables should be used in the model!!!. By defult all variables in provided data set are used. If we want to use only selected variables (or selected rows), we have to use this syntax: -->
+<!-- # task_class <- subsetTask(  task     = task # task defined before -->
+<!-- #                            , features =  c('cut', 'color', 'clarity')# features to select -->
+<!-- #                            , subset   =  # we can also select subset rows prividing vector (integer or logical). -->
+<!-- # ) -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- # ##...features selection --- -->
+<!-- #  -->
+<!-- # listFilterMethods() -->
+<!-- #  -->
+<!-- # selection <- mlr::generateFilterValuesData( -->
+<!-- #   task_class -->
+<!-- #   , method = c(    -->
+<!-- #     # "information.gain" -->
+<!-- #     # "chi.squared" -->
+<!-- #     "randomForestSRC.rfsrc")) -->
+<!-- #  -->
+<!-- # plot(selection) -->
+<!-- #  -->
+<!-- # filterFeatures(  task = task_class -->
+<!-- #                  , method =  -->
+<!-- #                    # , fval = selection -->
+<!-- #                    , perc = 0.25 -->
+<!-- #                  # , abs =  -->
+<!-- #                  # , threshold =  -->
+<!-- # ) -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- # # filtering with tunning -->
+<!-- #  -->
+<!-- #  -->
+<!-- # mlr::listLearners(obj = 'classif') %>% View -->
+<!-- #  -->
+<!-- # lr <- makeLearner(cl = 'classif.randomForest', par.vals = list(ntree=400)) -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- # # TASK --- -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- # # LEARNER --- -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- # # TRAIN --- -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- #  -->
+<!-- # # PREDICTION --- -->
+<!-- #  -->
+<!-- #  -->

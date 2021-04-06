@@ -1,0 +1,158 @@
+# AUXILIARY FIELDS
+
+## Introduction
+
+## Philosophy
+
+## Logic
+
+## Psychology
+
+## Linguistics
+
+## Cybernetics (control theory)
+
+## Math_1 -- Probability
+
+### Basics
+
+### Univariate distributions
+
+### Multivariate distributions
+
+### Stochastic processes
+
+## Math_2 -- Statistics
+
+### Descriptive statistics
+
+#### Univariate
+
+#### Multivariate
+
+##### Correlation
+
+**Semipartial correlation**
+
+The semipartial (or part) correlation statistic is similar to the partial correlation statistic. Both measure variance after certain factors are controlled for, but to calculate the semipartial correlation one holds the third variable constant for \*\*either X or Y\*\*, whereas for partial correlations one holds the third variable constant for \*\*both\*\*.[6] The semipartial correlation measures unique and joint variance while the partial correlation measures unique variance[clarification needed]. The semipartial (or part) correlation can be viewed as more practically relevant "because it is scaled to (i.e., relative to) the total variability in the dependent (response) variable." [7] Conversely, it is less theoretically useful because it is less precise about the unique contribution of the independent variable. Although it may seem paradoxical, the semipartial correlation of X with Y is always less than or equal to the partial correlation of X with Y
+
+### Statistical and ecometrical inference
+
+#### Basics
+
+#### Pameters estimation algorithms
+
+##### General moments methods
+
+##### Maxium likehood
+
+##### Nonparametric techniques
+
+#### Sampling techniques
+
+##### Holdout
+
+##### Boostrap
+
+[link](https://online.stat.psu.edu/stat555/node/119/)
+
+W bootstrapie z probki n-elementowej losujemy k raz podpróbki n-elementowe ALE ze zwracaniem. Losowanie próbek z podpróbek powinno symulować losowanie próbek z populacji (The population is to the sample as the sample is to the bootstrap samples). Bootstrap dzielimy na:
+
+-   **parametryczny**: losowanie jest wykonywane z zadanego rozkładu a nie z samej próbki (czyli zakładamy że znamy klasę rozkładu, np. jest to rozkład normalny)
+
+-   **semi-parametryczny** : The semiparametric bootstrap assumes that the population includes **other items that are similar to the observed sample by sampling from a smoothed version of the sample histogram**. It turns out that this can be done very simply by first taking a sample with replacement from the observed sample (just like the nonparametric bootstrap) and then adding noise.
+
+-   **nieparametryczny**. Elementy są losowanie z konkretnych elementów z samej próbki.
+
+**Boostrap dla regresji**
+
+[@Biecek2008] s 13. (link)[<https://stats.stackexchange.com/questions/64813/two-ways-of-using-bootstrap-to-estimate-the-confidence-interval-of-coefficients>]
+
+1.  Sample paired response-predictor: Randomly resample pairs of $y_i−x_i$, and apply linear regression to each run. After m runs, we obtain a collection of estimated coefficients $\hat{β_j},j=1,…,m$.. Finally, compute the quantile of $\hat{β_j}$.
+2.  Sample error: First apply linear regression on the original observed data, from this model we obtain $\hat{β_o}$ and the error $ϵ_i$. Afterwards, randomly resample the error $ϵ_i$ and compute the new data with $\hat{β_o}$ and $y_i=\hat{β_o}x_i+ϵ_i$. Apply once again linear regression. After m runs, we obtain a collection of estimated coefficeints $\hat{β_j},j=1,…,m$. Finally, compute the quantile of $\hat{β_j}$.
+
+##### Jacknife
+
+##### Permutation
+
+[@Biecek2008] s 13
+
+##### Cross validation
+
+##### Monte Carlo
+
+Hasting algorithm.
+
+##### Stratified sampling
+
+### Other issues
+
+#### Similarity and dissimilarity meassures for observations
+
+#### Similarity and dissimilarity meassures for distributions
+
+#### Measures of disorder/randomness
+
+#### Paradoxes
+
+## Math_3 -- Game theory
+
+## Math_4 -- Optimisation
+
+### Functions optimum
+
+### Functions optimum -- constrained
+
+#### Lagrange Multipliers
+
+#### Linear programming
+
+#### Nonlinear programming
+
+#### Regularization
+
+### Functional optimum
+
+#### Dynamic programming
+
+#### Calculus of variations
+
+### Cost functions
+
+### Back propagation
+
+### Heuristic algorithms
+
+#### Swarm algorithm
+
+#### Ants algoritms
+
+#### Genetics algorithms
+
+## Math_4 -- Other issues
+
+### Functions usefull in Data Science
+
+### Useful tricks
+
+### Linear algebra
+
+### Combinatorics
+
+### Numerical methods
+
+### Equations
+
+#### x as number
+
+#### X as derivative: differential and difference equations
+
+#### Choas
+
+##### logistic map
+
+[link: varitasium channel](https://www.youtube.com/watch?v=ovJcsL7vyrk&t=356s)
+
+### Fuzzy logic
+
+### Graphs
