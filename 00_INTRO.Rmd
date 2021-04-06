@@ -96,5 +96,3 @@ Disadvantages:
 ### Curse of dimentionality
 
 ### Sparious phenomenon
-
-### Nowy rozdzial
