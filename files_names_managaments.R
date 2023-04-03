@@ -24,3 +24,8 @@ for(i in 1:nrow(new_names)){
   file.rename(from = paste0(new_names$name, '.Rmd'), to = paste0(new_names$new_name, '.Rmd'))
 }
 
+
+
+
+
+

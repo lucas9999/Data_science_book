@@ -13,7 +13,7 @@ bookdown::serve_book(  dir        = '.'
 #                       , output_dir = '_book')
 
 
-#    shell.exec(paste0(getwd(), '/_book/index.html' ) )
+# shell.exec(paste0(getwd(), '/docs/index.html' ) )
 
 
 
